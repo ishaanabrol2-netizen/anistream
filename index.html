@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AniStream AAA</title>
+<title>AniStream Infinity X</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -18,11 +19,10 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
 }
 
 body{
-background:#050505;
+background:#020202;
 color:white;
 overflow-x:hidden;
 }
@@ -38,7 +38,7 @@ background:#ff7a00;
 border-radius:20px;
 }
 
-/* VIDEO BACKGROUND */
+/* VIDEO BG */
 
 .bg-video{
 position:fixed;
@@ -47,88 +47,121 @@ left:0;
 width:100%;
 height:100%;
 object-fit:cover;
-z-index:-5;
-filter:brightness(0.28) saturate(1.2);
-transform:scale(1.1);
+z-index:-10;
+filter:
+brightness(0.28)
+contrast(1.05)
+saturate(1.15);
+
+transform:scale(1.08);
 }
 
-/* OVERLAY */
+/* CINEMATIC OVERLAY */
 
 .overlay{
 position:fixed;
 inset:0;
 
 background:
-linear-gradient(to right,
-rgba(0,0,0,0.97),
+
+linear-gradient(
+to right,
+rgba(0,0,0,0.96),
 rgba(0,0,0,0.55),
-rgba(0,0,0,0.2)),
+rgba(0,0,0,0.18)
+),
 
-linear-gradient(to top,
+linear-gradient(
+to top,
 rgba(0,0,0,1),
-transparent 35%);
+transparent 38%
+),
 
-z-index:-4;
+linear-gradient(
+to bottom,
+rgba(0,0,0,0.55),
+transparent
+);
+
+z-index:-9;
 }
 
-/* GLOW */
+/* GLOW EFFECTS */
 
 .glow1{
 position:fixed;
-width:700px;
-height:700px;
+
+width:800px;
+height:800px;
+
 background:#ff7a00;
-right:-200px;
-top:-180px;
-filter:blur(220px);
-opacity:0.18;
-z-index:-3;
+
+right:-250px;
+top:-250px;
+
+filter:blur(240px);
+
+opacity:0.16;
+
 border-radius:50%;
+
+z-index:-8;
 }
 
 .glow2{
 position:fixed;
+
 width:500px;
 height:500px;
+
 background:#ff0000;
-left:-120px;
-bottom:-120px;
+
+left:-150px;
+bottom:-150px;
+
 filter:blur(180px);
-opacity:0.12;
-z-index:-3;
+
+opacity:0.1;
+
 border-radius:50%;
+
+z-index:-8;
 }
 
 /* SIDEBAR */
 
 .sidebar{
 position:fixed;
-left:20px;
+
+left:22px;
 top:50%;
+
 transform:translateY(-50%);
 
-width:85px;
+width:92px;
 
-padding:25px 0;
+padding:30px 0;
 
-border-radius:30px;
+border-radius:34px;
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(18px);
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(20px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.06);
 
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:24px;
+gap:28px;
 
-z-index:200;
+z-index:300;
 }
 
-.side-icon{
-width:55px;
-height:55px;
+/* SIDEBAR ICON */
+
+.side-btn{
+width:58px;
+height:58px;
 
 border-radius:18px;
 
@@ -136,38 +169,49 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-font-size:22px;
+font-size:24px;
 
-background:rgba(255,255,255,0.05);
+background:rgba(255,255,255,0.035);
+
+border:1px solid rgba(255,255,255,0.05);
 
 cursor:pointer;
-transition:0.35s;
+transition:0.4s;
 }
 
-.side-icon:hover{
-background:#ff7a00;
-transform:scale(1.08);
+.side-btn:hover{
+
+transform:
+translateY(-5px)
+scale(1.06);
+
+background:rgba(255,122,0,0.18);
+
+border-color:rgba(255,122,0,0.25);
+
+box-shadow:
+0 0 35px rgba(255,122,0,0.22);
 }
 
 /* TOPBAR */
 
 .topbar{
 position:fixed;
+
 top:0;
-left:120px;
+left:130px;
 right:0;
 
-padding:22px 50px;
+padding:20px 45px;
 
 display:flex;
 justify-content:space-between;
 align-items:center;
 
-z-index:100;
-
-background:rgba(0,0,0,0.12);
-backdrop-filter:blur(18px);
+z-index:200;
 }
+
+/* LOGO */
 
 .logo{
 font-size:42px;
@@ -179,64 +223,80 @@ letter-spacing:2px;
 color:#ff7a00;
 }
 
+/* NAV */
+
 .nav-right{
 display:flex;
 align-items:center;
-gap:16px;
+gap:12px;
 }
+
+/* SEARCH */
 
 .search{
 width:260px;
 
-padding:14px 20px;
+padding:14px 18px;
 
 border:none;
 outline:none;
 
 border-radius:18px;
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.06);
 
 color:white;
 }
 
+/* NAV BUTTON */
+
 .nav-btn{
-padding:12px 18px;
+padding:13px 20px;
 
-border-radius:16px;
+border-radius:18px;
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.06);
 
 color:white;
+font-size:14px;
 
 cursor:pointer;
 transition:0.35s;
 }
 
 .nav-btn:hover{
-background:#ff7a00;
-transform:translateY(-3px);
+
+transform:translateY(-4px);
+
+background:rgba(255,122,0,0.18);
+
+border-color:rgba(255,122,0,0.28);
+
+box-shadow:
+0 0 28px rgba(255,122,0,0.18);
 }
 
 /* HERO */
 
 .hero{
-min-height:100vh;
+height:100vh;
 
 display:flex;
 align-items:center;
 
 padding-left:170px;
-padding-right:60px;
+padding-right:70px;
 
 position:relative;
 }
+
+/* HERO CONTENT */
 
 .hero-content{
 max-width:760px;
@@ -258,7 +318,9 @@ transform:translateY(0px);
 
 }
 
-.tag{
+/* TRENDING TAG */
+
+.trending{
 display:inline-flex;
 align-items:center;
 gap:10px;
@@ -267,40 +329,34 @@ padding:10px 22px;
 
 border-radius:40px;
 
-background:rgba(255,122,0,0.15);
-border:1px solid rgba(255,122,0,0.35);
+background:rgba(255,122,0,0.14);
+backdrop-filter:blur(18px);
 
-backdrop-filter:blur(12px);
+border:1px solid rgba(255,122,0,0.25);
 
 font-size:14px;
 font-weight:600;
 
-margin-bottom:30px;
+margin-bottom:28px;
 
 box-shadow:
-0 0 35px rgba(255,122,0,0.35);
+0 0 40px rgba(255,122,0,0.15);
 }
 
+/* TITLE */
+
 .hero h1{
-font-size:130px;
-line-height:0.9;
+font-size:120px;
+line-height:0.92;
 font-weight:800;
 
 letter-spacing:-4px;
 
-margin-bottom:28px;
+margin-bottom:26px;
 
 text-shadow:
-0 0 60px rgba(255,122,0,0.25),
-0 10px 50px rgba(0,0,0,0.9);
-}
-
-.hero p{
-font-size:18px;
-line-height:2;
-color:#ddd;
-
-max-width:700px;
+0 0 55px rgba(255,122,0,0.16),
+0 12px 60px rgba(0,0,0,0.82);
 }
 
 /* META */
@@ -310,109 +366,146 @@ display:flex;
 gap:16px;
 flex-wrap:wrap;
 
-margin-bottom:32px;
+margin-bottom:26px;
 }
 
 .meta span{
-
 padding:9px 15px;
 
 border-radius:14px;
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.06);
 
 font-size:14px;
 color:#ddd;
+}
+
+/* DESC */
+
+.desc{
+font-size:18px;
+line-height:2;
+color:#ddd;
+
+max-width:700px;
 }
 
 /* BUTTONS */
 
 .buttons{
 display:flex;
-gap:18px;
+gap:16px;
 
-margin-top:45px;
+margin-top:42px;
 }
 
+/* WATCH BTN */
+
 .watch-btn{
-padding:18px 45px;
+padding:18px 42px;
 
 border:none;
-border-radius:20px;
+border-radius:22px;
 
-background:#ff7a00;
+background:rgba(255,122,0,0.18);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,122,0,0.28);
 
 font-size:18px;
 font-weight:700;
 
+color:white;
+
+cursor:pointer;
+transition:0.4s;
+
+box-shadow:
+0 0 40px rgba(255,122,0,0.18);
+}
+
+.watch-btn:hover{
+
+transform:
+translateY(-5px)
+scale(1.04);
+
+background:rgba(255,122,0,0.28);
+
+box-shadow:
+0 0 55px rgba(255,122,0,0.28);
+}
+
+/* GLASS BTN */
+
+.glass-btn{
+padding:18px 30px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,0.06);
+
+font-size:18px;
 color:white;
 
 cursor:pointer;
 transition:0.35s;
-
-box-shadow:
-0 0 45px rgba(255,122,0,0.45);
 }
 
-.watch-btn:hover{
-transform:scale(1.08);
-background:#ff9500;
+.glass-btn:hover{
+transform:translateY(-4px);
+
+background:rgba(255,255,255,0.08);
 }
 
-.secondary{
-padding:18px 32px;
+/* TAGS */
 
-border-radius:20px;
-
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-font-size:18px;
-
-color:white;
-
-cursor:pointer;
-}
-
-/* SECTIONS */
-
-.section{
-padding-left:170px;
-padding-right:60px;
-margin-bottom:70px;
-}
-
-.section-title{
-font-size:34px;
-font-weight:700;
-margin-bottom:30px;
-}
-
-/* ROW */
-
-.row{
+.tags{
 display:flex;
-gap:25px;
-overflow-x:auto;
-padding-bottom:20px;
+gap:12px;
+
+margin-top:24px;
 }
 
-.row::-webkit-scrollbar{
-display:none;
+.tag{
+padding:8px 14px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,0.06);
+
+font-size:13px;
+color:#ddd;
+}
+
+/* SLIDER */
+
+.slider{
+position:absolute;
+
+bottom:28px;
+right:55px;
+
+display:flex;
+gap:24px;
 }
 
 /* CARD */
 
 .card{
-min-width:280px;
-height:380px;
+width:280px;
+height:155px;
 
-border-radius:30px;
+border-radius:28px;
 
 overflow:hidden;
 
@@ -421,26 +514,47 @@ position:relative;
 cursor:pointer;
 transition:0.45s;
 
-background:#111;
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(20px);
 
-flex-shrink:0;
+border:2px solid transparent;
 }
 
+/* PREMIUM HOVER */
+
 .card:hover{
+
 transform:
-translateY(-15px)
-scale(1.03);
+translateY(-14px)
+scale(1.04);
+
+border-color:rgba(255,255,255,0.28);
 
 box-shadow:
-0 30px 70px rgba(0,0,0,0.7),
-0 0 50px rgba(255,122,0,0.18);
+0 25px 70px rgba(0,0,0,0.55),
+0 0 50px rgba(255,255,255,0.08);
+}
+
+/* ACTIVE CARD */
+
+.active{
+border-color:rgba(255,255,255,0.3);
+
+transform:scale(1.02);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.5),
+0 0 35px rgba(255,255,255,0.1);
 }
 
 .card img{
 width:100%;
 height:100%;
 object-fit:cover;
+opacity:0.8;
 }
+
+/* CARD OVERLAY */
 
 .card::after{
 content:'';
@@ -449,128 +563,103 @@ position:absolute;
 inset:0;
 
 background:
-linear-gradient(to top,
-rgba(0,0,0,0.96),
-transparent 60%);
+linear-gradient(
+to top,
+rgba(0,0,0,0.95),
+transparent 58%
+);
 }
 
-/* RANK */
+/* CARD NUMBER */
 
-.rank{
+.number{
 position:absolute;
-top:18px;
+
 left:18px;
+bottom:10px;
 
-width:45px;
-height:45px;
+font-size:40px;
+font-weight:800;
 
-border-radius:14px;
+z-index:3;
+}
 
-background:#ff7a00;
+/* CARD TITLE */
+
+.card-title{
+position:absolute;
+
+right:18px;
+bottom:18px;
+
+font-size:15px;
+font-weight:600;
+
+z-index:3;
+}
+
+/* ARROWS */
+
+.arrows{
+position:absolute;
+
+right:62px;
+bottom:205px;
+
+display:flex;
+gap:14px;
+}
+
+.arrow{
+width:54px;
+height:54px;
+
+border-radius:18px;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-font-weight:700;
-z-index:3;
-}
+background:rgba(255,255,255,0.035);
+backdrop-filter:blur(18px);
 
-/* CARD INFO */
+border:1px solid rgba(255,255,255,0.06);
 
-.card-info{
-position:absolute;
-left:22px;
-bottom:22px;
-z-index:3;
-}
+font-size:20px;
 
-.card-info h3{
-font-size:24px;
-margin-bottom:8px;
-}
-
-.card-info p{
-color:#ccc;
-font-size:14px;
-}
-
-/* CONTINUE WATCHING */
-
-.continue-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-gap:25px;
-}
-
-.continue-card{
-padding:20px;
-
-border-radius:24px;
-
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(16px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-display:flex;
-gap:18px;
-align-items:center;
-
+cursor:pointer;
 transition:0.35s;
 }
 
-.continue-card:hover{
-transform:translateY(-8px);
+.arrow:hover{
+
+transform:
+translateY(-4px)
+scale(1.04);
+
+background:rgba(255,255,255,0.08);
 }
 
-.continue-thumb{
-width:140px;
-height:90px;
+/* BOTTOM FADE */
 
-border-radius:18px;
-
-overflow:hidden;
-}
-
-.continue-thumb img{
+.bottom-fade{
+position:absolute;
+bottom:0;
+left:0;
 width:100%;
-height:100%;
-object-fit:cover;
-}
+height:180px;
 
-.progress{
-width:100%;
-height:8px;
+background:
+linear-gradient(to top,
+rgba(0,0,0,1),
+transparent);
 
-background:#222;
-
-border-radius:20px;
-
-margin-top:12px;
-
-overflow:hidden;
-}
-
-.progress-bar{
-height:100%;
-width:70%;
-background:#ff7a00;
-}
-
-/* FOOTER */
-
-footer{
-padding:40px;
-text-align:center;
-color:#777;
-
-border-top:1px solid rgba(255,255,255,0.08);
+pointer-events:none;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
 .sidebar{
 display:none;
@@ -586,11 +675,15 @@ padding:0 20px;
 }
 
 .hero h1{
-font-size:70px;
+font-size:58px;
 }
 
-.section{
-padding:20px;
+.slider{
+display:none;
+}
+
+.arrows{
+display:none;
 }
 
 .search{
@@ -624,11 +717,11 @@ type="video/mp4">
 
 <div class="sidebar">
 
-<div class="side-icon">🏠</div>
-<div class="side-icon">🔥</div>
-<div class="side-icon">🎬</div>
-<div class="side-icon">⭐</div>
-<div class="side-icon">📺</div>
+<div class="side-btn">🏠</div>
+<div class="side-btn">🔥</div>
+<div class="side-btn">🎬</div>
+<div class="side-btn">⭐</div>
+<div class="side-btn">📺</div>
 
 </div>
 
@@ -649,11 +742,19 @@ Browse
 </button>
 
 <button class="nav-btn">
-Trending
+Recent
 </button>
 
 <button class="nav-btn">
-Recent
+Schedule
+</button>
+
+<button class="nav-btn">
+Top
+</button>
+
+<button class="nav-btn">
+Random
 </button>
 
 </div>
@@ -666,30 +767,30 @@ Recent
 
 <div class="hero-content">
 
-<div class="tag">
-🔥 #1 WORLDWIDE TRENDING
+<div class="trending">
+🔥 #1 TRENDING WORLDWIDE
 </div>
 
 <h1>
-DEMON<br>
-SLAYER
+The Ramparts<br>
+of Ice
 </h1>
 
 <div class="meta">
 
-<span>SUB / DUB</span>
-<span>2026</span>
+<span>SUB</span>
 <span>24 mins</span>
+<span>April 2026</span>
 <span>13 Episodes</span>
-<span>★ 9.9</span>
+<span>★ 9.8</span>
 
 </div>
 
-<p>
+<div class="desc">
 
-Experience a cinematic anime streaming platform with Netflix-style layouts, floating cards, ultra-HD aesthetics, premium glassmorphism UI, glowing effects, and AAA streaming visuals.
+Experience an ultra cinematic anime streaming platform with premium transparent glassmorphism UI, AAA hover animations, glowing aesthetics, immersive floating layouts, and next-generation streaming visuals inspired by Netflix and Crunchyroll.
 
-</p>
+</div>
 
 <div class="buttons">
 
@@ -697,120 +798,72 @@ Experience a cinematic anime streaming platform with Netflix-style layouts, floa
 ▶ WATCH NOW
 </button>
 
-<button class="secondary">
-＋ MY LIST
+<button class="glass-btn">
+🔖 MY LIST
 </button>
 
 </div>
 
+<div class="tags">
+
+<div class="tag">
+Comedy
 </div>
 
-</section>
-
-<!-- CONTINUE WATCHING -->
-
-<section class="section">
-
-<div class="section-title">
-Continue Watching
+<div class="tag">
+Romance
 </div>
 
-<div class="continue-grid">
-
-<div class="continue-card">
-
-<div class="continue-thumb">
-
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
-
-</div>
-
-<div style="flex:1;">
-
-<h3>Demon Slayer</h3>
-
-<p style="color:#aaa;">
-Episode 8 • 18 mins left
-</p>
-
-<div class="progress">
-<div class="progress-bar"></div>
+<div class="tag">
+Slice of Life
 </div>
 
 </div>
 
 </div>
 
-<div class="continue-card">
+<!-- ARROWS -->
 
-<div class="continue-thumb">
+<div class="arrows">
 
-<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
-
+<div class="arrow">
+❮
 </div>
 
-<div style="flex:1;">
-
-<h3>Attack on Titan</h3>
-
-<p style="color:#aaa;">
-Episode 24 • 5 mins left
-</p>
-
-<div class="progress">
-<div class="progress-bar" style="width:90%;"></div>
+<div class="arrow">
+❯
 </div>
 
 </div>
 
-</div>
+<!-- SLIDER -->
 
-</div>
-
-</section>
-
-<!-- TRENDING -->
-
-<section class="section">
-
-<div class="section-title">
-Trending Now
-</div>
-
-<div class="row">
+<div class="slider">
 
 <div class="card">
 
 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
 
-<div class="rank">
-1
+<div class="number">
+01
 </div>
 
-<div class="card-info">
-
-<h3>Demon Slayer</h3>
-
-<p>Action • Fantasy</p>
-
+<div class="card-title">
+Demon Slayer
 </div>
 
 </div>
 
-<div class="card">
+<div class="card active">
 
 <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
 
-<div class="rank">
-2
+<div class="number">
+02
 </div>
 
-<div class="card-info">
-
-<h3>Attack on Titan</h3>
-
-<p>Dark Fantasy</p>
-
+<div class="card-title">
+Ramparts of Ice
 </div>
 
 </div>
@@ -819,16 +872,12 @@ Trending Now
 
 <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200&auto=format&fit=crop">
 
-<div class="rank">
-3
+<div class="number">
+03
 </div>
 
-<div class="card-info">
-
-<h3>Solo Leveling</h3>
-
-<p>Adventure</p>
-
+<div class="card-title">
+Solo Leveling
 </div>
 
 </div>
@@ -837,29 +886,21 @@ Trending Now
 
 <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=1200&auto=format&fit=crop">
 
-<div class="rank">
-4
+<div class="number">
+04
 </div>
 
-<div class="card-info">
-
-<h3>Jujutsu Kaisen</h3>
-
-<p>Action</p>
-
+<div class="card-title">
+Jujutsu Kaisen
 </div>
 
 </div>
 
 </div>
+
+<div class="bottom-fade"></div>
 
 </section>
-
-<footer>
-
-© 2026 AniStream • AAA Anime Streaming Platform
-
-</footer>
 
 </body>
 
