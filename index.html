@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AniStream</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f0f1a;
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    background:#151525;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#ff3c5f;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff3c5f;
+}
+
+/* HERO */
+
+.hero{
+    height:420px;
+    background:linear-gradient(to right,#111,#2d132c);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:50px;
+}
+
+.hero h1{
+    font-size:65px;
+    color:#ff3c5f;
+}
+
+.hero p{
+    margin-top:15px;
+    color:#ccc;
+    max-width:500px;
+    font-size:18px;
+}
+
+.watch-btn{
+    margin-top:25px;
+    width:170px;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#ff3c5f;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.watch-btn:hover{
+    background:#ff5d7a;
+}
+
+/* TRENDING */
+
+.section{
+    padding:40px;
+}
+
+.section h2{
+    margin-bottom:25px;
+    font-size:32px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1c1c2e;
+    border-radius:12px;
+    overflow:hidden;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.thumb{
+    height:240px;
+    background:#2d2d44;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#aaa;
+}
+
+/* FOOTER */
+
+footer{
+    background:#151525;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+    color:#999;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+AniStream
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Anime</a>
+<a href="#">Movies</a>
+<a href="#">Popular</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Demon Slayer</h1>
+
+<p>
+Watch your favorite anime in HD quality with a modern anime streaming interface.
+</p>
+
+<button class="watch-btn" onclick="openPlayer()">
+Watch Now
+</button>
+
+</section>
+
+<section class="section">
+
+<h2>Trending Anime</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<div class="thumb">
+⚔️
+</div>
+
+<div class="card-content">
+<h3>Jujutsu Kaisen</h3>
+<p>Action</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="thumb">
+🔥
+</div>
+
+<div class="card-content">
+<h3>Attack on Titan</h3>
+<p>Fantasy</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="thumb">
+🍥
+</div>
+
+<div class="card-content">
+<h3>Naruto</h3>
+<p>Adventure</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="thumb">
+🌊
+</div>
+
+<div class="card-content">
+<h3>Blue Lock</h3>
+<p>Sports</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 AniStream
+</footer>
+
+<script>
+
+function openPlayer(){
+    window.location.href = "player.html";
+}
+
+</script>
+
+</body>
+</html>
