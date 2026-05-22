@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AniStream Ultra</title>
+<title>AniStream AAA</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -26,9 +27,20 @@ color:white;
 overflow-x:hidden;
 }
 
-/* VIDEO BG */
+/* SCROLLBAR */
 
-.bg{
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#ff7a00;
+border-radius:20px;
+}
+
+/* VIDEO BACKGROUND */
+
+.bg-video{
 position:fixed;
 top:0;
 left:0;
@@ -36,7 +48,8 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-5;
-filter:brightness(0.3);
+filter:brightness(0.28) saturate(1.2);
+transform:scale(1.1);
 }
 
 /* OVERLAY */
@@ -47,15 +60,43 @@ inset:0;
 
 background:
 linear-gradient(to right,
-rgba(0,0,0,0.96),
-rgba(0,0,0,0.5),
+rgba(0,0,0,0.97),
+rgba(0,0,0,0.55),
 rgba(0,0,0,0.2)),
 
 linear-gradient(to top,
 rgba(0,0,0,1),
-transparent 40%);
+transparent 35%);
 
 z-index:-4;
+}
+
+/* GLOW */
+
+.glow1{
+position:fixed;
+width:700px;
+height:700px;
+background:#ff7a00;
+right:-200px;
+top:-180px;
+filter:blur(220px);
+opacity:0.18;
+z-index:-3;
+border-radius:50%;
+}
+
+.glow2{
+position:fixed;
+width:500px;
+height:500px;
+background:#ff0000;
+left:-120px;
+bottom:-120px;
+filter:blur(180px);
+opacity:0.12;
+z-index:-3;
+border-radius:50%;
 }
 
 /* SIDEBAR */
@@ -68,24 +109,24 @@ transform:translateY(-50%);
 
 width:85px;
 
+padding:25px 0;
+
+border-radius:30px;
+
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(18px);
 
 border:1px solid rgba(255,255,255,0.08);
 
-border-radius:30px;
-
-padding:25px 0;
-
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:28px;
+gap:24px;
 
-z-index:100;
+z-index:200;
 }
 
-.icon{
+.side-icon{
 width:55px;
 height:55px;
 
@@ -103,12 +144,12 @@ cursor:pointer;
 transition:0.35s;
 }
 
-.icon:hover{
+.side-icon:hover{
 background:#ff7a00;
 transform:scale(1.08);
 }
 
-/* NAVBAR */
+/* TOPBAR */
 
 .topbar{
 position:fixed;
@@ -122,20 +163,30 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-z-index:90;
+z-index:100;
+
+background:rgba(0,0,0,0.12);
+backdrop-filter:blur(18px);
 }
 
 .logo{
 font-size:42px;
 font-weight:800;
+letter-spacing:2px;
 }
 
 .logo span{
 color:#ff7a00;
 }
 
+.nav-right{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
 .search{
-width:280px;
+width:260px;
 
 padding:14px 20px;
 
@@ -152,6 +203,27 @@ border:1px solid rgba(255,255,255,0.08);
 color:white;
 }
 
+.nav-btn{
+padding:12px 18px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+color:white;
+
+cursor:pointer;
+transition:0.35s;
+}
+
+.nav-btn:hover{
+background:#ff7a00;
+transform:translateY(-3px);
+}
+
 /* HERO */
 
 .hero{
@@ -162,28 +234,51 @@ align-items:center;
 
 padding-left:170px;
 padding-right:60px;
+
+position:relative;
 }
 
 .hero-content{
 max-width:760px;
+
+animation:fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0px);
+}
+
 }
 
 .tag{
-display:inline-block;
+display:inline-flex;
+align-items:center;
+gap:10px;
 
-padding:10px 20px;
+padding:10px 22px;
 
 border-radius:40px;
 
 background:rgba(255,122,0,0.15);
 border:1px solid rgba(255,122,0,0.35);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 font-size:14px;
 font-weight:600;
 
 margin-bottom:30px;
+
+box-shadow:
+0 0 35px rgba(255,122,0,0.35);
 }
 
 .hero h1{
@@ -191,10 +286,12 @@ font-size:130px;
 line-height:0.9;
 font-weight:800;
 
+letter-spacing:-4px;
+
 margin-bottom:28px;
 
 text-shadow:
-0 0 50px rgba(255,122,0,0.3),
+0 0 60px rgba(255,122,0,0.25),
 0 10px 50px rgba(0,0,0,0.9);
 }
 
@@ -204,6 +301,31 @@ line-height:2;
 color:#ddd;
 
 max-width:700px;
+}
+
+/* META */
+
+.meta{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+
+margin-bottom:32px;
+}
+
+.meta span{
+
+padding:9px 15px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+font-size:14px;
+color:#ddd;
 }
 
 /* BUTTONS */
@@ -232,7 +354,7 @@ cursor:pointer;
 transition:0.35s;
 
 box-shadow:
-0 0 40px rgba(255,122,0,0.45);
+0 0 45px rgba(255,122,0,0.45);
 }
 
 .watch-btn:hover{
@@ -241,7 +363,7 @@ background:#ff9500;
 }
 
 .secondary{
-padding:18px 30px;
+padding:18px 32px;
 
 border-radius:20px;
 
@@ -257,14 +379,12 @@ color:white;
 cursor:pointer;
 }
 
-/* TOP 10 ROW */
+/* SECTIONS */
 
 .section{
 padding-left:170px;
 padding-right:60px;
-margin-top:-60px;
-position:relative;
-z-index:5;
+margin-bottom:70px;
 }
 
 .section-title{
@@ -272,6 +392,8 @@ font-size:34px;
 font-weight:700;
 margin-bottom:30px;
 }
+
+/* ROW */
 
 .row{
 display:flex;
@@ -284,7 +406,7 @@ padding-bottom:20px;
 display:none;
 }
 
-/* CARDS */
+/* CARD */
 
 .card{
 min-width:280px;
@@ -332,7 +454,7 @@ rgba(0,0,0,0.96),
 transparent 60%);
 }
 
-/* CARD CONTENT */
+/* RANK */
 
 .rank{
 position:absolute;
@@ -354,6 +476,8 @@ font-weight:700;
 z-index:3;
 }
 
+/* CARD INFO */
+
 .card-info{
 position:absolute;
 left:22px;
@@ -369,6 +493,79 @@ margin-bottom:8px;
 .card-info p{
 color:#ccc;
 font-size:14px;
+}
+
+/* CONTINUE WATCHING */
+
+.continue-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:25px;
+}
+
+.continue-card{
+padding:20px;
+
+border-radius:24px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+display:flex;
+gap:18px;
+align-items:center;
+
+transition:0.35s;
+}
+
+.continue-card:hover{
+transform:translateY(-8px);
+}
+
+.continue-thumb{
+width:140px;
+height:90px;
+
+border-radius:18px;
+
+overflow:hidden;
+}
+
+.continue-thumb img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.progress{
+width:100%;
+height:8px;
+
+background:#222;
+
+border-radius:20px;
+
+margin-top:12px;
+
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:70%;
+background:#ff7a00;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+color:#777;
+
+border-top:1px solid rgba(255,255,255,0.08);
 }
 
 /* MOBILE */
@@ -408,7 +605,9 @@ display:none;
 
 <body>
 
-<video autoplay muted loop class="bg">
+<!-- VIDEO -->
+
+<video autoplay muted loop class="bg-video">
 
 <source
 src="https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p"
@@ -418,15 +617,18 @@ type="video/mp4">
 
 <div class="overlay"></div>
 
+<div class="glow1"></div>
+<div class="glow2"></div>
+
 <!-- SIDEBAR -->
 
 <div class="sidebar">
 
-<div class="icon">🏠</div>
-<div class="icon">🔥</div>
-<div class="icon">🎬</div>
-<div class="icon">⭐</div>
-<div class="icon">📺</div>
+<div class="side-icon">🏠</div>
+<div class="side-icon">🔥</div>
+<div class="side-icon">🎬</div>
+<div class="side-icon">⭐</div>
+<div class="side-icon">📺</div>
 
 </div>
 
@@ -438,7 +640,23 @@ type="video/mp4">
 Ani<span>Stream</span>
 </div>
 
+<div class="nav-right">
+
 <input type="text" class="search" placeholder="Search anime...">
+
+<button class="nav-btn">
+Browse
+</button>
+
+<button class="nav-btn">
+Trending
+</button>
+
+<button class="nav-btn">
+Recent
+</button>
+
+</div>
 
 </div>
 
@@ -457,9 +675,19 @@ DEMON<br>
 SLAYER
 </h1>
 
+<div class="meta">
+
+<span>SUB / DUB</span>
+<span>2026</span>
+<span>24 mins</span>
+<span>13 Episodes</span>
+<span>★ 9.9</span>
+
+</div>
+
 <p>
 
-A next-generation cinematic anime streaming experience with immersive visuals, premium glassmorphism UI, floating layouts, glowing aesthetics, and ultra smooth animations.
+Experience a cinematic anime streaming platform with Netflix-style layouts, floating cards, ultra-HD aesthetics, premium glassmorphism UI, glowing effects, and AAA streaming visuals.
 
 </p>
 
@@ -479,7 +707,69 @@ A next-generation cinematic anime streaming experience with immersive visuals, p
 
 </section>
 
-<!-- TOP 10 -->
+<!-- CONTINUE WATCHING -->
+
+<section class="section">
+
+<div class="section-title">
+Continue Watching
+</div>
+
+<div class="continue-grid">
+
+<div class="continue-card">
+
+<div class="continue-thumb">
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div style="flex:1;">
+
+<h3>Demon Slayer</h3>
+
+<p style="color:#aaa;">
+Episode 8 • 18 mins left
+</p>
+
+<div class="progress">
+<div class="progress-bar"></div>
+</div>
+
+</div>
+
+</div>
+
+<div class="continue-card">
+
+<div class="continue-thumb">
+
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+<div style="flex:1;">
+
+<h3>Attack on Titan</h3>
+
+<p style="color:#aaa;">
+Episode 24 • 5 mins left
+</p>
+
+<div class="progress">
+<div class="progress-bar" style="width:90%;"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TRENDING -->
 
 <section class="section">
 
@@ -564,6 +854,12 @@ Trending Now
 </div>
 
 </section>
+
+<footer>
+
+© 2026 AniStream • AAA Anime Streaming Platform
+
+</footer>
 
 </body>
 
