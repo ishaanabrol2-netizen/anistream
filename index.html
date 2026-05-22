@@ -28,14 +28,14 @@ font-family:'Poppins',sans-serif;
 body{
 background:#050505;
 color:white;
-overflow:hidden;
+overflow-x:hidden;
 }
 
 /* =========================
-BACKGROUND
+BACKGROUND VIDEO
 ========================= */
 
-.bg{
+.bg-video{
 
 position:fixed;
 top:0;
@@ -70,9 +70,9 @@ background:
 
 linear-gradient(
 to right,
-rgba(0,0,0,0.96),
-rgba(0,0,0,0.72),
-rgba(0,0,0,0.25)
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.7),
+rgba(0,0,0,0.3)
 ),
 
 linear-gradient(
@@ -86,7 +86,7 @@ z-index:-9;
 }
 
 /* =========================
-GLOW EFFECTS
+GLOW
 ========================= */
 
 .glow1{
@@ -98,34 +98,12 @@ height:700px;
 
 background:#ff7a00;
 
-right:-220px;
-top:-220px;
+right:-200px;
+top:-200px;
 
 filter:blur(220px);
 
 opacity:0.12;
-
-border-radius:50%;
-
-z-index:-8;
-
-}
-
-.glow2{
-
-position:fixed;
-
-width:500px;
-height:500px;
-
-background:#ff0000;
-
-left:-140px;
-bottom:-140px;
-
-filter:blur(180px);
-
-opacity:0.08;
 
 border-radius:50%;
 
@@ -141,7 +119,7 @@ LOGO
 
 position:fixed;
 
-top:34px;
+top:30px;
 left:50px;
 
 font-size:58px;
@@ -150,9 +128,6 @@ font-weight:800;
 letter-spacing:-2px;
 
 z-index:500;
-
-text-shadow:
-0 10px 30px rgba(0,0,0,0.6);
 
 }
 
@@ -181,10 +156,6 @@ align-items:center;
 z-index:300;
 
 }
-
-/* =========================
-NAV
-========================= */
 
 .nav-right{
 
@@ -264,11 +235,8 @@ HERO
 
 height:100vh;
 
-display:flex;
-align-items:center;
-
-padding-left:60px;
-padding-right:60px;
+padding:
+140px 60px 40px;
 
 position:relative;
 
@@ -280,38 +248,9 @@ CONTENT
 
 .hero-content{
 
-max-width:620px;
+max-width:700px;
 
-z-index:20;
-
-}
-
-/* =========================
-TRENDING
-========================= */
-
-.trending{
-
-display:inline-flex;
-align-items:center;
-gap:10px;
-
-padding:10px 20px;
-
-border-radius:40px;
-
-background:
-rgba(255,122,0,0.12);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,122,0,0.25);
-
-font-size:14px;
-font-weight:600;
-
-margin-bottom:28px;
+margin-bottom:70px;
 
 }
 
@@ -381,7 +320,7 @@ line-height:2;
 
 color:#ddd;
 
-max-width:580px;
+max-width:650px;
 
 }
 
@@ -398,10 +337,6 @@ margin-top:38px;
 
 }
 
-/* =========================
-WATCH BUTTON
-========================= */
-
 .watch-btn{
 
 padding:18px 42px;
@@ -412,14 +347,14 @@ border-radius:22px;
 background:
 linear-gradient(
 135deg,
-rgba(255,122,0,0.38),
-rgba(255,122,0,0.2)
+rgba(255,122,0,0.4),
+rgba(255,122,0,0.22)
 );
 
 backdrop-filter:blur(18px);
 
 border:
-1px solid rgba(255,122,0,0.28);
+1px solid rgba(255,122,0,0.3);
 
 font-size:18px;
 font-weight:700;
@@ -430,96 +365,60 @@ cursor:pointer;
 
 transition:0.3s ease;
 
-box-shadow:
-0 0 30px rgba(255,122,0,0.12);
-
 }
 
 .watch-btn:hover{
 
 transform:translateY(-4px);
 
-background:
-linear-gradient(
-135deg,
-rgba(255,122,0,0.5),
-rgba(255,122,0,0.3)
-);
-
 }
 
 /* =========================
-GLASS BUTTON
+BOTTOM POSTER ROW
 ========================= */
 
-.glass-btn{
-
-padding:18px 28px;
-
-border-radius:22px;
-
-background:
-rgba(255,255,255,0.04);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,0.06);
-
-font-size:18px;
-
-color:white;
-
-cursor:pointer;
-
-transition:0.3s ease;
-
-}
-
-.glass-btn:hover{
-
-background:
-rgba(255,255,255,0.08);
-
-}
-
-/* =========================
-AUTO GRID
-========================= */
-
-.anime-grid{
+.poster-section{
 
 position:absolute;
 
-top:110px;
-right:40px;
+bottom:30px;
+left:60px;
+right:60px;
 
-width:56%;
-height:80vh;
+}
 
-display:grid;
+/* TITLE */
 
-grid-template-columns:
-repeat(auto-fill,minmax(220px,1fr));
+.section-title{
 
+font-size:26px;
+font-weight:700;
+
+margin-bottom:22px;
+
+}
+
+/* GRID */
+
+.anime-row{
+
+display:flex;
 gap:22px;
 
-overflow-y:auto;
+overflow-x:auto;
 
-padding-right:10px;
+padding-bottom:10px;
 
 }
 
-/* SCROLLBAR */
-
-.anime-grid::-webkit-scrollbar{
-width:6px;
+.anime-row::-webkit-scrollbar{
+height:6px;
 }
 
-.anime-grid::-webkit-scrollbar-thumb{
+.anime-row::-webkit-scrollbar-thumb{
 
 background:
-rgba(255,255,255,0.18);
+rgba(255,255,255,0.2);
 
 border-radius:20px;
 
@@ -531,7 +430,8 @@ CARD
 
 .card{
 
-height:330px;
+min-width:240px;
+height:340px;
 
 border-radius:28px;
 
@@ -550,6 +450,8 @@ border:
 1px solid rgba(255,255,255,0.06);
 
 transition:0.35s ease;
+
+flex-shrink:0;
 
 }
 
@@ -622,8 +524,6 @@ width:85%;
 
 }
 
-/* TITLE */
-
 .card-info h3{
 
 font-size:18px;
@@ -634,8 +534,6 @@ margin-bottom:6px;
 
 }
 
-/* META */
-
 .card-info p{
 
 font-size:13px;
@@ -644,28 +542,121 @@ color:#ddd;
 
 }
 
-/* SCORE */
+/* PLAY BUTTON */
 
-.score{
+.play-btn{
 
 position:absolute;
 
-top:16px;
-right:16px;
+top:50%;
+left:50%;
 
-padding:8px 12px;
+transform:
+translate(-50%,-50%);
 
-border-radius:14px;
+width:70px;
+height:70px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
 
 background:
 rgba(0,0,0,0.45);
 
 backdrop-filter:blur(18px);
 
-font-size:13px;
-font-weight:600;
+font-size:28px;
 
-z-index:6;
+z-index:8;
+
+opacity:0;
+
+transition:0.3s ease;
+
+}
+
+.card:hover .play-btn{
+
+opacity:1;
+
+}
+
+/* TRAILER MODAL */
+
+.trailer-modal{
+
+position:fixed;
+inset:0;
+
+background:
+rgba(0,0,0,0.92);
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+}
+
+/* VIDEO BOX */
+
+.video-box{
+
+width:80%;
+height:80%;
+
+border-radius:24px;
+
+overflow:hidden;
+
+background:black;
+
+position:relative;
+
+}
+
+/* IFRAME */
+
+.video-box iframe{
+
+width:100%;
+height:100%;
+
+border:none;
+
+}
+
+/* CLOSE */
+
+.close-btn{
+
+position:absolute;
+
+top:20px;
+right:20px;
+
+width:50px;
+height:50px;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,0.1);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:24px;
+
+cursor:pointer;
+
+z-index:10;
 
 }
 
@@ -675,11 +666,7 @@ z-index:6;
 
 .hero{
 
-display:block;
-
 padding:120px 20px 20px;
-
-overflow:auto;
 
 }
 
@@ -687,33 +674,33 @@ overflow:auto;
 font-size:62px;
 }
 
-.anime-grid{
+.poster-section{
 
-position:relative;
-
-width:100%;
-height:auto;
-
-top:40px;
-right:0;
-
-grid-template-columns:
-repeat(auto-fill,minmax(160px,1fr));
+left:20px;
+right:20px;
 
 }
 
 .card{
-height:250px;
+
+min-width:180px;
+height:260px;
+
 }
 
 .logo{
+
 left:20px;
 top:20px;
+
 font-size:42px;
+
 }
 
 .topbar{
+
 padding:20px;
+
 }
 
 .search{
@@ -724,6 +711,13 @@ display:none;
 display:none;
 }
 
+.video-box{
+
+width:95%;
+height:60%;
+
+}
+
 }
 
 </style>
@@ -732,16 +726,19 @@ display:none;
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- BACKGROUND VIDEO -->
 
-<img
-class="bg"
-src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop">
+<video autoplay muted loop class="bg-video">
+
+<source
+src="https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p"
+type="video/mp4">
+
+</video>
 
 <div class="overlay"></div>
 
 <div class="glow1"></div>
-<div class="glow2"></div>
 
 <!-- LOGO -->
 
@@ -759,10 +756,6 @@ Ani<span>Stream</span>
 type="text"
 class="search"
 placeholder="Search anime...">
-
-<button class="nav-btn">
-Browse
-</button>
 
 <button class="nav-btn">
 Trending
@@ -786,10 +779,6 @@ Movies
 
 <div class="hero-content">
 
-<div class="trending">
-🔥 #1 TRENDING WORLDWIDE
-</div>
-
 <h1>
 Anime<br>
 Universe
@@ -799,67 +788,96 @@ Universe
 
 <span>HD</span>
 <span>SUB/DUB</span>
-<span>2026</span>
 <span>Unlimited Anime</span>
 
 </div>
 
 <div class="desc">
 
-Experience a cinematic next-generation anime streaming platform with real anime posters, auto-updating content, premium glassmorphism UI, smooth hover animations, and modern streaming aesthetics inspired by Netflix and Crunchyroll.
+A cinematic anime streaming platform with real auto-updating anime posters, built-in trailers, glassmorphism UI, premium hover effects, and modern Netflix-inspired aesthetics.
 
 </div>
 
 <div class="buttons">
 
 <button class="watch-btn">
-▶ WATCH NOW
-</button>
-
-<button class="glass-btn">
-＋ MY LIST
+▶ Explore Anime
 </button>
 
 </div>
 
 </div>
 
-<!-- AUTO ANIME GRID -->
+<!-- POSTERS AT BOTTOM -->
 
-<div class="anime-grid" id="animeGrid">
+<div class="poster-section">
+
+<div class="section-title">
+Trending Anime
+</div>
+
+<div class="anime-row" id="animeRow">
+
+</div>
 
 </div>
 
 </section>
 
+<!-- TRAILER MODAL -->
+
+<div class="trailer-modal" id="trailerModal">
+
+<div class="video-box">
+
+<div class="close-btn" id="closeBtn">
+✕
+</div>
+
+<iframe
+id="trailerFrame"
+allowfullscreen>
+
+</iframe>
+
+</div>
+
+</div>
+
 <!-- SCRIPT -->
 
 <script>
 
-/* =========================
-AUTO LOAD REAL ANIME
-========================= */
+const animeRow =
+document.getElementById("animeRow");
 
-const animeGrid =
-document.getElementById("animeGrid");
+const trailerModal =
+document.getElementById("trailerModal");
+
+const trailerFrame =
+document.getElementById("trailerFrame");
+
+const closeBtn =
+document.getElementById("closeBtn");
 
 /* FETCH TOP ANIME */
 
 async function loadAnime(){
 
-try{
-
 const response = await fetch(
 
-"https://api.jikan.moe/v4/top/anime?limit=24"
+"https://api.jikan.moe/v4/top/anime?limit=18"
 
 );
 
 const data = await response.json();
 
-/* LOOP THROUGH */
+/* LOOP */
 
 data.data.forEach((anime)=>{
+
+const trailer =
+anime.trailer?.embed_url || "";
 
 const card =
 document.createElement("div");
@@ -872,8 +890,8 @@ card.innerHTML = `
 
 <img src="${anime.images.jpg.large_image_url}">
 
-<div class="score">
-⭐ ${anime.score || "N/A"}
+<div class="play-btn">
+▶
 </div>
 
 <div class="card-info">
@@ -883,44 +901,44 @@ ${anime.title}
 </h3>
 
 <p>
-${anime.type || "TV"} •
-${anime.episodes || "??"} EP
+⭐ ${anime.score || "N/A"}
 </p>
 
 </div>
 
 `;
 
-/* OPEN MAL PAGE */
+/* PLAY TRAILER */
 
 card.onclick = ()=>{
 
-window.open(
-anime.url,
-"_blank"
-);
+if(trailer){
+
+trailerModal.style.display = "flex";
+
+trailerFrame.src = trailer;
+
+}
 
 };
 
-/* APPEND */
-
-animeGrid.appendChild(card);
+animeRow.appendChild(card);
 
 });
 
 }
 
-catch(error){
-
-console.log(error);
-
-}
-
-}
-
-/* LOAD */
-
 loadAnime();
+
+/* CLOSE */
+
+closeBtn.onclick = ()=>{
+
+trailerModal.style.display = "none";
+
+trailerFrame.src = "";
+
+};
 
 </script>
 
