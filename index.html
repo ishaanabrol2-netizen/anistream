@@ -3,8 +3,8 @@
 
 <head>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AniStream Infinity</title>
 
@@ -23,12 +23,10 @@ scroll-behavior:smooth;
 }
 
 body{
-
 background:#050505;
 color:white;
 overflow-x:hidden;
 min-height:100vh;
-
 }
 
 /* =========================
@@ -49,9 +47,9 @@ object-fit:cover;
 z-index:-10;
 
 filter:
-brightness(0.15)
-contrast(1.15)
-saturate(1.15);
+brightness(0.16)
+contrast(1.2)
+saturate(1.2);
 
 transform:scale(1.08);
 
@@ -113,7 +111,7 @@ filter:blur(30px);
 }
 
 /* =========================
-BLOBS
+GLOWS
 ========================= */
 
 .glow1{
@@ -486,29 +484,40 @@ MAIN GRID
 display:grid;
 
 grid-template-columns:
-1fr 360px;
+minmax(0,1fr)
+340px;
 
 gap:28px;
 
 align-items:start;
 
-margin-top:40px;
-
 }
 
-.left-side{
+/* =========================
+LEFT
+========================= */
+
+.left-content{
 
 display:flex;
 flex-direction:column;
-gap:30px;
+gap:32px;
+
+min-width:0;
 
 }
 
-.right-side{
+/* =========================
+RIGHT
+========================= */
+
+.right-trending{
 
 position:sticky;
 
 top:120px;
+
+align-self:start;
 
 height:max-content;
 
@@ -548,7 +557,7 @@ margin-bottom:24px;
 }
 
 /* =========================
-TRENDING PANEL
+TRENDING LIST
 ========================= */
 
 .trending-list{
@@ -584,8 +593,7 @@ border:
 .trend-item:hover{
 
 transform:
-translateX(8px)
-scale(1.02);
+translateX(8px);
 
 background:
 rgba(255,255,255,0.06);
@@ -599,7 +607,7 @@ font-weight:800;
 
 color:#ff7a00;
 
-width:45px;
+width:40px;
 
 }
 
@@ -635,11 +643,11 @@ overflow:hidden;
 
 .trend-info h3{
 
-font-size:15px;
+font-size:14px;
+
+line-height:1.5;
 
 margin-bottom:6px;
-
-line-height:1.4;
 
 display:-webkit-box;
 
@@ -653,22 +661,22 @@ overflow:hidden;
 
 .trend-info p{
 
-font-size:13px;
+font-size:12px;
 color:#ccc;
 
 }
 
 .trend-score{
 
-padding:8px 12px;
+padding:8px 10px;
 
 border-radius:14px;
 
 background:
 rgba(255,122,0,0.14);
 
-font-size:13px;
-font-weight:600;
+font-size:12px;
+font-weight:700;
 
 }
 
@@ -683,7 +691,7 @@ gap:22px;
 
 overflow-x:auto;
 
-padding-bottom:10px;
+padding-bottom:6px;
 
 scrollbar-width:none;
 
@@ -770,7 +778,7 @@ font-weight:600;
 }
 
 /* =========================
-ANIME CARDS
+CARDS
 ========================= */
 
 .anime-row{
@@ -780,7 +788,7 @@ gap:22px;
 
 overflow-x:auto;
 
-padding-bottom:10px;
+padding-bottom:6px;
 
 scrollbar-width:none;
 
@@ -965,7 +973,7 @@ color:#ddd;
 }
 
 /* =========================
-LOGIN MODAL
+LOGIN
 ========================= */
 
 .login-modal{
@@ -1096,7 +1104,7 @@ color:white;
 }
 
 /* =========================
-TRAILER MODAL
+TRAILER
 ========================= */
 
 .trailer-modal{
@@ -1168,18 +1176,24 @@ z-index:10;
 }
 
 /* =========================
-MOBILE
+RESPONSIVE
 ========================= */
 
-@media(max-width:1200px){
+@media(max-width:1250px){
 
 .main-grid{
-grid-template-columns:1fr;
+
+grid-template-columns:
+1fr;
+
 }
 
-.right-side{
+.right-trending{
+
 position:relative;
+
 top:0;
+
 }
 
 }
@@ -1326,13 +1340,13 @@ A futuristic anime streaming platform with cinematic trailers, real-time trendin
 
 </div>
 
-<!-- MAIN GRID -->
+<!-- GRID -->
 
 <div class="main-grid">
 
 <!-- LEFT -->
 
-<div class="left-side">
+<div class="left-content">
 
 <!-- AIRING -->
 
@@ -1364,9 +1378,9 @@ A futuristic anime streaming platform with cinematic trailers, real-time trendin
 
 </div>
 
-<!-- RIGHT -->
+<!-- EXTREME RIGHT -->
 
-<div class="right-side">
+<aside class="right-trending">
 
 <div class="panel">
 
@@ -1380,7 +1394,7 @@ A futuristic anime streaming platform with cinematic trailers, real-time trendin
 
 </div>
 
-</div>
+</aside>
 
 </div>
 
@@ -1465,7 +1479,7 @@ liveCount.innerHTML =
 
 setInterval(updateViewers,3000);
 
-/* MOUSE GLOW */
+/* GLOW */
 
 const mouseGlow =
 document.getElementById("mouseGlow");
@@ -1521,7 +1535,7 @@ const airingResponse = await fetch(
 const airingData =
 await airingResponse.json();
 
-/* TRENDING RIGHT */
+/* RIGHT SIDE TRENDING */
 
 data.data.slice(0,10).forEach((anime,index)=>{
 
@@ -1533,7 +1547,7 @@ item.classList.add("trend-item");
 item.innerHTML = `
 
 <div class="rank">
-0${index + 1}
+${String(index + 1).padStart(2,'0')}
 </div>
 
 <div class="trend-thumb">
@@ -1617,7 +1631,7 @@ airingRow.appendChild(card);
 
 });
 
-/* CARDS */
+/* TRENDING CARDS */
 
 data.data.forEach((anime)=>{
 
