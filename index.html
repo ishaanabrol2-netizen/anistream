@@ -23,6 +23,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -32,13 +33,12 @@ overflow-x:hidden;
 }
 
 /* =========================
-HERO TRAILER VIDEO
+BACKGROUND VIDEO
 ========================= */
 
 .bg-video{
 
 position:fixed;
-
 top:0;
 left:0;
 
@@ -56,10 +56,6 @@ saturate(1.2);
 
 transform:scale(1.08);
 
-transition:
-opacity 0.8s ease,
-transform 1.2s ease;
-
 }
 
 /* =========================
@@ -75,21 +71,15 @@ background:
 
 linear-gradient(
 to right,
-rgba(0,0,0,0.96),
-rgba(0,0,0,0.68),
-rgba(0,0,0,0.25)
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.72),
+rgba(0,0,0,0.28)
 ),
 
 linear-gradient(
 to top,
 rgba(0,0,0,1),
-transparent 42%
-),
-
-linear-gradient(
-to bottom,
-rgba(0,0,0,0.4),
-transparent
+transparent 40%
 );
 
 z-index:-9;
@@ -152,18 +142,15 @@ LOGO
 
 position:fixed;
 
-top:30px;
+top:28px;
 left:50px;
 
-font-size:58px;
+font-size:56px;
 font-weight:800;
 
 letter-spacing:-2px;
 
 z-index:500;
-
-text-shadow:
-0 10px 30px rgba(0,0,0,0.6);
 
 }
 
@@ -183,7 +170,7 @@ top:0;
 right:0;
 left:0;
 
-padding:28px 40px;
+padding:26px 40px;
 
 display:flex;
 justify-content:flex-end;
@@ -192,10 +179,6 @@ align-items:center;
 z-index:300;
 
 }
-
-/* =========================
-NAV
-========================= */
 
 .nav-right{
 
@@ -265,6 +248,8 @@ transition:0.3s ease;
 background:
 rgba(255,255,255,0.08);
 
+transform:translateY(-3px);
+
 }
 
 /* =========================
@@ -292,31 +277,38 @@ CONTENT
 
 max-width:700px;
 
-margin-bottom:70px;
-
 position:relative;
 
 z-index:20;
 
-animation:heroFade 1.2s ease;
-
 }
 
-@keyframes heroFade{
+/* =========================
+TRENDING BADGE
+========================= */
 
-from{
+.trending{
 
-opacity:0;
-transform:translateY(30px);
+display:inline-flex;
+align-items:center;
+gap:10px;
 
-}
+padding:10px 20px;
 
-to{
+border-radius:40px;
 
-opacity:1;
-transform:translateY(0px);
+background:
+rgba(255,122,0,0.12);
 
-}
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,122,0,0.25);
+
+font-size:14px;
+font-weight:600;
+
+margin-bottom:28px;
 
 }
 
@@ -335,9 +327,6 @@ font-weight:800;
 letter-spacing:-5px;
 
 margin-bottom:24px;
-
-text-shadow:
-0 10px 50px rgba(0,0,0,0.8);
 
 }
 
@@ -391,6 +380,77 @@ max-width:650px;
 }
 
 /* =========================
+LIVE WATCHING
+========================= */
+
+.live-watch{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+margin-top:30px;
+
+padding:14px 22px;
+
+width:max-content;
+
+border-radius:18px;
+
+background:
+rgba(255,0,0,0.08);
+
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,0,0,0.18);
+
+}
+
+/* DOT */
+
+.live-dot{
+
+width:12px;
+height:12px;
+
+border-radius:50%;
+
+background:#ff2d2d;
+
+animation:pulse 1.2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.5);
+opacity:0.5;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* COUNT */
+
+.live-count{
+
+font-size:15px;
+font-weight:600;
+
+}
+
+/* =========================
 BUTTONS
 ========================= */
 
@@ -402,10 +462,6 @@ gap:16px;
 margin-top:38px;
 
 }
-
-/* =========================
-WATCH BUTTON
-========================= */
 
 .watch-btn{
 
@@ -435,9 +491,6 @@ cursor:pointer;
 
 transition:0.3s ease;
 
-box-shadow:
-0 0 30px rgba(255,122,0,0.12);
-
 }
 
 .watch-btn:hover{
@@ -446,65 +499,317 @@ transform:
 translateY(-4px)
 scale(1.03);
 
-background:
-linear-gradient(
-135deg,
-rgba(255,122,0,0.5),
-rgba(255,122,0,0.3)
-);
-
 }
 
 /* =========================
-GLASS BUTTON
+TRENDING PANEL
 ========================= */
 
-.glass-btn{
+.live-trending{
 
-padding:18px 28px;
+position:absolute;
 
-border-radius:22px;
+top:140px;
+right:60px;
+
+width:420px;
+
+padding:24px;
+
+border-radius:32px;
 
 background:
 rgba(255,255,255,0.04);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(22px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+}
+
+/* HEADER */
+
+.trend-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+margin-bottom:24px;
+
+}
+
+/* LIVE LABEL */
+
+.live-indicator{
+
+display:flex;
+align-items:center;
+gap:12px;
+
+font-size:15px;
+font-weight:700;
+
+color:#ff7a00;
+
+}
+
+/* VIEWERS */
+
+.viewer-count{
+
+font-size:13px;
+color:#ddd;
+
+}
+
+/* TREND LIST */
+
+.trending-list{
+
+display:flex;
+flex-direction:column;
+gap:16px;
+
+}
+
+/* TREND ITEM */
+
+.trend-item{
+
+display:flex;
+align-items:center;
+gap:14px;
+
+padding:12px;
+
+border-radius:22px;
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.05);
+
+transition:0.3s ease;
+
+cursor:pointer;
+
+}
+
+.trend-item:hover{
+
+transform:translateX(6px);
+
+background:
+rgba(255,255,255,0.06);
+
+}
+
+/* RANK */
+
+.rank{
+
+font-size:22px;
+font-weight:800;
+
+color:#ff7a00;
+
+width:40px;
+
+}
+
+/* THUMB */
+
+.trend-thumb{
+
+width:70px;
+height:90px;
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.trend-thumb img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+}
+
+/* INFO */
+
+.trend-info{
+
+flex:1;
+
+}
+
+.trend-info h3{
+
+font-size:16px;
+margin-bottom:6px;
+
+}
+
+.trend-info p{
+
+font-size:13px;
+color:#ccc;
+
+}
+
+/* SCORE */
+
+.trend-score{
+
+padding:8px 12px;
+
+border-radius:14px;
+
+background:
+rgba(255,122,0,0.12);
+
+font-size:13px;
+font-weight:600;
+
+}
+
+/* =========================
+AIRING TODAY
+========================= */
+
+.airing-section{
+
+margin-top:50px;
+
+}
+
+.airing-title{
+
+font-size:28px;
+font-weight:700;
+
+margin-bottom:22px;
+
+}
+
+/* AIRING ROW */
+
+.airing-row{
+
+display:flex;
+gap:22px;
+
+overflow-x:auto;
+
+padding-bottom:10px;
+
+}
+
+/* CARD */
+
+.airing-card{
+
+min-width:240px;
+height:140px;
+
+border-radius:24px;
+
+overflow:hidden;
+
+position:relative;
+
+background:
+rgba(255,255,255,0.04);
 
 border:
 1px solid rgba(255,255,255,0.06);
 
-font-size:18px;
-
-color:white;
-
-cursor:pointer;
+display:flex;
 
 transition:0.3s ease;
 
 }
 
-.glass-btn:hover{
+.airing-card:hover{
+
+transform:
+translateY(-6px);
+
+}
+
+/* IMAGE */
+
+.airing-card img{
+
+width:95px;
+height:100%;
+
+object-fit:cover;
+
+}
+
+/* DETAILS */
+
+.airing-details{
+
+padding:16px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+}
+
+.airing-details h3{
+
+font-size:16px;
+margin-bottom:8px;
+
+}
+
+.airing-details p{
+
+font-size:13px;
+color:#ccc;
+
+}
+
+/* EP */
+
+.ep-badge{
+
+margin-top:10px;
+
+padding:8px 12px;
+
+border-radius:12px;
+
+width:max-content;
 
 background:
-rgba(255,255,255,0.08);
+rgba(255,122,0,0.14);
+
+font-size:12px;
+font-weight:600;
 
 }
 
 /* =========================
-POSTER SECTION
+POSTERS
 ========================= */
 
 .poster-section{
 
-position:absolute;
-
-bottom:35px;
-left:60px;
-right:60px;
+margin-top:60px;
 
 }
-
-/* TITLE */
 
 .section-title{
 
@@ -515,9 +820,7 @@ margin-bottom:22px;
 
 }
 
-/* =========================
-ANIME ROW
-========================= */
+/* ROW */
 
 .anime-row{
 
@@ -530,22 +833,7 @@ padding-bottom:10px;
 
 }
 
-.anime-row::-webkit-scrollbar{
-height:6px;
-}
-
-.anime-row::-webkit-scrollbar-thumb{
-
-background:
-rgba(255,255,255,0.2);
-
-border-radius:20px;
-
-}
-
-/* =========================
-CARD
-========================= */
+/* CARD */
 
 .card{
 
@@ -563,30 +851,18 @@ cursor:pointer;
 background:
 rgba(255,255,255,0.03);
 
-backdrop-filter:blur(18px);
-
 border:
 1px solid rgba(255,255,255,0.06);
 
 transition:0.35s ease;
 
-flex-shrink:0;
-
 }
-
-/* HOVER */
 
 .card:hover{
 
 transform:
 translateY(-8px)
 scale(1.02);
-
-border-color:
-rgba(255,255,255,0.18);
-
-box-shadow:
-0 18px 45px rgba(0,0,0,0.45);
 
 }
 
@@ -598,15 +874,6 @@ width:100%;
 height:100%;
 
 object-fit:cover;
-
-transition:
-transform 0.4s ease;
-
-}
-
-.card:hover img{
-
-transform:scale(1.05);
 
 }
 
@@ -639,16 +906,11 @@ bottom:18px;
 
 z-index:5;
 
-width:85%;
-
 }
 
 .card-info h3{
 
 font-size:18px;
-
-line-height:1.3;
-
 margin-bottom:6px;
 
 }
@@ -656,12 +918,34 @@ margin-bottom:6px;
 .card-info p{
 
 font-size:13px;
-
 color:#ddd;
 
 }
 
-/* PLAY BUTTON */
+/* SCORE */
+
+.score{
+
+position:absolute;
+
+top:16px;
+right:16px;
+
+padding:8px 12px;
+
+border-radius:14px;
+
+background:
+rgba(0,0,0,0.45);
+
+font-size:13px;
+font-weight:600;
+
+z-index:6;
+
+}
+
+/* PLAY */
 
 .play-btn{
 
@@ -685,8 +969,6 @@ align-items:center;
 background:
 rgba(0,0,0,0.45);
 
-backdrop-filter:blur(18px);
-
 font-size:28px;
 
 z-index:8;
@@ -703,33 +985,8 @@ opacity:1;
 
 }
 
-/* SCORE */
-
-.score{
-
-position:absolute;
-
-top:16px;
-right:16px;
-
-padding:8px 12px;
-
-border-radius:14px;
-
-background:
-rgba(0,0,0,0.45);
-
-backdrop-filter:blur(18px);
-
-font-size:13px;
-font-weight:600;
-
-z-index:6;
-
-}
-
 /* =========================
-TRAILER MODAL
+MODAL
 ========================= */
 
 .trailer-modal{
@@ -749,8 +1006,6 @@ z-index:9999;
 
 }
 
-/* VIDEO BOX */
-
 .video-box{
 
 width:80%;
@@ -766,8 +1021,6 @@ position:relative;
 
 }
 
-/* IFRAME */
-
 .video-box iframe{
 
 width:100%;
@@ -776,8 +1029,6 @@ height:100%;
 border:none;
 
 }
-
-/* CLOSE */
 
 .close-btn{
 
@@ -806,73 +1057,13 @@ z-index:10;
 
 }
 
-/* MOBILE */
-
-@media(max-width:1000px){
-
-.hero{
-
-padding:120px 20px 20px;
-
-}
-
-.hero h1{
-font-size:62px;
-}
-
-.poster-section{
-
-left:20px;
-right:20px;
-
-}
-
-.card{
-
-min-width:180px;
-height:260px;
-
-}
-
-.logo{
-
-left:20px;
-top:20px;
-
-font-size:42px;
-
-}
-
-.topbar{
-
-padding:20px;
-
-}
-
-.search{
-display:none;
-}
-
-.nav-btn{
-display:none;
-}
-
-.video-box{
-
-width:95%;
-height:60%;
-
-}
-
-}
-
 </style>
 
 </head>
 
 <body>
 
-<!-- HERO TRAILER VIDEO -->
+<!-- BACKGROUND -->
 
 <video
 autoplay
@@ -932,6 +1123,10 @@ Movies
 
 <div class="hero-content">
 
+<div class="trending">
+🔥 #1 Anime Streaming Platform
+</div>
+
 <h1>
 Anime<br>
 Universe
@@ -947,7 +1142,19 @@ Universe
 
 <div class="desc">
 
-A cinematic anime streaming platform with auto-updating anime posters, autoplay hero trailers, built-in trailer popups, glassmorphism UI, and Netflix-inspired aesthetics.
+A cinematic anime streaming platform with autoplay hero trailers, real-time trending anime, live watching counters, airing today schedules, built-in trailers, and premium streaming aesthetics.
+
+</div>
+
+<!-- LIVE WATCH -->
+
+<div class="live-watch">
+
+<div class="live-dot"></div>
+
+<div class="live-count" id="liveCount">
+24,821 watching now
+</div>
 
 </div>
 
@@ -957,15 +1164,51 @@ A cinematic anime streaming platform with auto-updating anime posters, autoplay 
 ▶ Explore Anime
 </button>
 
-<button class="glass-btn">
-＋ My List
-</button>
+</div>
+
+</div>
+
+<!-- TRENDING -->
+
+<div class="live-trending">
+
+<div class="trend-header">
+
+<div class="live-indicator">
+
+<div class="live-dot"></div>
+
+REAL-TIME TRENDING
+
+</div>
+
+<div class="viewer-count" id="viewerCount">
+32,182 Watching
+</div>
+
+</div>
+
+<div class="trending-list" id="trendingList">
 
 </div>
 
 </div>
 
-<!-- POSTER SECTION -->
+<!-- AIRING TODAY -->
+
+<div class="airing-section">
+
+<div class="airing-title">
+📅 Airing Today
+</div>
+
+<div class="airing-row" id="airingRow">
+
+</div>
+
+</div>
+
+<!-- POSTERS -->
 
 <div class="poster-section">
 
@@ -981,7 +1224,7 @@ Trending Anime
 
 </section>
 
-<!-- TRAILER MODAL -->
+<!-- MODAL -->
 
 <div class="trailer-modal" id="trailerModal">
 
@@ -1005,26 +1248,18 @@ allowfullscreen>
 
 <script>
 
-/* =========================
-AUTO HERO VIDEO
-========================= */
+/* HERO VIDEO */
 
 const heroVideo =
 document.getElementById("heroVideo");
-
-/* CINEMATIC VIDEOS */
 
 const trailers = [
 
 "https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p",
 
-"https://cdn.coverr.co/videos/coverr-flying-over-the-clouds-1560083060102?download=1080p",
-
-"https://cdn.coverr.co/videos/coverr-aerial-view-of-clouds-1560083045487?download=1080p"
+"https://cdn.coverr.co/videos/coverr-flying-over-the-clouds-1560083060102?download=1080p"
 
 ];
-
-/* RANDOM HERO VIDEO */
 
 function randomTrailer(){
 
@@ -1042,12 +1277,16 @@ heroVideo.play();
 
 randomTrailer();
 
-/* =========================
-ANIME API
-========================= */
+/* ELEMENTS */
 
 const animeRow =
 document.getElementById("animeRow");
+
+const trendingList =
+document.getElementById("trendingList");
+
+const airingRow =
+document.getElementById("airingRow");
 
 const trailerModal =
 document.getElementById("trailerModal");
@@ -1058,9 +1297,36 @@ document.getElementById("trailerFrame");
 const closeBtn =
 document.getElementById("closeBtn");
 
-/* FETCH ANIME */
+const viewerCount =
+document.getElementById("viewerCount");
+
+const liveCount =
+document.getElementById("liveCount");
+
+/* LIVE COUNTS */
+
+function updateCounts(){
+
+const viewers =
+Math.floor(
+Math.random() * 10000
+) + 20000;
+
+viewerCount.innerHTML =
+`${viewers.toLocaleString()} Watching`;
+
+liveCount.innerHTML =
+`${viewers.toLocaleString()} watching now`;
+
+}
+
+setInterval(updateCounts,3000);
+
+/* LOAD ANIME */
 
 async function loadAnime(){
+
+/* TOP ANIME */
 
 const response = await fetch(
 
@@ -1070,19 +1336,85 @@ const response = await fetch(
 
 const data = await response.json();
 
-/* LOOP */
+/* AIRING */
+
+const airingResponse = await fetch(
+
+"https://api.jikan.moe/v4/seasons/now"
+
+);
+
+const airingData =
+await airingResponse.json();
+
+/* TRENDING */
+
+data.data.slice(0,5).forEach((anime,index)=>{
+
+const item =
+document.createElement("div");
+
+item.classList.add("trend-item");
+
+item.innerHTML = `
+
+<div class="rank">
+0${index + 1}
+</div>
+
+<div class="trend-thumb">
+
+<img src="${anime.images.jpg.large_image_url}">
+
+</div>
+
+<div class="trend-info">
+
+<h3>
+${anime.title}
+</h3>
+
+<p>
+${anime.type || "TV"} •
+${anime.episodes || "??"} EP
+</p>
+
+</div>
+
+<div class="trend-score">
+
+⭐ ${anime.score || "N/A"}
+
+</div>
+
+`;
+
+item.onclick = ()=>{
+
+if(anime.trailer?.embed_url){
+
+trailerModal.style.display =
+"flex";
+
+trailerFrame.src =
+anime.trailer.embed_url;
+
+}
+
+};
+
+trendingList.appendChild(item);
+
+});
+
+/* POSTERS */
 
 data.data.forEach((anime)=>{
-
-const trailer =
-anime.trailer?.embed_url || "";
 
 const card =
 document.createElement("div");
 
 card.classList.add("card");
-
-/* CARD HTML */
 
 card.innerHTML = `
 
@@ -1111,17 +1443,15 @@ ${anime.episodes || "??"} EP
 
 `;
 
-/* OPEN TRAILER */
-
 card.onclick = ()=>{
 
-if(trailer){
+if(anime.trailer?.embed_url){
 
 trailerModal.style.display =
 "flex";
 
 trailerFrame.src =
-trailer;
+anime.trailer.embed_url;
 
 }
 
@@ -1131,11 +1461,48 @@ animeRow.appendChild(card);
 
 });
 
+/* AIRING TODAY */
+
+airingData.data.slice(0,8).forEach((anime)=>{
+
+const card =
+document.createElement("div");
+
+card.classList.add("airing-card");
+
+card.innerHTML = `
+
+<img src="${anime.images.jpg.large_image_url}">
+
+<div class="airing-details">
+
+<h3>
+${anime.title}
+</h3>
+
+<p>
+${anime.broadcast?.time || "Today"}
+</p>
+
+<div class="ep-badge">
+
+EP ${anime.episodes || "??"}
+
+</div>
+
+</div>
+
+`;
+
+airingRow.appendChild(card);
+
+});
+
 }
 
 loadAnime();
 
-/* CLOSE MODAL */
+/* CLOSE */
 
 closeBtn.onclick = ()=>{
 
