@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AniStream Cinematic</title>
+<title>AniStream X</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:black;
+background:#000;
 overflow:hidden;
 color:white;
 }
@@ -35,12 +35,12 @@ left:0;
 width:100%;
 height:100%;
 object-fit:cover;
-z-index:-4;
-filter:brightness(0.35) saturate(1.2);
-transform:scale(1.05);
+z-index:-5;
+filter:brightness(0.35) saturate(1.3);
+transform:scale(1.08);
 }
 
-/* DARK OVERLAY */
+/* OVERLAY */
 
 .overlay{
 position:fixed;
@@ -48,29 +48,43 @@ inset:0;
 
 background:
 linear-gradient(to right,
-rgba(0,0,0,0.96),
+rgba(0,0,0,0.94),
 rgba(0,0,0,0.55),
 rgba(0,0,0,0.15)),
 
 linear-gradient(to top,
 rgba(0,0,0,0.95),
-transparent 45%);
+transparent 40%);
 
-z-index:-3;
+z-index:-4;
 }
 
-/* CINEMATIC GLOW */
+/* GLOW EFFECT */
 
-.glow{
+.glow1{
 position:fixed;
 width:700px;
 height:700px;
 background:#ff7a00;
-right:-200px;
-top:-150px;
+right:-150px;
+top:-200px;
 filter:blur(220px);
 opacity:0.18;
-z-index:-2;
+z-index:-3;
+border-radius:50%;
+}
+
+.glow2{
+position:fixed;
+width:500px;
+height:500px;
+background:#ff0000;
+left:-100px;
+bottom:-100px;
+filter:blur(180px);
+opacity:0.12;
+z-index:-3;
+border-radius:50%;
 }
 
 /* NAVBAR */
@@ -80,15 +94,18 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-padding:24px 55px;
+padding:22px 55px;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 z-index:100;
 
-background:linear-gradient(to bottom,
-rgba(0,0,0,0.75),
-transparent);
+background:rgba(0,0,0,0.15);
+backdrop-filter:blur(16px);
+
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .logo{
@@ -101,50 +118,67 @@ letter-spacing:2px;
 color:#ff7a00;
 }
 
+/* NAV */
+
 nav{
 display:flex;
-gap:14px;
 align-items:center;
+gap:14px;
 }
 
 .search{
-width:250px;
+width:240px;
+
 padding:13px 18px;
+
 border:none;
 outline:none;
+
 border-radius:16px;
+
 background:rgba(255,255,255,0.06);
-backdrop-filter:blur(14px);
-color:white;
+backdrop-filter:blur(12px);
+
 border:1px solid rgba(255,255,255,0.08);
+
+color:white;
 }
 
 .nav-btn{
 padding:12px 18px;
+
 border-radius:16px;
-border:1px solid rgba(255,255,255,0.08);
+
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.08);
+
 color:white;
-font-size:14px;
+
 cursor:pointer;
-transition:0.3s;
+transition:0.35s;
 }
 
 .nav-btn:hover{
 background:#ff7a00;
-transform:translateY(-2px);
+transform:translateY(-3px);
 }
 
-/* MAIN CONTENT */
+/* MAIN SECTION */
 
 .main{
 height:100vh;
+
 display:flex;
 align-items:center;
+
 padding:0 85px;
+
 position:relative;
 }
+
+/* CONTENT */
 
 .content{
 max-width:760px;
@@ -172,18 +206,22 @@ display:inline-flex;
 align-items:center;
 gap:10px;
 
-padding:10px 20px;
+padding:10px 22px;
+
 border-radius:40px;
 
-background:rgba(255,122,0,0.18);
-border:1px solid rgba(255,122,0,0.4);
+background:rgba(255,122,0,0.15);
+border:1px solid rgba(255,122,0,0.35);
 
 backdrop-filter:blur(12px);
 
 font-size:14px;
 font-weight:600;
 
-margin-bottom:28px;
+margin-bottom:30px;
+
+box-shadow:
+0 0 35px rgba(255,122,0,0.35);
 }
 
 /* TITLE */
@@ -192,33 +230,36 @@ margin-bottom:28px;
 font-size:120px;
 line-height:0.92;
 font-weight:800;
-letter-spacing:-3px;
+
+letter-spacing:-4px;
+
+margin-bottom:28px;
 
 text-shadow:
 0 10px 40px rgba(0,0,0,0.8),
 0 0 60px rgba(255,122,0,0.25);
-
-margin-bottom:28px;
 }
 
 /* META */
 
 .meta{
 display:flex;
-gap:20px;
+gap:16px;
 flex-wrap:wrap;
+
 margin-bottom:30px;
 }
 
 .meta span{
 
-padding:8px 14px;
-border-radius:12px;
+padding:9px 15px;
 
-background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.08);
+border-radius:14px;
 
+background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.08);
 
 font-size:14px;
 color:#ddd;
@@ -230,7 +271,8 @@ color:#ddd;
 font-size:18px;
 line-height:2;
 color:#ddd;
-max-width:680px;
+
+max-width:700px;
 }
 
 /* BUTTONS */
@@ -238,11 +280,13 @@ max-width:680px;
 .buttons{
 display:flex;
 gap:18px;
+
 margin-top:45px;
 }
 
 .watch-btn{
 padding:18px 42px;
+
 border:none;
 border-radius:18px;
 
@@ -256,45 +300,50 @@ cursor:pointer;
 transition:0.35s;
 
 box-shadow:
-0 0 40px rgba(255,122,0,0.5),
-0 10px 40px rgba(255,122,0,0.25);
+0 0 45px rgba(255,122,0,0.5),
+0 15px 45px rgba(255,122,0,0.25);
 }
 
 .watch-btn:hover{
-transform:scale(1.06);
+transform:scale(1.07);
 background:#ff9500;
 }
 
 .secondary-btn{
-padding:18px 30px;
+padding:18px 32px;
+
 border-radius:18px;
 
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(12px);
 
-border:1px solid rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.08);
 
 color:white;
 font-size:18px;
+
 cursor:pointer;
 }
 
-/* FLOATING CARDS */
+/* FLOATING ANIME CARDS */
 
 .cards{
 position:absolute;
+
 right:60px;
-bottom:50px;
+bottom:45px;
 
 display:flex;
 gap:22px;
 }
 
+/* CARD */
+
 .card{
 width:260px;
 height:155px;
 
-border-radius:26px;
+border-radius:28px;
 overflow:hidden;
 
 position:relative;
@@ -303,22 +352,44 @@ cursor:pointer;
 transition:0.4s;
 
 background:rgba(255,255,255,0.05);
+backdrop-filter:blur(18px);
 
 border:1px solid rgba(255,255,255,0.08);
 
-backdrop-filter:blur(14px);
+animation:float 5s ease-in-out infinite;
+}
+
+.card:nth-child(2){
+animation-delay:1s;
+}
+
+.card:nth-child(3){
+animation-delay:2s;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
 }
 
 .card:hover{
-transform:
-translateY(-14px)
-scale(1.03);
-
+transform:scale(1.04);
 border-color:#ff7a00;
 
 box-shadow:
 0 25px 60px rgba(0,0,0,0.7),
-0 0 40px rgba(255,122,0,0.2);
+0 0 45px rgba(255,122,0,0.2);
 }
 
 .card img{
@@ -336,14 +407,14 @@ inset:0;
 
 background:
 linear-gradient(to top,
-rgba(0,0,0,0.92),
+rgba(0,0,0,0.95),
 transparent 55%);
 }
 
 .number{
 position:absolute;
 left:18px;
-bottom:10px;
+bottom:12px;
 
 font-size:42px;
 font-weight:800;
@@ -394,6 +465,8 @@ display:none;
 
 <body>
 
+<!-- VIDEO -->
+
 <video autoplay muted loop class="bg-video">
 
 <source
@@ -402,9 +475,14 @@ type="video/mp4">
 
 </video>
 
+<!-- OVERLAYS -->
+
 <div class="overlay"></div>
 
-<div class="glow"></div>
+<div class="glow1"></div>
+<div class="glow2"></div>
+
+<!-- NAVBAR -->
 
 <header>
 
@@ -416,21 +494,34 @@ Ani<span>Stream</span>
 
 <input type="text" class="search" placeholder="Search anime...">
 
-<button class="nav-btn">Browse</button>
-<button class="nav-btn">Recent</button>
-<button class="nav-btn">Trending</button>
-<button class="nav-btn">Top</button>
+<button class="nav-btn">
+Browse
+</button>
+
+<button class="nav-btn">
+Trending
+</button>
+
+<button class="nav-btn">
+Recent
+</button>
+
+<button class="nav-btn">
+Top Rated
+</button>
 
 </nav>
 
 </header>
+
+<!-- MAIN -->
 
 <section class="main">
 
 <div class="content">
 
 <div class="tag">
-🔥 GLOBAL #1 TRENDING NOW
+🔥 GLOBAL #1 TRENDING
 </div>
 
 <div class="title">
@@ -450,7 +541,7 @@ SLAYER
 
 <div class="desc">
 
-Witness the Infinity Castle arc in a cinematic ultra-HD anime streaming experience with immersive visuals, premium UI, smooth animations, and next-generation aesthetics.
+Experience a next-generation anime streaming interface with cinematic visuals, immersive glow effects, glassmorphism UI, floating anime cards, ultra smooth animations, and premium aesthetics.
 
 </div>
 
@@ -467,6 +558,8 @@ Witness the Infinity Castle arc in a cinematic ultra-HD anime streaming experien
 </div>
 
 </div>
+
+<!-- FLOATING CARDS -->
 
 <div class="cards">
 
