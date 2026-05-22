@@ -14,6 +14,10 @@
 
 <style>
 
+/* =========================
+RESET
+========================= */
+
 *{
 margin:0;
 padding:0;
@@ -23,47 +27,42 @@ font-family:'Poppins',sans-serif;
 
 body{
 background:#030303;
-overflow:hidden;
 color:white;
-animation:pageFade 1s ease;
+overflow:hidden;
 }
 
-@keyframes pageFade{
+/* =========================
+BACKGROUND
+========================= */
 
-from{
-opacity:0;
-transform:scale(1.02);
-}
+.bg{
 
-to{
-opacity:1;
-transform:scale(1);
-}
-
-}
-
-/* VIDEO BACKGROUND */
-
-.bg-video{
 position:fixed;
 top:0;
 left:0;
+
 width:100%;
 height:100%;
+
 object-fit:cover;
+
 z-index:-10;
 
 filter:
-brightness(0.28)
+brightness(0.32)
 contrast(1.08)
-saturate(1.18);
+saturate(1.15);
 
-transform:scale(1.08);
+transform:scale(1.05);
+
 }
 
-/* OVERLAY */
+/* =========================
+OVERLAY
+========================= */
 
 .overlay{
+
 position:fixed;
 inset:0;
 
@@ -71,9 +70,9 @@ background:
 
 linear-gradient(
 to right,
-rgba(0,0,0,0.95),
-rgba(0,0,0,0.58),
-rgba(0,0,0,0.2)
+rgba(0,0,0,0.96),
+rgba(0,0,0,0.55),
+rgba(0,0,0,0.18)
 ),
 
 linear-gradient(
@@ -83,31 +82,37 @@ transparent 40%
 );
 
 z-index:-9;
+
 }
 
-/* GLOW EFFECTS */
+/* =========================
+GLOW
+========================= */
 
 .glow1{
+
 position:fixed;
 
-width:800px;
-height:800px;
+width:700px;
+height:700px;
 
 background:#ff7a00;
 
-right:-250px;
-top:-250px;
+right:-200px;
+top:-200px;
 
-filter:blur(240px);
+filter:blur(220px);
 
-opacity:0.14;
+opacity:0.12;
 
 border-radius:50%;
 
 z-index:-8;
+
 }
 
 .glow2{
+
 position:fixed;
 
 width:500px;
@@ -125,36 +130,46 @@ opacity:0.08;
 border-radius:50%;
 
 z-index:-8;
+
 }
 
-/* TOP LIGHT */
+/* =========================
+LOGO
+========================= */
 
-.top-light{
-position:fixed;
+.logo{
 
-top:-250px;
-left:50%;
+position:absolute;
 
-transform:translateX(-50%);
+top:38px;
+left:165px;
 
-width:900px;
-height:500px;
+font-size:60px;
+font-weight:800;
 
-background:
-rgba(255,122,0,0.08);
+line-height:1;
 
-filter:blur(120px);
+letter-spacing:-2px;
 
-border-radius:50%;
+z-index:500;
 
-pointer-events:none;
+color:white;
 
-z-index:-7;
+text-shadow:
+0 8px 30px rgba(0,0,0,0.7);
+
 }
 
-/* SIDEBAR */
+.logo span{
+color:#ff7a00;
+}
+
+/* =========================
+SIDEBAR
+========================= */
 
 .sidebar{
+
 position:fixed;
 
 left:20px;
@@ -164,14 +179,17 @@ transform:translateY(-50%);
 
 width:92px;
 
-padding:30px 0;
+padding:28px 0;
 
 border-radius:34px;
 
-background:rgba(255,255,255,0.035);
-backdrop-filter:blur(20px);
+background:
+rgba(255,255,255,0.025);
 
-border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.05);
 
 display:flex;
 flex-direction:column;
@@ -179,11 +197,17 @@ align-items:center;
 gap:28px;
 
 z-index:300;
+
+overflow:hidden;
+
 }
 
-/* SIDEBAR ICON */
+/* =========================
+SIDEBAR BUTTON
+========================= */
 
 .side-btn{
+
 width:58px;
 height:58px;
 
@@ -195,71 +219,74 @@ align-items:center;
 
 font-size:24px;
 
-background:rgba(255,255,255,0.03);
+background:
+rgba(255,255,255,0.03);
 
-border:1px solid rgba(255,255,255,0.05);
+border:
+1px solid rgba(255,255,255,0.05);
 
 cursor:pointer;
-transition:0.35s;
+
+transition:
+background 0.25s ease,
+border 0.25s ease;
+
 }
 
 .side-btn:hover{
 
-transform:
-translateY(-4px)
-scale(1.05);
+transform:none;
 
 background:
-rgba(255,122,0,0.18);
+rgba(255,255,255,0.06);
 
 border-color:
-rgba(255,122,0,0.25);
+rgba(255,255,255,0.08);
 
-box-shadow:
-0 0 30px rgba(255,122,0,0.18);
+box-shadow:none;
+
 }
 
-/* TOPBAR */
+/* =========================
+TOPBAR
+========================= */
 
 .topbar{
+
 position:fixed;
 
 top:0;
 left:130px;
 right:0;
 
-padding:20px 45px;
+padding:26px 42px;
 
 display:flex;
-justify-content:space-between;
+justify-content:flex-end;
 align-items:center;
 
 z-index:200;
+
 }
 
-/* LOGO */
-
-.logo{
-font-size:42px;
-font-weight:800;
-letter-spacing:2px;
-}
-
-.logo span{
-color:#ff7a00;
-}
-
-/* NAV */
+/* =========================
+NAV RIGHT
+========================= */
 
 .nav-right{
+
 display:flex;
 align-items:center;
 gap:12px;
+
 }
 
-/* SEARCH */
+/* =========================
+SEARCH
+========================= */
 
 .search{
+
 width:260px;
 
 padding:14px 18px;
@@ -269,137 +296,125 @@ outline:none;
 
 border-radius:18px;
 
-background:rgba(255,255,255,0.035);
+background:
+rgba(255,255,255,0.035);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.06);
+border:
+1px solid rgba(255,255,255,0.06);
 
 color:white;
+
 }
 
-/* NAV BUTTON */
+/* =========================
+NAV BUTTON
+========================= */
 
 .nav-btn{
+
 padding:13px 20px;
 
 border-radius:18px;
 
-background:rgba(255,255,255,0.035);
+background:
+rgba(255,255,255,0.035);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.06);
+border:
+1px solid rgba(255,255,255,0.06);
 
 color:white;
 
 font-size:14px;
 
 cursor:pointer;
-transition:0.35s;
+
+transition:0.3s ease;
+
 }
 
 .nav-btn:hover{
 
-transform:
-translateY(-4px);
-
 background:
-rgba(255,122,0,0.18);
+rgba(255,255,255,0.07);
 
-border-color:
-rgba(255,122,0,0.28);
-
-box-shadow:
-0 0 25px rgba(255,122,0,0.16);
 }
 
-/* HERO */
+/* =========================
+HERO
+========================= */
 
 .hero{
+
 height:100vh;
 
 display:flex;
 align-items:center;
 
 padding-left:170px;
-padding-right:70px;
+padding-right:60px;
 
 position:relative;
+
 }
 
-/* CONTENT */
+/* =========================
+CONTENT
+========================= */
 
 .hero-content{
+
 max-width:760px;
 
-animation:fadeUp 1.2s ease;
-}
+padding-top:70px;
 
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0px);
-}
+position:relative;
+z-index:20;
 
 }
 
-/* TRENDING */
-
-.trending{
-display:inline-flex;
-align-items:center;
-gap:10px;
-
-padding:10px 22px;
-
-border-radius:40px;
-
-background:
-rgba(255,122,0,0.14);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,122,0,0.25);
-
-font-size:14px;
-font-weight:600;
-
-margin-bottom:28px;
-}
-
-/* TITLE */
+/* =========================
+TITLE
+========================= */
 
 .hero h1{
-font-size:120px;
-line-height:0.92;
+
+font-size:118px;
+
+line-height:0.9;
+
 font-weight:800;
 
-letter-spacing:-4px;
+letter-spacing:-5px;
 
 margin-bottom:26px;
 
+max-width:700px;
+
 text-shadow:
-0 0 55px rgba(255,122,0,0.16),
-0 12px 60px rgba(0,0,0,0.82);
+0 8px 40px rgba(0,0,0,0.8);
+
 }
 
-/* META */
+/* =========================
+META
+========================= */
 
 .meta{
+
 display:flex;
 gap:16px;
 flex-wrap:wrap;
 
 margin-bottom:26px;
+
 }
 
 .meta span{
+
 padding:9px 15px;
 
 border-radius:14px;
@@ -414,21 +429,29 @@ border:
 
 font-size:14px;
 color:#ddd;
+
 }
 
-/* DESCRIPTION */
+/* =========================
+DESCRIPTION
+========================= */
 
 .desc{
+
 font-size:18px;
 line-height:2;
 color:#ddd;
 
 max-width:700px;
+
 }
 
-/* LIVE BADGE */
+/* =========================
+LIVE BADGE
+========================= */
 
 .live-badge{
+
 display:inline-flex;
 align-items:center;
 gap:10px;
@@ -449,9 +472,11 @@ font-size:14px;
 font-weight:600;
 
 margin-top:18px;
+
 }
 
 .live-dot{
+
 width:10px;
 height:10px;
 
@@ -459,47 +484,38 @@ border-radius:50%;
 
 background:#ff2d2d;
 
-animation:pulse 1.2s infinite;
 }
 
-@keyframes pulse{
-
-0%{
-transform:scale(1);
-opacity:1;
-}
-
-50%{
-transform:scale(1.4);
-opacity:0.6;
-}
-
-100%{
-transform:scale(1);
-opacity:1;
-}
-
-}
-
-/* BUTTONS */
+/* =========================
+BUTTONS
+========================= */
 
 .buttons{
+
 display:flex;
 gap:16px;
 
 margin-top:42px;
+
 }
 
-/* WATCH BTN */
+/* =========================
+WATCH BUTTON
+========================= */
 
 .watch-btn{
+
 padding:18px 42px;
 
 border:none;
 border-radius:22px;
 
 background:
-rgba(255,122,0,0.18);
+linear-gradient(
+135deg,
+rgba(255,122,0,0.35),
+rgba(255,122,0,0.18)
+);
 
 backdrop-filter:blur(18px);
 
@@ -512,58 +528,33 @@ font-weight:700;
 color:white;
 
 cursor:pointer;
-transition:0.4s;
 
-position:relative;
-overflow:hidden;
+transition:0.3s ease;
 
 box-shadow:
-0 0 40px rgba(255,122,0,0.18);
-}
+0 0 30px rgba(255,122,0,0.12);
 
-/* BUTTON SHINE */
-
-.watch-btn::before{
-content:'';
-
-position:absolute;
-top:0;
-left:-120%;
-
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,0.2),
-transparent
-);
-
-transition:0.7s;
-}
-
-.watch-btn:hover::before{
-left:120%;
 }
 
 .watch-btn:hover{
 
-transform:
-translateY(-5px)
-scale(1.04);
+transform:translateY(-3px);
 
 background:
-rgba(255,122,0,0.28);
+linear-gradient(
+135deg,
+rgba(255,122,0,0.45),
+rgba(255,122,0,0.25)
+);
 
-box-shadow:
-0 0 55px rgba(255,122,0,0.28);
 }
 
-/* GLASS BUTTON */
+/* =========================
+GLASS BUTTON
+========================= */
 
 .glass-btn{
+
 padding:18px 30px;
 
 border-radius:22px;
@@ -581,26 +572,33 @@ font-size:18px;
 color:white;
 
 cursor:pointer;
-transition:0.35s;
+
+transition:0.3s ease;
+
 }
 
 .glass-btn:hover{
-transform:translateY(-4px);
 
 background:
 rgba(255,255,255,0.08);
+
 }
 
-/* TAGS */
+/* =========================
+TAGS
+========================= */
 
 .tags{
+
 display:flex;
 gap:12px;
 
 margin-top:24px;
+
 }
 
 .tag{
+
 padding:8px 14px;
 
 border-radius:14px;
@@ -615,25 +613,35 @@ border:
 
 font-size:13px;
 color:#ddd;
+
 }
 
-/* SLIDER */
+/* =========================
+SLIDER
+========================= */
 
 .slider{
+
 position:absolute;
 
-bottom:28px;
+bottom:55px;
 right:55px;
 
 display:flex;
-gap:24px;
+gap:22px;
 
 align-items:center;
+
+z-index:50;
+
 }
 
-/* CARD */
+/* =========================
+CARD
+========================= */
 
 .card{
+
 width:280px;
 height:155px;
 
@@ -646,7 +654,7 @@ position:relative;
 cursor:pointer;
 
 background:
-rgba(255,255,255,0.03);
+rgba(255,255,255,0.025);
 
 backdrop-filter:blur(20px);
 
@@ -654,64 +662,71 @@ border:
 1px solid rgba(255,255,255,0.08);
 
 transition:
-transform 0.35s ease,
-border 0.35s ease,
-box-shadow 0.35s ease;
+all 0.3s ease;
+
 }
 
-/* CLEAN HOVER */
+/* =========================
+CARD HOVER
+========================= */
 
 .card:hover{
 
 transform:
-translateY(-8px)
-scale(1.02);
+translateY(-6px);
 
 border-color:
-rgba(255,255,255,0.22);
+rgba(255,255,255,0.18);
 
 box-shadow:
-0 15px 40px rgba(0,0,0,0.4);
+0 12px 35px rgba(0,0,0,0.35);
+
 }
 
-/* ACTIVE CARD */
+/* =========================
+ACTIVE CARD
+========================= */
 
 .active{
 
 border-color:
-rgba(255,255,255,0.28);
+rgba(255,255,255,0.24);
 
 box-shadow:
-0 10px 35px rgba(0,0,0,0.4);
+0 10px 30px rgba(0,0,0,0.3);
 
-transform:scale(1.015);
 }
 
-/* CARD IMAGE */
+/* =========================
+CARD IMAGE
+========================= */
 
 .card img{
+
 width:100%;
 height:100%;
 
 object-fit:cover;
 
-opacity:0.82;
+opacity:0.85;
 
 transition:
-transform 0.45s ease,
-opacity 0.35s ease;
+transform 0.3s ease;
+
 }
 
 .card:hover img{
 
-transform:scale(1.04);
+transform:scale(1.03);
 
-opacity:0.95;
 }
 
-/* CARD OVERLAY */
+/* =========================
+CARD OVERLAY
+========================= */
 
 .card::after{
+
 content:'';
 
 position:absolute;
@@ -723,40 +738,15 @@ to top,
 rgba(0,0,0,0.92),
 transparent 58%
 );
+
 }
 
-/* LIGHT SWEEP */
-
-.card::before{
-content:'';
-
-position:absolute;
-top:0;
-left:-120%;
-
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,0.08),
-transparent
-);
-
-transition:0.7s;
-
-z-index:2;
-}
-
-.card:hover::before{
-left:120%;
-}
-
-/* NUMBER */
+/* =========================
+NUMBER
+========================= */
 
 .number{
+
 position:absolute;
 
 left:18px;
@@ -766,11 +756,15 @@ font-size:42px;
 font-weight:800;
 
 z-index:3;
+
 }
 
-/* TITLE */
+/* =========================
+CARD TITLE
+========================= */
 
 .card-title{
+
 position:absolute;
 
 right:18px;
@@ -780,21 +774,27 @@ font-size:15px;
 font-weight:600;
 
 z-index:3;
+
 }
 
-/* ARROWS */
+/* =========================
+ARROWS
+========================= */
 
 .arrows{
+
 position:absolute;
 
 right:62px;
-bottom:205px;
+bottom:225px;
 
 display:flex;
 gap:14px;
+
 }
 
 .arrow{
+
 width:54px;
 height:54px;
 
@@ -815,67 +815,21 @@ border:
 font-size:20px;
 
 cursor:pointer;
-transition:0.35s;
+
+transition:0.3s ease;
+
 }
 
 .arrow:hover{
 
-transform:
-translateY(-4px)
-scale(1.04);
-
 background:
 rgba(255,255,255,0.08);
-}
-
-/* PARTICLES */
-
-.particle{
-position:fixed;
-
-width:6px;
-height:6px;
-
-border-radius:50%;
-
-background:
-rgba(255,122,0,0.5);
-
-filter:blur(2px);
-
-animation:
-floatParticle 12s linear infinite;
-}
-
-@keyframes floatParticle{
-
-0%{
-transform:
-translateY(100vh)
-translateX(0px);
-
-opacity:0;
-}
-
-10%{
-opacity:1;
-}
-
-90%{
-opacity:1;
-}
-
-100%{
-transform:
-translateY(-100px)
-translateX(120px);
-
-opacity:0;
-}
 
 }
 
-/* MOBILE */
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:1000px){
 
@@ -893,7 +847,7 @@ padding:0 20px;
 }
 
 .hero h1{
-font-size:58px;
+font-size:62px;
 }
 
 .slider{
@@ -908,6 +862,12 @@ display:none;
 display:none;
 }
 
+.logo{
+left:20px;
+top:25px;
+font-size:42px;
+}
+
 }
 
 </style>
@@ -916,29 +876,22 @@ display:none;
 
 <body>
 
-<!-- PARTICLES -->
+<!-- BACKGROUND -->
 
-<div class="particle" style="left:10%;animation-delay:0s;"></div>
-<div class="particle" style="left:25%;animation-delay:3s;"></div>
-<div class="particle" style="left:45%;animation-delay:5s;"></div>
-<div class="particle" style="left:65%;animation-delay:7s;"></div>
-<div class="particle" style="left:85%;animation-delay:9s;"></div>
-
-<!-- VIDEO -->
-
-<video autoplay muted loop class="bg-video">
-
-<source
-src="https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p"
-type="video/mp4">
-
-</video>
+<img
+class="bg"
+src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop">
 
 <div class="overlay"></div>
 
 <div class="glow1"></div>
 <div class="glow2"></div>
-<div class="top-light"></div>
+
+<!-- LOGO -->
+
+<div class="logo">
+Ani<span>Stream</span>
+</div>
 
 <!-- SIDEBAR -->
 
@@ -955,10 +908,6 @@ type="video/mp4">
 <!-- TOPBAR -->
 
 <div class="topbar">
-
-<div class="logo">
-Ani<span>Stream</span>
-</div>
 
 <div class="nav-right">
 
@@ -994,12 +943,8 @@ Random
 
 <div class="hero-content">
 
-<div class="trending">
-🔥 #1 TRENDING WORLDWIDE
-</div>
-
 <h1>
-The Ramparts<br>
+Ramparts<br>
 of Ice
 </h1>
 
@@ -1015,7 +960,7 @@ of Ice
 
 <div class="desc">
 
-Experience an ultra cinematic anime streaming platform with premium transparent glassmorphism UI, AAA hover animations, glowing aesthetics, immersive floating layouts, and next-generation streaming visuals inspired by Netflix and Crunchyroll.
+Experience an ultra cinematic anime streaming platform with premium transparent glassmorphism UI, clean hover animations, glowing aesthetics, immersive layouts, and next-generation streaming visuals inspired by Netflix and Crunchyroll.
 
 </div>
 
