@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AniStream Infinity X</title>
+<title>AniStream Infinity</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -22,23 +22,27 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:#020202;
+background:#030303;
+overflow:hidden;
 color:white;
-overflow-x:hidden;
+animation:pageFade 1s ease;
 }
 
-/* SCROLLBAR */
+@keyframes pageFade{
 
-::-webkit-scrollbar{
-width:8px;
+from{
+opacity:0;
+transform:scale(1.02);
 }
 
-::-webkit-scrollbar-thumb{
-background:#ff7a00;
-border-radius:20px;
+to{
+opacity:1;
+transform:scale(1);
 }
 
-/* VIDEO BG */
+}
+
+/* VIDEO BACKGROUND */
 
 .bg-video{
 position:fixed;
@@ -48,15 +52,16 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-10;
+
 filter:
 brightness(0.28)
-contrast(1.05)
-saturate(1.15);
+contrast(1.08)
+saturate(1.18);
 
 transform:scale(1.08);
 }
 
-/* CINEMATIC OVERLAY */
+/* OVERLAY */
 
 .overlay{
 position:fixed;
@@ -66,21 +71,15 @@ background:
 
 linear-gradient(
 to right,
-rgba(0,0,0,0.96),
-rgba(0,0,0,0.55),
-rgba(0,0,0,0.18)
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.58),
+rgba(0,0,0,0.2)
 ),
 
 linear-gradient(
 to top,
 rgba(0,0,0,1),
-transparent 38%
-),
-
-linear-gradient(
-to bottom,
-rgba(0,0,0,0.55),
-transparent
+transparent 40%
 );
 
 z-index:-9;
@@ -101,7 +100,7 @@ top:-250px;
 
 filter:blur(240px);
 
-opacity:0.16;
+opacity:0.14;
 
 border-radius:50%;
 
@@ -116,16 +115,41 @@ height:500px;
 
 background:#ff0000;
 
-left:-150px;
-bottom:-150px;
+left:-120px;
+bottom:-120px;
 
 filter:blur(180px);
 
-opacity:0.1;
+opacity:0.08;
 
 border-radius:50%;
 
 z-index:-8;
+}
+
+/* TOP LIGHT */
+
+.top-light{
+position:fixed;
+
+top:-250px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:900px;
+height:500px;
+
+background:
+rgba(255,122,0,0.08);
+
+filter:blur(120px);
+
+border-radius:50%;
+
+pointer-events:none;
+
+z-index:-7;
 }
 
 /* SIDEBAR */
@@ -133,7 +157,7 @@ z-index:-8;
 .sidebar{
 position:fixed;
 
-left:22px;
+left:20px;
 top:50%;
 
 transform:translateY(-50%);
@@ -171,26 +195,28 @@ align-items:center;
 
 font-size:24px;
 
-background:rgba(255,255,255,0.035);
+background:rgba(255,255,255,0.03);
 
 border:1px solid rgba(255,255,255,0.05);
 
 cursor:pointer;
-transition:0.4s;
+transition:0.35s;
 }
 
 .side-btn:hover{
 
 transform:
-translateY(-5px)
-scale(1.06);
+translateY(-4px)
+scale(1.05);
 
-background:rgba(255,122,0,0.18);
+background:
+rgba(255,122,0,0.18);
 
-border-color:rgba(255,122,0,0.25);
+border-color:
+rgba(255,122,0,0.25);
 
 box-shadow:
-0 0 35px rgba(255,122,0,0.22);
+0 0 30px rgba(255,122,0,0.18);
 }
 
 /* TOPBAR */
@@ -264,6 +290,7 @@ backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,0.06);
 
 color:white;
+
 font-size:14px;
 
 cursor:pointer;
@@ -272,14 +299,17 @@ transition:0.35s;
 
 .nav-btn:hover{
 
-transform:translateY(-4px);
+transform:
+translateY(-4px);
 
-background:rgba(255,122,0,0.18);
+background:
+rgba(255,122,0,0.18);
 
-border-color:rgba(255,122,0,0.28);
+border-color:
+rgba(255,122,0,0.28);
 
 box-shadow:
-0 0 28px rgba(255,122,0,0.18);
+0 0 25px rgba(255,122,0,0.16);
 }
 
 /* HERO */
@@ -296,7 +326,7 @@ padding-right:70px;
 position:relative;
 }
 
-/* HERO CONTENT */
+/* CONTENT */
 
 .hero-content{
 max-width:760px;
@@ -318,7 +348,7 @@ transform:translateY(0px);
 
 }
 
-/* TRENDING TAG */
+/* TRENDING */
 
 .trending{
 display:inline-flex;
@@ -329,18 +359,18 @@ padding:10px 22px;
 
 border-radius:40px;
 
-background:rgba(255,122,0,0.14);
+background:
+rgba(255,122,0,0.14);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,122,0,0.25);
+border:
+1px solid rgba(255,122,0,0.25);
 
 font-size:14px;
 font-weight:600;
 
 margin-bottom:28px;
-
-box-shadow:
-0 0 40px rgba(255,122,0,0.15);
 }
 
 /* TITLE */
@@ -374,16 +404,19 @@ padding:9px 15px;
 
 border-radius:14px;
 
-background:rgba(255,255,255,0.035);
+background:
+rgba(255,255,255,0.035);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.06);
+border:
+1px solid rgba(255,255,255,0.06);
 
 font-size:14px;
 color:#ddd;
 }
 
-/* DESC */
+/* DESCRIPTION */
 
 .desc{
 font-size:18px;
@@ -391,6 +424,61 @@ line-height:2;
 color:#ddd;
 
 max-width:700px;
+}
+
+/* LIVE BADGE */
+
+.live-badge{
+display:inline-flex;
+align-items:center;
+gap:10px;
+
+padding:10px 18px;
+
+border-radius:40px;
+
+background:
+rgba(255,0,0,0.12);
+
+border:
+1px solid rgba(255,0,0,0.25);
+
+backdrop-filter:blur(18px);
+
+font-size:14px;
+font-weight:600;
+
+margin-top:18px;
+}
+
+.live-dot{
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:#ff2d2d;
+
+animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.4);
+opacity:0.6;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
 }
 
 /* BUTTONS */
@@ -410,10 +498,13 @@ padding:18px 42px;
 border:none;
 border-radius:22px;
 
-background:rgba(255,122,0,0.18);
+background:
+rgba(255,122,0,0.18);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,122,0,0.28);
+border:
+1px solid rgba(255,122,0,0.28);
 
 font-size:18px;
 font-weight:700;
@@ -423,8 +514,38 @@ color:white;
 cursor:pointer;
 transition:0.4s;
 
+position:relative;
+overflow:hidden;
+
 box-shadow:
 0 0 40px rgba(255,122,0,0.18);
+}
+
+/* BUTTON SHINE */
+
+.watch-btn::before{
+content:'';
+
+position:absolute;
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.2),
+transparent
+);
+
+transition:0.7s;
+}
+
+.watch-btn:hover::before{
+left:120%;
 }
 
 .watch-btn:hover{
@@ -433,25 +554,30 @@ transform:
 translateY(-5px)
 scale(1.04);
 
-background:rgba(255,122,0,0.28);
+background:
+rgba(255,122,0,0.28);
 
 box-shadow:
 0 0 55px rgba(255,122,0,0.28);
 }
 
-/* GLASS BTN */
+/* GLASS BUTTON */
 
 .glass-btn{
 padding:18px 30px;
 
 border-radius:22px;
 
-background:rgba(255,255,255,0.035);
+background:
+rgba(255,255,255,0.035);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.06);
+border:
+1px solid rgba(255,255,255,0.06);
 
 font-size:18px;
+
 color:white;
 
 cursor:pointer;
@@ -461,7 +587,8 @@ transition:0.35s;
 .glass-btn:hover{
 transform:translateY(-4px);
 
-background:rgba(255,255,255,0.08);
+background:
+rgba(255,255,255,0.08);
 }
 
 /* TAGS */
@@ -478,10 +605,13 @@ padding:8px 14px;
 
 border-radius:14px;
 
-background:rgba(255,255,255,0.035);
+background:
+rgba(255,255,255,0.035);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.06);
+border:
+1px solid rgba(255,255,255,0.06);
 
 font-size:13px;
 color:#ddd;
@@ -497,6 +627,8 @@ right:55px;
 
 display:flex;
 gap:24px;
+
+align-items:center;
 }
 
 /* CARD */
@@ -512,46 +644,69 @@ overflow:hidden;
 position:relative;
 
 cursor:pointer;
-transition:0.45s;
 
-background:rgba(255,255,255,0.03);
+background:
+rgba(255,255,255,0.03);
+
 backdrop-filter:blur(20px);
 
-border:2px solid transparent;
+border:
+1px solid rgba(255,255,255,0.08);
+
+transition:
+transform 0.35s ease,
+border 0.35s ease,
+box-shadow 0.35s ease;
 }
 
-/* PREMIUM HOVER */
+/* CLEAN HOVER */
 
 .card:hover{
 
 transform:
-translateY(-14px)
-scale(1.04);
+translateY(-8px)
+scale(1.02);
 
-border-color:rgba(255,255,255,0.28);
+border-color:
+rgba(255,255,255,0.22);
 
 box-shadow:
-0 25px 70px rgba(0,0,0,0.55),
-0 0 50px rgba(255,255,255,0.08);
+0 15px 40px rgba(0,0,0,0.4);
 }
 
 /* ACTIVE CARD */
 
 .active{
-border-color:rgba(255,255,255,0.3);
 
-transform:scale(1.02);
+border-color:
+rgba(255,255,255,0.28);
 
 box-shadow:
-0 20px 60px rgba(0,0,0,0.5),
-0 0 35px rgba(255,255,255,0.1);
+0 10px 35px rgba(0,0,0,0.4);
+
+transform:scale(1.015);
 }
+
+/* CARD IMAGE */
 
 .card img{
 width:100%;
 height:100%;
+
 object-fit:cover;
-opacity:0.8;
+
+opacity:0.82;
+
+transition:
+transform 0.45s ease,
+opacity 0.35s ease;
+}
+
+.card:hover img{
+
+transform:scale(1.04);
+
+opacity:0.95;
 }
 
 /* CARD OVERLAY */
@@ -565,26 +720,55 @@ inset:0;
 background:
 linear-gradient(
 to top,
-rgba(0,0,0,0.95),
+rgba(0,0,0,0.92),
 transparent 58%
 );
 }
 
-/* CARD NUMBER */
+/* LIGHT SWEEP */
+
+.card::before{
+content:'';
+
+position:absolute;
+top:0;
+left:-120%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,0.08),
+transparent
+);
+
+transition:0.7s;
+
+z-index:2;
+}
+
+.card:hover::before{
+left:120%;
+}
+
+/* NUMBER */
 
 .number{
 position:absolute;
 
 left:18px;
-bottom:10px;
+bottom:12px;
 
-font-size:40px;
+font-size:42px;
 font-weight:800;
 
 z-index:3;
 }
 
-/* CARD TITLE */
+/* TITLE */
 
 .card-title{
 position:absolute;
@@ -620,10 +804,13 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-background:rgba(255,255,255,0.035);
+background:
+rgba(255,255,255,0.035);
+
 backdrop-filter:blur(18px);
 
-border:1px solid rgba(255,255,255,0.06);
+border:
+1px solid rgba(255,255,255,0.06);
 
 font-size:20px;
 
@@ -637,24 +824,55 @@ transform:
 translateY(-4px)
 scale(1.04);
 
-background:rgba(255,255,255,0.08);
+background:
+rgba(255,255,255,0.08);
 }
 
-/* BOTTOM FADE */
+/* PARTICLES */
 
-.bottom-fade{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:180px;
+.particle{
+position:fixed;
+
+width:6px;
+height:6px;
+
+border-radius:50%;
 
 background:
-linear-gradient(to top,
-rgba(0,0,0,1),
-transparent);
+rgba(255,122,0,0.5);
 
-pointer-events:none;
+filter:blur(2px);
+
+animation:
+floatParticle 12s linear infinite;
+}
+
+@keyframes floatParticle{
+
+0%{
+transform:
+translateY(100vh)
+translateX(0px);
+
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+90%{
+opacity:1;
+}
+
+100%{
+transform:
+translateY(-100px)
+translateX(120px);
+
+opacity:0;
+}
+
 }
 
 /* MOBILE */
@@ -698,6 +916,14 @@ display:none;
 
 <body>
 
+<!-- PARTICLES -->
+
+<div class="particle" style="left:10%;animation-delay:0s;"></div>
+<div class="particle" style="left:25%;animation-delay:3s;"></div>
+<div class="particle" style="left:45%;animation-delay:5s;"></div>
+<div class="particle" style="left:65%;animation-delay:7s;"></div>
+<div class="particle" style="left:85%;animation-delay:9s;"></div>
+
 <!-- VIDEO -->
 
 <video autoplay muted loop class="bg-video">
@@ -712,6 +938,7 @@ type="video/mp4">
 
 <div class="glow1"></div>
 <div class="glow2"></div>
+<div class="top-light"></div>
 
 <!-- SIDEBAR -->
 
@@ -789,6 +1016,14 @@ of Ice
 <div class="desc">
 
 Experience an ultra cinematic anime streaming platform with premium transparent glassmorphism UI, AAA hover animations, glowing aesthetics, immersive floating layouts, and next-generation streaming visuals inspired by Netflix and Crunchyroll.
+
+</div>
+
+<div class="live-badge">
+
+<div class="live-dot"></div>
+
+12,482 Watching Now
 
 </div>
 
@@ -897,8 +1132,6 @@ Jujutsu Kaisen
 </div>
 
 </div>
-
-<div class="bottom-fade"></div>
 
 </section>
 
