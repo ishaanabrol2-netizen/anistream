@@ -1,339 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AniStream</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
 body{
-    background:#0b0b0f;
-    color:white;
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+padding-top:100px;
 }
 
-/* NAVBAR */
-
-header{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:100;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 60px;
-    background:linear-gradient(to bottom,rgba(0,0,0,0.9),transparent);
-}
-
-.logo{
-    color:#ff7a00;
-    font-size:34px;
-    font-weight:700;
-}
-
-nav{
-    display:flex;
-    gap:25px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    font-size:15px;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:#ff7a00;
-}
-
-/* HERO */
-
-.hero{
-    height:100vh;
-    background:
-    linear-gradient(to right,rgba(0,0,0,0.9),rgba(0,0,0,0.2)),
-    url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop');
-    
-    background-size:cover;
-    background-position:center;
-
-    display:flex;
-    align-items:center;
-    padding:0 70px;
-}
-
-.hero-content{
-    max-width:650px;
-}
-
-.hero h1{
-    font-size:80px;
-    margin-bottom:20px;
-    color:#ff7a00;
-}
-
-.hero p{
-    font-size:18px;
-    color:#ddd;
-    line-height:1.7;
-}
-
-.hero-buttons{
-    margin-top:30px;
-    display:flex;
-    gap:15px;
-}
-
-.watch-btn{
-    background:#ff7a00;
-    color:white;
-    border:none;
-    padding:15px 35px;
-    border-radius:8px;
-    font-size:18px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.watch-btn:hover{
-    background:#ff9500;
-}
-
-.list-btn{
-    background:rgba(255,255,255,0.1);
-    color:white;
-    border:1px solid rgba(255,255,255,0.2);
-    padding:15px 35px;
-    border-radius:8px;
-    font-size:18px;
-    cursor:pointer;
-}
-
-/* SECTION */
-
-.section{
-    padding:70px;
-}
-
-.section-title{
-    font-size:34px;
-    margin-bottom:30px;
-}
-
-/* GRID */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:#14141d;
-    border-radius:12px;
-    overflow:hidden;
-    transition:0.3s;
-    cursor:pointer;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-}
-
-.thumb{
-    height:320px;
-    background:#1f1f2d;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:70px;
-}
-
-.card-content{
-    padding:18px;
-}
-
-.card-content h3{
-    margin-bottom:10px;
-    font-size:20px;
-}
-
-.card-content p{
-    color:#aaa;
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#888;
-    border-top:1px solid rgba(255,255,255,0.08);
-}
-
-@media(max-width:768px){
-
-    header{
-        padding:20px;
-    }
-
-    nav{
-        display:none;
-    }
-
-    .hero{
-        padding:20px;
-    }
-
-    .hero h1{
-        font-size:50px;
-    }
-
-    .section{
-        padding:30px 20px;
-    }
-
+h1{
+font-size:60px;
+color:orange;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-
-<div class="logo">
-AniStream
-</div>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">Browse</a>
-<a href="#">Movies</a>
-<a href="#">New</a>
-<a href="#">My List</a>
-</nav>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>Demon Slayer</h1>
+<h1>AniStream Working 🎉</h1>
 
 <p>
-Stream your favorite anime in ultra HD quality with a modern Crunchyroll-inspired interface.
-Watch trending anime, movies, and latest episodes instantly.
+GitHub Pages is finally working.
 </p>
-
-<div class="hero-buttons">
-
-<button class="watch-btn" onclick="openPlayer()">
-▶ Watch Now
-</button>
-
-<button class="list-btn">
-＋ My List
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2 class="section-title">
-Trending Now
-</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<div class="thumb">
-⚔️
-</div>
-
-<div class="card-content">
-<h3>Jujutsu Kaisen</h3>
-<p>Action • Fantasy</p>
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="thumb">
-🔥
-</div>
-
-<div class="card-content">
-<h3>Attack on Titan</h3>
-<p>Dark Fantasy</p>
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="thumb">
-🍥
-</div>
-
-<div class="card-content">
-<h3>Naruto</h3>
-<p>Adventure</p>
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="thumb">
-🌊
-</div>
-
-<div class="card-content">
-<h3>Blue Lock</h3>
-<p>Sports</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-© 2026 AniStream • Anime Streaming UI
-</footer>
-
-<script>
-
-function openPlayer(){
-
-window.location.href="player.html";
-
-}
-
-</script>
 
 </body>
 </html>
