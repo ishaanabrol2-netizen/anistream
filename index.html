@@ -33,7 +33,7 @@ color:white;
 overflow-x:hidden;
 
 background-image:
-linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.92)),
+linear-gradient(rgba(0,0,0,0.84),rgba(0,0,0,0.92)),
 url('https://images.alphacoders.com/135/1355127.jpeg');
 
 background-size:cover;
@@ -60,10 +60,10 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(12px);
 
 background:
-rgba(0,0,0,0.45);
+rgba(0,0,0,0.4);
 
 border-bottom:
 1px solid rgba(255,255,255,0.06);
@@ -74,7 +74,7 @@ z-index:999;
 
 .logo{
 
-font-size:38px;
+font-size:40px;
 font-weight:800;
 
 letter-spacing:-2px;
@@ -184,6 +184,19 @@ scale(1.04);
 }
 
 /* =========================
+SEARCH PANEL
+========================= */
+
+#searchPanel{
+
+display:none;
+
+margin:
+100px 20px 0;
+
+}
+
+/* =========================
 HERO
 ========================= */
 
@@ -268,6 +281,10 @@ max-width:650px;
 
 }
 
+/* =========================
+LIVE WATCHING
+========================= */
+
 .live-box{
 
 display:flex;
@@ -321,6 +338,10 @@ opacity:1;
 }
 
 }
+
+/* =========================
+BUTTONS
+========================= */
 
 .buttons{
 
@@ -840,19 +861,6 @@ margin-top:4px;
 }
 
 /* =========================
-SEARCH PANEL
-========================= */
-
-#searchPanel{
-
-display:none;
-
-margin:
-20px;
-
-}
-
-/* =========================
 RESPONSIVE
 ========================= */
 
@@ -952,7 +960,7 @@ Login
 </div>
 
 <!-- =========================
-SEARCH RESULTS
+SEARCH PANEL
 ========================= -->
 
 <div class="panel"
@@ -970,14 +978,12 @@ id="searchResults">
 </div>
 
 <!-- =========================
-HERO
+MAIN HERO
 ========================= -->
 
 <section class="hero">
 
-<!-- =========================
-LEFT
-========================= -->
+<!-- LEFT -->
 
 <div class="left">
 
@@ -997,10 +1003,8 @@ Universe
 Real anime posters,
 trailers,
 airing schedules,
-streaming previews,
 search system,
-and live trending anime
-powered by real anime APIs.
+and trending anime powered by real anime APIs.
 
 </p>
 
@@ -1028,7 +1032,7 @@ powered by real anime APIs.
 
 </div>
 
-<!-- AIRING -->
+<!-- AIRING TODAY -->
 
 <div class="panel">
 
@@ -1060,9 +1064,7 @@ id="animeRow">
 
 </div>
 
-<!-- =========================
-RIGHT
-========================= -->
+<!-- RIGHT TRENDING -->
 
 <div class="right">
 
@@ -1086,7 +1088,7 @@ id="trendingList">
 <script>
 
 /* =========================
-LIVE WATCHERS
+LIVE VIEWERS
 ========================= */
 
 const watchingCount =
@@ -1181,6 +1183,8 @@ LOAD ANIME
 ========================= */
 
 async function loadAnime(){
+
+try{
 
 const topRes = await fetch(
 "https://api.jikan.moe/v4/top/anime?limit=10"
@@ -1293,6 +1297,12 @@ window.location.href =
 trendingList.appendChild(item);
 
 });
+
+}catch(error){
+
+console.log(error);
+
+}
 
 }
 
