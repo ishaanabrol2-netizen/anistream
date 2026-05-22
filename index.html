@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,14 +29,14 @@ scroll-behavior:smooth;
 
 body{
 
-background:#050505;
+background:#040404;
 color:white;
 overflow-x:hidden;
 
 }
 
 /* =========================
-BACKGROUND VIDEO
+BACKGROUND
 ========================= */
 
 .bg-video{
@@ -54,15 +55,11 @@ z-index:-10;
 filter:
 brightness(0.14)
 contrast(1.1)
-saturate(1.15);
+saturate(1.2);
 
 transform:scale(1.08);
 
 }
-
-/* =========================
-OVERLAY
-========================= */
 
 .overlay{
 
@@ -73,15 +70,15 @@ background:
 
 linear-gradient(
 to right,
-rgba(0,0,0,0.94),
+rgba(0,0,0,0.95),
 rgba(0,0,0,0.78),
-rgba(0,0,0,0.4)
+rgba(0,0,0,0.45)
 ),
 
 linear-gradient(
 to top,
 rgba(0,0,0,1),
-transparent 50%
+transparent 45%
 );
 
 z-index:-9;
@@ -89,7 +86,7 @@ z-index:-9;
 }
 
 /* =========================
-GLOWS
+GLOW EFFECTS
 ========================= */
 
 .glow1{
@@ -99,8 +96,6 @@ position:fixed;
 width:600px;
 height:600px;
 
-border-radius:50%;
-
 background:#ff7a00;
 
 top:-220px;
@@ -109,6 +104,8 @@ right:-220px;
 filter:blur(180px);
 
 opacity:0.14;
+
+border-radius:50%;
 
 z-index:-7;
 
@@ -121,16 +118,16 @@ position:fixed;
 width:500px;
 height:500px;
 
-border-radius:50%;
-
 background:#ff0000;
 
-bottom:-180px;
 left:-180px;
+bottom:-180px;
 
 filter:blur(180px);
 
 opacity:0.08;
+
+border-radius:50%;
 
 z-index:-7;
 
@@ -144,15 +141,15 @@ MOUSE GLOW
 
 position:fixed;
 
-width:450px;
-height:450px;
+width:420px;
+height:420px;
 
 border-radius:50%;
 
 background:
 radial-gradient(
 circle,
-rgba(255,122,0,0.16),
+rgba(255,122,0,0.15),
 transparent 70%
 );
 
@@ -161,7 +158,7 @@ pointer-events:none;
 transform:
 translate(-50%,-50%);
 
-filter:blur(30px);
+filter:blur(25px);
 
 z-index:-5;
 
@@ -185,7 +182,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-backdrop-filter:blur(20px);
+backdrop-filter:blur(18px);
 
 z-index:999;
 
@@ -315,19 +312,15 @@ HERO
 .hero{
 
 padding:
-110px 20px 20px;
+110px 20px 30px;
 
 }
 
-/* =========================
-HERO CONTENT
-========================= */
-
 .hero-content{
 
-max-width:700px;
+max-width:720px;
 
-margin-bottom:24px;
+margin-bottom:28px;
 
 }
 
@@ -356,15 +349,15 @@ font-weight:600;
 
 .hero h1{
 
-font-size:72px;
+font-size:78px;
 
-line-height:0.92;
+line-height:0.9;
 
 font-weight:800;
 
 letter-spacing:-4px;
 
-margin-bottom:22px;
+margin-bottom:20px;
 
 }
 
@@ -381,7 +374,7 @@ max-width:620px;
 }
 
 /* =========================
-LIVE WATCHING
+LIVE BOX
 ========================= */
 
 .live-box{
@@ -390,7 +383,7 @@ display:flex;
 align-items:center;
 gap:12px;
 
-margin-top:20px;
+margin-top:22px;
 
 padding:12px 18px;
 
@@ -489,6 +482,18 @@ scale(1.03);
 }
 
 /* =========================
+SEARCH RESULTS
+========================= */
+
+.search-panel{
+
+display:none;
+
+margin-bottom:18px;
+
+}
+
+/* =========================
 MAIN GRID
 ========================= */
 
@@ -497,16 +502,16 @@ MAIN GRID
 display:grid;
 
 grid-template-columns:
-1fr 280px;
+1fr 300px;
 
-gap:16px;
+gap:18px;
 
 align-items:start;
 
 }
 
 /* =========================
-LEFT
+LEFT CONTENT
 ========================= */
 
 .left-content{
@@ -520,7 +525,7 @@ min-width:0;
 }
 
 /* =========================
-RIGHT
+RIGHT TRENDING
 ========================= */
 
 .right-trending{
@@ -543,7 +548,7 @@ rgba(255,255,255,0.04);
 border:
 1px solid rgba(255,255,255,0.06);
 
-backdrop-filter:blur(20px);
+backdrop-filter:blur(18px);
 
 border-radius:24px;
 
@@ -572,7 +577,6 @@ ROWS
 
 .airing-row,
 .anime-row,
-.episode-row,
 .search-row{
 
 display:flex;
@@ -580,15 +584,14 @@ gap:12px;
 
 overflow-x:auto;
 
-scrollbar-width:none;
+padding-bottom:8px;
 
-padding-bottom:6px;
+scrollbar-width:none;
 
 }
 
 .airing-row::-webkit-scrollbar,
 .anime-row::-webkit-scrollbar,
-.episode-row::-webkit-scrollbar,
 .search-row::-webkit-scrollbar{
 display:none;
 }
@@ -685,13 +688,13 @@ width:max-content;
 }
 
 /* =========================
-CARDS
+ANIME CARDS
 ========================= */
 
 .card{
 
-min-width:140px;
-height:210px;
+min-width:145px;
+height:220px;
 
 border-radius:22px;
 
@@ -707,7 +710,7 @@ background:
 rgba(255,255,255,0.03);
 
 transition:
-transform 0.2s ease,
+transform 0.25s ease,
 box-shadow 0.3s ease;
 
 }
@@ -756,10 +759,6 @@ transparent 60%
 
 }
 
-/* =========================
-LOVE
-========================= */
-
 .love{
 
 position:absolute;
@@ -781,10 +780,6 @@ z-index:5;
 
 }
 
-/* =========================
-SCORE
-========================= */
-
 .score{
 
 position:absolute;
@@ -805,10 +800,6 @@ font-weight:700;
 z-index:5;
 
 }
-
-/* =========================
-PLAY BTN
-========================= */
 
 .play-btn{
 
@@ -847,10 +838,6 @@ transition:0.3s ease;
 opacity:1;
 
 }
-
-/* =========================
-CARD INFO
-========================= */
 
 .card-info{
 
@@ -1015,52 +1002,6 @@ font-weight:700;
 }
 
 /* =========================
-EPISODE CARDS
-========================= */
-
-.episode-card{
-
-min-width:220px;
-
-padding:14px;
-
-border-radius:18px;
-
-background:
-rgba(255,255,255,0.03);
-
-border:
-1px solid rgba(255,255,255,0.05);
-
-transition:0.3s ease;
-
-}
-
-.episode-card:hover{
-
-transform:
-translateY(-6px);
-
-}
-
-.episode-card h3{
-
-font-size:14px;
-
-margin-bottom:8px;
-
-}
-
-.episode-card p{
-
-font-size:11px;
-color:#ccc;
-
-line-height:1.7;
-
-}
-
-/* =========================
 TRAILER MODAL
 ========================= */
 
@@ -1166,13 +1107,13 @@ padding:
 
 .hero h1{
 
-font-size:58px;
+font-size:54px;
 
 }
 
 .logo{
 
-font-size:34px;
+font-size:32px;
 
 }
 
@@ -1198,7 +1139,7 @@ padding:18px 12px;
 
 <body>
 
-<!-- BACKGROUND -->
+<!-- VIDEO BG -->
 
 <video
 autoplay
@@ -1273,7 +1214,7 @@ Universe
 
 <div class="desc">
 
-Real anime posters, real episode data, anime trailers, airing schedules, search system, and streaming pages powered live from MyAnimeList API.
+Real anime posters, trailers, airing schedules, streaming previews, search system, and live trending anime powered from real anime APIs.
 
 </div>
 
@@ -1299,7 +1240,7 @@ Real anime posters, real episode data, anime trailers, airing schedules, search 
 
 <!-- SEARCH RESULTS -->
 
-<div class="panel" id="searchPanel" style="display:none; margin-bottom:18px;">
+<div class="panel search-panel" id="searchPanel">
 
 <div class="section-title">
 🔎 Search Results
@@ -1311,7 +1252,7 @@ Real anime posters, real episode data, anime trailers, airing schedules, search 
 
 </div>
 
-<!-- GRID -->
+<!-- MAIN GRID -->
 
 <div class="main-grid">
 
@@ -1347,20 +1288,6 @@ Real anime posters, real episode data, anime trailers, airing schedules, search 
 
 </div>
 
-<!-- EPISODES -->
-
-<div class="panel">
-
-<div class="section-title">
-📺 Latest Episodes
-</div>
-
-<div class="episode-row" id="episodeRow">
-
-</div>
-
-</div>
-
 </div>
 
 <!-- RIGHT -->
@@ -1385,7 +1312,7 @@ Real anime posters, real episode data, anime trailers, airing schedules, search 
 
 </section>
 
-<!-- TRAILER MODAL -->
+<!-- TRAILER -->
 
 <div class="trailer-modal" id="trailerModal">
 
@@ -1458,9 +1385,6 @@ document.getElementById("airingRow");
 const trendingList =
 document.getElementById("trendingList");
 
-const episodeRow =
-document.getElementById("episodeRow");
-
 const trailerModal =
 document.getElementById("trailerModal");
 
@@ -1471,29 +1395,155 @@ const closeBtn =
 document.getElementById("closeBtn");
 
 /* =========================
-LOAD ANIME
+CREATE CARD
+========================= */
+
+function createAnimeCard(anime){
+
+const loves =
+Math.floor(
+Math.random() * 900
+) + 100;
+
+const card =
+document.createElement("div");
+
+card.classList.add("card");
+
+card.innerHTML = `
+
+<img src="${anime.images.jpg.large_image_url}">
+
+<div class="love">
+❤️ ${loves}K
+</div>
+
+<div class="score">
+⭐ ${anime.score || "N/A"}
+</div>
+
+<div class="play-btn">
+▶
+</div>
+
+<div class="card-info">
+
+<h3>
+${anime.title}
+</h3>
+
+<p>
+${anime.type || "TV"}
+</p>
+
+</div>
+
+`;
+
+card.onclick = ()=>{
+
+if(anime.trailer?.embed_url){
+
+trailerModal.style.display =
+"flex";
+
+trailerFrame.src =
+anime.trailer.embed_url;
+
+}
+
+};
+
+return card;
+
+}
+
+/* =========================
+LOAD DATA
 ========================= */
 
 async function loadAnime(){
 
-const response = await fetch(
+animeRow.innerHTML = "";
+airingRow.innerHTML = "";
+trendingList.innerHTML = "";
+
+const topRes = await fetch(
 "https://api.jikan.moe/v4/top/anime?limit=18"
 );
 
-const data = await response.json();
+const topData = await topRes.json();
 
-const airingResponse = await fetch(
+const airingRes = await fetch(
 "https://api.jikan.moe/v4/seasons/now"
 );
 
-const airingData =
-await airingResponse.json();
+const airingData = await airingRes.json();
 
-/* =========================
-RIGHT TRENDING
-========================= */
+/* TRENDING */
 
-data.data.slice(0,10).forEach((anime,index)=>{
+topData.data.forEach((anime)=>{
+
+animeRow.appendChild(
+createAnimeCard(anime)
+);
+
+});
+
+/* AIRING */
+
+airingData.data.slice(0,12).forEach((anime)=>{
+
+const card =
+document.createElement("div");
+
+card.classList.add("airing-card");
+
+card.innerHTML = `
+
+<img src="${anime.images.jpg.large_image_url}">
+
+<div class="airing-details">
+
+<h3>
+${anime.title}
+</h3>
+
+<p>
+${anime.broadcast?.time || "Today"}
+</p>
+
+<div class="ep-badge">
+
+EP ${anime.episodes || "??"}
+
+</div>
+
+</div>
+
+`;
+
+card.onclick = ()=>{
+
+if(anime.trailer?.embed_url){
+
+trailerModal.style.display =
+"flex";
+
+trailerFrame.src =
+anime.trailer.embed_url;
+
+}
+
+};
+
+airingRow.appendChild(card);
+
+});
+
+/* RIGHT TRENDING */
+
+topData.data.slice(0,10).forEach((anime,index)=>{
 
 const item =
 document.createElement("div");
@@ -1550,140 +1600,6 @@ trendingList.appendChild(item);
 
 });
 
-/* =========================
-AIRING
-========================= */
-
-airingData.data.slice(0,12).forEach((anime)=>{
-
-const card =
-document.createElement("div");
-
-card.classList.add("airing-card");
-
-card.innerHTML = `
-
-<img src="${anime.images.jpg.large_image_url}">
-
-<div class="airing-details">
-
-<h3>
-${anime.title}
-</h3>
-
-<p>
-${anime.broadcast?.time || "Today"}
-</p>
-
-<div class="ep-badge">
-
-EP ${anime.episodes || "??"}
-
-</div>
-
-</div>
-
-`;
-
-airingRow.appendChild(card);
-
-});
-
-/* =========================
-TRENDING CARDS
-========================= */
-
-data.data.forEach((anime)=>{
-
-const loves =
-Math.floor(
-Math.random() * 900
-) + 100;
-
-const card =
-document.createElement("div");
-
-card.classList.add("card");
-
-card.innerHTML = `
-
-<img src="${anime.images.jpg.large_image_url}">
-
-<div class="love">
-❤️ ${loves}K
-</div>
-
-<div class="score">
-⭐ ${anime.score || "N/A"}
-</div>
-
-<div class="play-btn">
-▶
-</div>
-
-<div class="card-info">
-
-<h3>
-${anime.title}
-</h3>
-
-<p>
-${anime.type || "TV"}
-</p>
-
-</div>
-
-`;
-
-card.onclick = ()=>{
-
-if(anime.trailer?.embed_url){
-
-trailerModal.style.display =
-"flex";
-
-trailerFrame.src =
-anime.trailer.embed_url;
-
-}
-
-};
-
-animeRow.appendChild(card);
-
-});
-
-/* =========================
-LATEST EPISODES
-========================= */
-
-airingData.data.slice(0,10).forEach((anime,index)=>{
-
-const ep =
-document.createElement("div");
-
-ep.classList.add("episode-card");
-
-ep.innerHTML = `
-
-<h3>
-${anime.title}
-</h3>
-
-<p>
-Episode ${anime.episodes || index + 1}
-</p>
-
-<p>
-Status: ${anime.status || "Airing"}
-</p>
-
-`;
-
-episodeRow.appendChild(ep);
-
-});
-
 }
 
 loadAnime();
@@ -1701,13 +1617,15 @@ document.getElementById("searchPanel");
 const searchResults =
 document.getElementById("searchResults");
 
-searchInput.addEventListener("input", async () => {
+searchInput.addEventListener("input", async ()=>{
 
-const query = searchInput.value.trim();
+const query =
+searchInput.value.trim();
 
 if(query.length < 2){
 
-searchPanel.style.display = "none";
+searchPanel.style.display =
+"none";
 
 return;
 
@@ -1721,67 +1639,21 @@ const data = await response.json();
 
 searchResults.innerHTML = "";
 
-searchPanel.style.display = "block";
+searchPanel.style.display =
+"block";
 
 data.data.forEach((anime)=>{
 
-const card =
-document.createElement("div");
-
-card.classList.add("card");
-
-card.innerHTML = `
-
-<img src="${anime.images.jpg.large_image_url}">
-
-<div class="love">
-❤️ ${Math.floor(Math.random()*900)+100}K
-</div>
-
-<div class="score">
-⭐ ${anime.score || "N/A"}
-</div>
-
-<div class="play-btn">
-▶
-</div>
-
-<div class="card-info">
-
-<h3>
-${anime.title}
-</h3>
-
-<p>
-${anime.type || "TV"}
-</p>
-
-</div>
-
-`;
-
-card.onclick = ()=>{
-
-if(anime.trailer?.embed_url){
-
-trailerModal.style.display =
-"flex";
-
-trailerFrame.src =
-anime.trailer.embed_url;
-
-}
-
-};
-
-searchResults.appendChild(card);
+searchResults.appendChild(
+createAnimeCard(anime)
+);
 
 });
 
 });
 
 /* =========================
-TRAILER CLOSE
+CLOSE TRAILER
 ========================= */
 
 closeBtn.onclick = ()=>{
