@@ -179,7 +179,7 @@ top:0;
 left:0;
 right:0;
 
-padding:20px 28px;
+padding:18px 24px;
 
 display:flex;
 justify-content:space-between;
@@ -187,7 +187,7 @@ align-items:center;
 
 backdrop-filter:blur(20px);
 
-z-index:500;
+z-index:999;
 
 }
 
@@ -197,7 +197,7 @@ LOGO
 
 .logo{
 
-font-size:40px;
+font-size:38px;
 font-weight:800;
 
 letter-spacing:-2px;
@@ -315,7 +315,7 @@ HERO
 .hero{
 
 padding:
-120px 24px 30px;
+110px 20px 20px;
 
 }
 
@@ -327,7 +327,7 @@ HERO CONTENT
 
 max-width:700px;
 
-margin-bottom:30px;
+margin-bottom:24px;
 
 }
 
@@ -347,7 +347,7 @@ rgba(255,122,0,0.12);
 border:
 1px solid rgba(255,122,0,0.22);
 
-margin-bottom:24px;
+margin-bottom:20px;
 
 font-size:13px;
 font-weight:600;
@@ -356,7 +356,7 @@ font-weight:600;
 
 .hero h1{
 
-font-size:82px;
+font-size:72px;
 
 line-height:0.92;
 
@@ -364,13 +364,13 @@ font-weight:800;
 
 letter-spacing:-4px;
 
-margin-bottom:24px;
+margin-bottom:22px;
 
 }
 
 .desc{
 
-font-size:16px;
+font-size:15px;
 
 line-height:1.9;
 
@@ -390,7 +390,7 @@ display:flex;
 align-items:center;
 gap:12px;
 
-margin-top:24px;
+margin-top:20px;
 
 padding:12px 18px;
 
@@ -447,7 +447,7 @@ BUTTONS
 display:flex;
 gap:14px;
 
-margin-top:28px;
+margin-top:24px;
 
 }
 
@@ -497,18 +497,16 @@ MAIN GRID
 display:grid;
 
 grid-template-columns:
-1fr 290px;
+1fr 280px;
 
-gap:18px;
+gap:16px;
 
 align-items:start;
-
-margin-top:30px;
 
 }
 
 /* =========================
-LEFT CONTENT
+LEFT
 ========================= */
 
 .left-content{
@@ -522,14 +520,14 @@ min-width:0;
 }
 
 /* =========================
-RIGHT TRENDING
+RIGHT
 ========================= */
 
 .right-trending{
 
 position:sticky;
 
-top:95px;
+top:90px;
 
 }
 
@@ -547,7 +545,7 @@ border:
 
 backdrop-filter:blur(20px);
 
-border-radius:26px;
+border-radius:24px;
 
 padding:16px;
 
@@ -561,18 +559,21 @@ SECTION TITLE
 
 .section-title{
 
-font-size:20px;
+font-size:18px;
 font-weight:700;
 
-margin-bottom:16px;
+margin-bottom:14px;
 
 }
 
 /* =========================
-AIRING ROW
+ROWS
 ========================= */
 
-.airing-row{
+.airing-row,
+.anime-row,
+.episode-row,
+.search-row{
 
 display:flex;
 gap:12px;
@@ -585,7 +586,10 @@ padding-bottom:6px;
 
 }
 
-.airing-row::-webkit-scrollbar{
+.airing-row::-webkit-scrollbar,
+.anime-row::-webkit-scrollbar,
+.episode-row::-webkit-scrollbar,
+.search-row::-webkit-scrollbar{
 display:none;
 }
 
@@ -678,27 +682,6 @@ font-weight:700;
 
 width:max-content;
 
-}
-
-/* =========================
-ANIME ROW
-========================= */
-
-.anime-row{
-
-display:flex;
-gap:12px;
-
-overflow-x:auto;
-
-scrollbar-width:none;
-
-padding-bottom:8px;
-
-}
-
-.anime-row::-webkit-scrollbar{
-display:none;
 }
 
 /* =========================
@@ -918,10 +901,6 @@ gap:10px;
 
 }
 
-/* =========================
-TREND ITEM
-========================= */
-
 .trend-item{
 
 display:flex;
@@ -966,10 +945,6 @@ width:28px;
 
 }
 
-/* =========================
-TREND THUMB
-========================= */
-
 .trend-thumb{
 
 width:48px;
@@ -991,10 +966,6 @@ height:100%;
 object-fit:cover;
 
 }
-
-/* =========================
-TREND INFO
-========================= */
 
 .trend-info{
 
@@ -1029,10 +1000,6 @@ margin-top:4px;
 
 }
 
-/* =========================
-TREND SCORE
-========================= */
-
 .trend-score{
 
 padding:4px 6px;
@@ -1048,135 +1015,48 @@ font-weight:700;
 }
 
 /* =========================
-LOGIN MODAL
+EPISODE CARDS
 ========================= */
 
-.login-modal{
+.episode-card{
 
-position:fixed;
-inset:0;
+min-width:220px;
 
-background:
-rgba(0,0,0,0.92);
+padding:14px;
 
-display:none;
-
-justify-content:center;
-align-items:center;
-
-z-index:999999;
-
-}
-
-.login-box{
-
-width:400px;
-
-padding:36px;
-
-border-radius:28px;
+border-radius:18px;
 
 background:
-rgba(255,255,255,0.05);
+rgba(255,255,255,0.03);
 
 border:
-1px solid rgba(255,255,255,0.08);
+1px solid rgba(255,255,255,0.05);
 
-backdrop-filter:blur(24px);
-
-}
-
-.login-box h2{
-
-font-size:34px;
-
-margin-bottom:10px;
+transition:0.3s ease;
 
 }
 
-.login-box p{
+.episode-card:hover{
 
+transform:
+translateY(-6px);
+
+}
+
+.episode-card h3{
+
+font-size:14px;
+
+margin-bottom:8px;
+
+}
+
+.episode-card p{
+
+font-size:11px;
 color:#ccc;
 
-margin-bottom:26px;
-
-}
-
-.login-input{
-
-width:100%;
-
-padding:14px 16px;
-
-margin-bottom:16px;
-
-border:none;
-outline:none;
-
-border-radius:16px;
-
-background:
-rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-color:white;
-
-}
-
-.login-action{
-
-width:100%;
-
-padding:15px;
-
-border:none;
-
-border-radius:16px;
-
-background:
-linear-gradient(
-135deg,
-rgba(255,122,0,0.45),
-rgba(255,122,0,0.2)
-);
-
-color:white;
-
-font-size:15px;
-font-weight:700;
-
-cursor:pointer;
-
-}
-
-/* =========================
-CLOSE LOGIN
-========================= */
-
-.close-login{
-
-position:absolute;
-
-top:30px;
-right:30px;
-
-width:48px;
-height:48px;
-
-border-radius:50%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-background:
-rgba(255,255,255,0.08);
-
-font-size:22px;
-
-cursor:pointer;
+line-height:1.7;
 
 }
 
@@ -1310,12 +1190,6 @@ padding:18px 12px;
 
 }
 
-.login-box{
-
-width:94%;
-
-}
-
 }
 
 </style>
@@ -1324,7 +1198,7 @@ width:94%;
 
 <body>
 
-<!-- BG VIDEO -->
+<!-- BACKGROUND -->
 
 <video
 autoplay
@@ -1344,8 +1218,6 @@ type="video/mp4">
 <div class="glow1"></div>
 <div class="glow2"></div>
 
-<!-- MOUSE GLOW -->
-
 <div class="mouse-glow" id="mouseGlow"></div>
 
 <!-- TOPBAR -->
@@ -1361,7 +1233,8 @@ Ani<span>Stream</span>
 <input
 type="text"
 class="search"
-placeholder="Search anime...">
+placeholder="Search anime..."
+id="searchInput">
 
 <button class="nav-btn">
 Trending
@@ -1375,7 +1248,7 @@ Movies
 Favorites
 </button>
 
-<button class="login-btn" id="openLogin">
+<button class="login-btn">
 Login
 </button>
 
@@ -1390,7 +1263,7 @@ Login
 <div class="hero-content">
 
 <div class="badge">
-🔥 FUTURISTIC ANIME STREAMING
+🔥 REAL-TIME ANIME STREAMING
 </div>
 
 <h1>
@@ -1400,7 +1273,7 @@ Universe
 
 <div class="desc">
 
-A premium cinematic anime streaming experience with real-time trending anime, floating glassmorphism UI, anime trailers, live viewers, and Netflix-inspired layouts.
+Real anime posters, real episode data, anime trailers, airing schedules, search system, and streaming pages powered live from MyAnimeList API.
 
 </div>
 
@@ -1419,6 +1292,20 @@ A premium cinematic anime streaming experience with real-time trending anime, fl
 <button class="watch-btn">
 ▶ Explore Anime
 </button>
+
+</div>
+
+</div>
+
+<!-- SEARCH RESULTS -->
+
+<div class="panel" id="searchPanel" style="display:none; margin-bottom:18px;">
+
+<div class="section-title">
+🔎 Search Results
+</div>
+
+<div class="search-row" id="searchResults">
 
 </div>
 
@@ -1460,6 +1347,20 @@ A premium cinematic anime streaming experience with real-time trending anime, fl
 
 </div>
 
+<!-- EPISODES -->
+
+<div class="panel">
+
+<div class="section-title">
+📺 Latest Episodes
+</div>
+
+<div class="episode-row" id="episodeRow">
+
+</div>
+
+</div>
+
 </div>
 
 <!-- RIGHT -->
@@ -1484,43 +1385,7 @@ A premium cinematic anime streaming experience with real-time trending anime, fl
 
 </section>
 
-<!-- LOGIN -->
-
-<div class="login-modal" id="loginModal">
-
-<div class="close-login" id="closeLogin">
-✕
-</div>
-
-<div class="login-box">
-
-<h2>
-Welcome Back
-</h2>
-
-<p>
-Login to continue watching anime.
-</p>
-
-<input
-type="email"
-class="login-input"
-placeholder="Email">
-
-<input
-type="password"
-class="login-input"
-placeholder="Password">
-
-<button class="login-action">
-Login
-</button>
-
-</div>
-
-</div>
-
-<!-- TRAILER -->
+<!-- TRAILER MODAL -->
 
 <div class="trailer-modal" id="trailerModal">
 
@@ -1539,8 +1404,6 @@ allowfullscreen>
 </div>
 
 </div>
-
-<!-- SCRIPT -->
 
 <script>
 
@@ -1595,6 +1458,9 @@ document.getElementById("airingRow");
 const trendingList =
 document.getElementById("trendingList");
 
+const episodeRow =
+document.getElementById("episodeRow");
+
 const trailerModal =
 document.getElementById("trailerModal");
 
@@ -1610,15 +1476,11 @@ LOAD ANIME
 
 async function loadAnime(){
 
-/* TOP */
-
 const response = await fetch(
 "https://api.jikan.moe/v4/top/anime?limit=18"
 );
 
 const data = await response.json();
-
-/* AIRING */
 
 const airingResponse = await fetch(
 "https://api.jikan.moe/v4/seasons/now"
@@ -1791,9 +1653,132 @@ animeRow.appendChild(card);
 
 });
 
+/* =========================
+LATEST EPISODES
+========================= */
+
+airingData.data.slice(0,10).forEach((anime,index)=>{
+
+const ep =
+document.createElement("div");
+
+ep.classList.add("episode-card");
+
+ep.innerHTML = `
+
+<h3>
+${anime.title}
+</h3>
+
+<p>
+Episode ${anime.episodes || index + 1}
+</p>
+
+<p>
+Status: ${anime.status || "Airing"}
+</p>
+
+`;
+
+episodeRow.appendChild(ep);
+
+});
+
 }
 
 loadAnime();
+
+/* =========================
+SEARCH SYSTEM
+========================= */
+
+const searchInput =
+document.getElementById("searchInput");
+
+const searchPanel =
+document.getElementById("searchPanel");
+
+const searchResults =
+document.getElementById("searchResults");
+
+searchInput.addEventListener("input", async () => {
+
+const query = searchInput.value.trim();
+
+if(query.length < 2){
+
+searchPanel.style.display = "none";
+
+return;
+
+}
+
+const response = await fetch(
+`https://api.jikan.moe/v4/anime?q=${query}&limit=12`
+);
+
+const data = await response.json();
+
+searchResults.innerHTML = "";
+
+searchPanel.style.display = "block";
+
+data.data.forEach((anime)=>{
+
+const card =
+document.createElement("div");
+
+card.classList.add("card");
+
+card.innerHTML = `
+
+<img src="${anime.images.jpg.large_image_url}">
+
+<div class="love">
+❤️ ${Math.floor(Math.random()*900)+100}K
+</div>
+
+<div class="score">
+⭐ ${anime.score || "N/A"}
+</div>
+
+<div class="play-btn">
+▶
+</div>
+
+<div class="card-info">
+
+<h3>
+${anime.title}
+</h3>
+
+<p>
+${anime.type || "TV"}
+</p>
+
+</div>
+
+`;
+
+card.onclick = ()=>{
+
+if(anime.trailer?.embed_url){
+
+trailerModal.style.display =
+"flex";
+
+trailerFrame.src =
+anime.trailer.embed_url;
+
+}
+
+};
+
+searchResults.appendChild(card);
+
+});
+
+});
 
 /* =========================
 TRAILER CLOSE
@@ -1805,33 +1790,6 @@ trailerModal.style.display =
 "none";
 
 trailerFrame.src = "";
-
-};
-
-/* =========================
-LOGIN MODAL
-========================= */
-
-const loginModal =
-document.getElementById("loginModal");
-
-const openLogin =
-document.getElementById("openLogin");
-
-const closeLogin =
-document.getElementById("closeLogin");
-
-openLogin.onclick = ()=>{
-
-loginModal.style.display =
-"flex";
-
-};
-
-closeLogin.onclick = ()=>{
-
-loginModal.style.display =
-"none";
 
 };
 
