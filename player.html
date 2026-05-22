@@ -2,209 +2,969 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AniStream Player</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 
+/* =========================
+RESET
+========================= */
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-    background:#0f0f1a;
-    color:white;
+
+background:#020202;
+color:white;
+overflow-x:hidden;
+
 }
 
-/* HEADER */
+/* =========================
+BACKGROUND
+========================= */
 
-header{
-    background:#151525;
-    padding:15px 30px;
+.bg{
+
+position:fixed;
+inset:0;
+
+background:
+linear-gradient(
+135deg,
+#090909,
+#020202
+);
+
+z-index:-10;
+
 }
 
-header a{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
+.glow1{
+
+position:fixed;
+
+width:600px;
+height:600px;
+
+border-radius:50%;
+
+background:#ff7a00;
+
+top:-250px;
+right:-250px;
+
+filter:blur(200px);
+
+opacity:0.15;
+
+z-index:-9;
+
 }
 
-/* PLAYER */
+.glow2{
 
-.player-container{
-    max-width:1100px;
-    margin:30px auto;
-    padding:20px;
+position:fixed;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:#ff0000;
+
+bottom:-200px;
+left:-200px;
+
+filter:blur(200px);
+
+opacity:0.08;
+
+z-index:-9;
+
 }
 
-.video-box{
-    width:100%;
-    height:600px;
-    background:black;
-    border-radius:12px;
-    overflow:hidden;
-    position:relative;
+/* =========================
+TOPBAR
+========================= */
+
+.topbar{
+
+position:fixed;
+
+top:0;
+left:0;
+right:0;
+
+padding:18px 24px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+backdrop-filter:blur(18px);
+
+background:
+rgba(0,0,0,0.3);
+
+z-index:999;
+
 }
 
-.video-box video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.logo{
+
+font-size:36px;
+font-weight:800;
+
+letter-spacing:-2px;
+
 }
 
-/* PLAY BUTTON */
-
-.play-btn{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:90px;
-    height:90px;
-    border:none;
-    border-radius:50%;
-    background:#ff3c5f;
-    color:white;
-    font-size:34px;
-    cursor:pointer;
-    z-index:10;
-    transition:0.3s;
+.logo span{
+color:#ff7a00;
 }
 
-.play-btn:hover{
-    background:#ff5d7a;
-    transform:translate(-50%,-50%) scale(1.08);
+.top-actions{
+
+display:flex;
+gap:12px;
+
 }
 
-/* CONTROLS */
+.top-btn{
+
+padding:12px 18px;
+
+border:none;
+
+border-radius:16px;
+
+background:
+rgba(255,255,255,0.06);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+}
+
+.top-btn:hover{
+
+transform:
+translateY(-3px);
+
+background:
+rgba(255,255,255,0.1);
+
+}
+
+/* =========================
+LAYOUT
+========================= */
+
+.container{
+
+padding:
+95px 18px 20px;
+
+}
+
+.main-grid{
+
+display:grid;
+
+grid-template-columns:
+1fr 340px;
+
+gap:18px;
+
+align-items:start;
+
+}
+
+/* =========================
+LEFT SIDE
+========================= */
+
+.left-side{
+
+display:flex;
+flex-direction:column;
+gap:18px;
+
+}
+
+/* =========================
+PLAYER BOX
+========================= */
+
+.player-box{
+
+position:relative;
+
+width:100%;
+height:78vh;
+
+border-radius:28px;
+
+overflow:hidden;
+
+background:black;
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.6);
+
+}
+
+.player-box iframe{
+
+width:100%;
+height:100%;
+
+border:none;
+
+}
+
+/* =========================
+LIVE
+========================= */
+
+.live-watch{
+
+position:absolute;
+
+top:18px;
+left:18px;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:10px 16px;
+
+border-radius:16px;
+
+background:
+rgba(255,0,0,0.12);
+
+border:
+1px solid rgba(255,0,0,0.2);
+
+backdrop-filter:blur(14px);
+
+z-index:10;
+
+}
+
+.live-dot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:#ff2d2d;
+
+animation:pulse 1.2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.5);
+opacity:0.5;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* =========================
+PLAYER CONTROLS
+========================= */
 
 .controls{
-    margin-top:20px;
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+
 }
 
 .control-btn{
-    padding:12px 18px;
-    border:none;
-    border-radius:8px;
-    background:#1c1c2e;
-    color:white;
-    cursor:pointer;
-    transition:0.3s;
+
+padding:14px 18px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s ease;
+
 }
 
 .control-btn:hover{
-    background:#ff3c5f;
+
+transform:
+translateY(-3px);
+
+background:
+rgba(255,255,255,0.1);
+
 }
 
-/* INFO */
+/* =========================
+INFO PANEL
+========================= */
 
-.info{
-    margin-top:25px;
+.info-panel{
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+backdrop-filter:blur(18px);
+
+border-radius:26px;
+
+padding:22px;
+
 }
 
-.info h1{
-    margin-bottom:10px;
-    font-size:38px;
+.anime-title{
+
+font-size:42px;
+font-weight:800;
+
+margin-bottom:14px;
+
+line-height:1;
+
 }
 
-.info p{
-    color:#bbb;
-    font-size:18px;
+.meta{
+
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+
+margin-bottom:18px;
+
 }
 
-/* EPISODES */
+.meta-item{
 
-.episodes{
-    margin-top:35px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+padding:8px 14px;
+
+border-radius:14px;
+
+background:
+rgba(255,255,255,0.05);
+
+font-size:12px;
+
 }
+
+.description{
+
+font-size:14px;
+line-height:2;
+
+color:#ddd;
+
+}
+
+/* =========================
+GENRES
+========================= */
+
+.genre-list{
+
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+
+margin-top:18px;
+
+}
+
+.genre{
+
+padding:10px 14px;
+
+border-radius:14px;
+
+background:
+rgba(255,122,0,0.14);
+
+border:
+1px solid rgba(255,122,0,0.2);
+
+font-size:12px;
+
+}
+
+/* =========================
+RIGHT SIDE
+========================= */
+
+.right-side{
+
+display:flex;
+flex-direction:column;
+gap:18px;
+
+position:sticky;
+
+top:90px;
+
+}
+
+/* =========================
+PANEL
+========================= */
+
+.panel{
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+backdrop-filter:blur(18px);
+
+border-radius:24px;
+
+padding:18px;
+
+}
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-title{
+
+font-size:20px;
+font-weight:700;
+
+margin-bottom:16px;
+
+}
+
+/* =========================
+EPISODES
+========================= */
+
+.episode-list{
+
+display:flex;
+flex-direction:column;
+
+gap:10px;
+
+max-height:600px;
+
+overflow-y:auto;
+
+padding-right:6px;
+
+}
+
+.episode-list::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.episode-list::-webkit-scrollbar-thumb{
+
+background:#ff7a00;
+
+border-radius:20px;
+
+}
+
+/* =========================
+EP CARD
+========================= */
 
 .ep{
-    background:#1c1c2e;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.3s;
+
+padding:14px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.04);
+
+cursor:pointer;
+
+transition:0.3s ease;
+
 }
 
 .ep:hover{
-    background:#ff3c5f;
+
+transform:
+translateX(6px);
+
+background:
+rgba(255,255,255,0.08);
+
+}
+
+.ep.active{
+
+background:
+linear-gradient(
+135deg,
+rgba(255,122,0,0.24),
+rgba(255,122,0,0.1)
+);
+
+border:
+1px solid rgba(255,122,0,0.25);
+
+}
+
+.ep-title{
+
+font-size:14px;
+font-weight:600;
+
+margin-bottom:6px;
+
+}
+
+.ep-desc{
+
+font-size:11px;
+color:#ccc;
+
+line-height:1.7;
+
+}
+
+/* =========================
+NEXT UP
+========================= */
+
+.next-card{
+
+display:flex;
+gap:12px;
+
+padding:12px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.03);
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+}
+
+.next-card:hover{
+
+transform:
+translateY(-4px);
+
+}
+
+.next-card img{
+
+width:70px;
+height:90px;
+
+object-fit:cover;
+
+border-radius:14px;
+
+}
+
+.next-info h3{
+
+font-size:13px;
+
+margin-bottom:8px;
+
+line-height:1.4;
+
+}
+
+.next-info p{
+
+font-size:11px;
+color:#ccc;
+
+line-height:1.6;
+
+}
+
+/* =========================
+COMMENTS
+========================= */
+
+.comment-box{
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
+}
+
+.comment{
+
+padding:14px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.04);
+
+}
+
+.comment-user{
+
+font-size:14px;
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.comment-text{
+
+font-size:13px;
+line-height:1.8;
+
+color:#ccc;
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1300px){
+
+.main-grid{
+
+grid-template-columns:
+1fr;
+
+}
+
+.right-side{
+
+position:relative;
+
+top:0;
+
+}
+
+.player-box{
+
+height:500px;
+
+}
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+padding:
+90px 10px 20px;
+
+}
+
+.player-box{
+
+height:260px;
+
+}
+
+.logo{
+
+font-size:30px;
+
+}
+
+.top-btn{
+
+display:none;
+
+}
+
+.anime-title{
+
+font-size:34px;
+
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
+<div class="bg"></div>
 
-<a href="index.html">
-← Back Home
-</a>
+<div class="glow1"></div>
+<div class="glow2"></div>
 
-</header>
+<!-- TOPBAR -->
 
-<div class="player-container">
+<div class="topbar">
 
-<div class="video-box">
+<div class="logo">
+Ani<span>Stream</span>
+</div>
 
-<button class="play-btn" id="playBtn">
-▶
+<div class="top-actions">
+
+<button class="top-btn">
+❤️ Favorite
 </button>
 
-<video id="videoPlayer">
+<button class="top-btn">
+📺 Continue
+</button>
 
-<source
-src="https://www.w3schools.com/html/mov_bbb.mp4"
-type="video/mp4">
-
-</video>
+<button class="top-btn">
+⭐ Rate
+</button>
 
 </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<div class="main-grid">
+
+<!-- LEFT -->
+
+<div class="left-side">
+
+<!-- PLAYER -->
+
+<div class="player-box">
+
+<div class="live-watch">
+
+<div class="live-dot"></div>
+
+<div id="watchingCount">
+24,821 watching now
+</div>
+
+</div>
+
+<iframe
+id="player"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<!-- CONTROLS -->
 
 <div class="controls">
 
-<button class="control-btn" onclick="rewindVideo()">
-⏪ Back 10s
+<button class="control-btn">
+▶ Auto Next
 </button>
 
-<button class="control-btn" onclick="forwardVideo()">
-Forward 10s ⏩
+<button class="control-btn">
+🌙 Cinema Mode
 </button>
 
-<button class="control-btn" onclick="toggleMute()">
-🔊 Mute
+<button class="control-btn">
+⚡ 1080P
+</button>
+
+<button class="control-btn">
+🔊 Dub/Sub
+</button>
+
+<button class="control-btn">
+📥 Download
+</button>
+
+<button class="control-btn">
+❤️ Add To List
 </button>
 
 </div>
 
-<div class="info">
+<!-- INFO -->
 
-<h1>Demon Slayer</h1>
+<div class="info-panel">
 
-<p>
-Season 3 Episode 8
-</p>
+<div class="anime-title" id="title">
+Loading...
+</div>
+
+<div class="meta" id="meta">
 
 </div>
 
-<div class="episodes">
+<div class="description" id="description">
 
-<div class="ep">Episode 1</div>
-<div class="ep">Episode 2</div>
-<div class="ep">Episode 3</div>
-<div class="ep">Episode 4</div>
-<div class="ep">Episode 5</div>
+</div>
+
+<div class="genre-list" id="genres">
+
+</div>
+
+</div>
+
+<!-- COMMENTS -->
+
+<div class="panel">
+
+<div class="section-title">
+💬 Live Comments
+</div>
+
+<div class="comment-box">
+
+<div class="comment">
+
+<div class="comment-user">
+ShadowHunter
+</div>
+
+<div class="comment-text">
+This fight animation is insane 😭🔥
+</div>
+
+</div>
+
+<div class="comment">
+
+<div class="comment-user">
+AnimeLord
+</div>
+
+<div class="comment-text">
+The soundtrack hits hard with headphones.
+</div>
+
+</div>
+
+<div class="comment">
+
+<div class="comment-user">
+ZenoX
+</div>
+
+<div class="comment-text">
+Best episode of the season no doubt.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="right-side">
+
+<!-- EPISODES -->
+
+<div class="panel">
+
+<div class="section-title">
+📺 Episodes
+</div>
+
+<div class="episode-list" id="episodes">
+
+</div>
+
+</div>
+
+<!-- NEXT UP -->
+
+<div class="panel">
+
+<div class="section-title">
+🔥 Next Up
+</div>
+
+<div class="next-card" id="nextAnime">
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -212,63 +972,226 @@ Season 3 Episode 8
 
 <script>
 
-const video = document.getElementById("videoPlayer");
-const playBtn = document.getElementById("playBtn");
+/* =========================
+PARAMS
+========================= */
 
-/* PLAY */
+const params =
+new URLSearchParams(
+window.location.search
+);
 
-playBtn.addEventListener("click", () => {
+const id =
+params.get("id") || "5114";
 
-    if(video.paused){
+const ep =
+params.get("ep") || "1";
 
-        video.play();
-        playBtn.style.display = "none";
+/* =========================
+ELEMENTS
+========================= */
 
-    }
+const player =
+document.getElementById("player");
 
-});
+const titleEl =
+document.getElementById("title");
 
-/* SHOW BUTTON WHEN PAUSED */
+const metaEl =
+document.getElementById("meta");
 
-video.addEventListener("pause", () => {
+const descEl =
+document.getElementById("description");
 
-    playBtn.style.display = "block";
+const genresEl =
+document.getElementById("genres");
 
-});
+const episodesEl =
+document.getElementById("episodes");
 
-/* HIDE BUTTON WHEN PLAYING */
+const nextAnime =
+document.getElementById("nextAnime");
 
-video.addEventListener("play", () => {
+/* =========================
+LIVE WATCHERS
+========================= */
 
-    playBtn.style.display = "none";
+const watchingCount =
+document.getElementById("watchingCount");
 
-});
+function updateWatching(){
 
-/* REWIND */
+const viewers =
+Math.floor(
+Math.random() * 10000
+) + 20000;
 
-function rewindVideo(){
-
-    video.currentTime -= 10;
+watchingCount.innerHTML =
+`${viewers.toLocaleString()} watching now`;
 
 }
 
-/* FORWARD */
+setInterval(updateWatching,3000);
 
-function forwardVideo(){
+/* =========================
+LOAD ANIME
+========================= */
 
-    video.currentTime += 10;
+async function loadAnime(){
+
+const response = await fetch(
+`https://api.jikan.moe/v4/anime/${id}/full`
+);
+
+const anime =
+(await response.json()).data;
+
+/* PLAYER */
+
+player.src =
+anime.trailer.embed_url ||
+"https://www.youtube.com/embed/dQw4w9WgXcQ";
+
+/* TITLE */
+
+titleEl.innerHTML =
+`${anime.title} — Episode ${ep}`;
+
+/* META */
+
+metaEl.innerHTML = `
+
+<div class="meta-item">
+⭐ ${anime.score || "N/A"}
+</div>
+
+<div class="meta-item">
+📺 ${anime.episodes || "??"} Episodes
+</div>
+
+<div class="meta-item">
+🎬 ${anime.type || "TV"}
+</div>
+
+<div class="meta-item">
+🔥 ${anime.status || "Airing"}
+</div>
+
+<div class="meta-item">
+📅 ${anime.year || "Unknown"}
+</div>
+
+`;
+
+/* DESCRIPTION */
+
+descEl.innerHTML =
+anime.synopsis || "No synopsis available.";
+
+/* GENRES */
+
+anime.genres.forEach((genre)=>{
+
+const div =
+document.createElement("div");
+
+div.classList.add("genre");
+
+div.innerHTML =
+genre.name;
+
+genresEl.appendChild(div);
+
+});
+
+/* EPISODES */
+
+const totalEpisodes =
+anime.episodes || 12;
+
+for(let i=1;i<=Math.min(totalEpisodes,60);i++){
+
+const card =
+document.createElement("div");
+
+card.classList.add("ep");
+
+if(i == ep){
+
+card.classList.add("active");
 
 }
 
-/* MUTE */
+card.innerHTML = `
 
-function toggleMute(){
+<div class="ep-title">
+Episode ${i}
+</div>
 
-    video.muted = !video.muted;
+<div class="ep-desc">
+Watch episode ${i}
+</div>
+
+`;
+
+card.onclick = ()=>{
+
+window.location.href =
+`player.html?id=${id}&ep=${i}`;
+
+};
+
+episodesEl.appendChild(card);
 
 }
+
+/* RECOMMENDATIONS */
+
+const recRes = await fetch(
+`https://api.jikan.moe/v4/anime/${id}/recommendations`
+);
+
+const recData =
+(await recRes.json()).data;
+
+if(recData.length > 0){
+
+const rec =
+recData[0].entry;
+
+nextAnime.innerHTML = `
+
+<img src="${rec.images.jpg.large_image_url}">
+
+<div class="next-info">
+
+<h3>
+${rec.title}
+</h3>
+
+<p>
+Recommended anime based on your current watch.
+</p>
+
+</div>
+
+`;
+
+nextAnime.onclick = ()=>{
+
+window.location.href =
+`player.html?id=${rec.mal_id}`;
+
+};
+
+}
+
+}
+
+loadAnime();
 
 </script>
 
 </body>
+
 </html>
