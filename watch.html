@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AniStream Watch</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#040404;
+color:white;
+overflow-x:hidden;
+
+}
+
+/* =========================
+BACKGROUND
+========================= */
+
+.bg{
+
+position:fixed;
+inset:0;
+
+z-index:-10;
+
+background-size:cover;
+background-position:center;
+
+filter:
+blur(14px)
+brightness(0.18);
+
+transform:scale(1.1);
+
+}
+
+.overlay{
+
+position:fixed;
+inset:0;
+
+background:
+
+linear-gradient(
+to top,
+#040404,
+rgba(4,4,4,0.85),
+rgba(4,4,4,0.55)
+),
+
+linear-gradient(
+to right,
+rgba(0,0,0,0.9),
+rgba(0,0,0,0.55)
+);
+
+z-index:-9;
+
+}
+
+/* =========================
+TOPBAR
+========================= */
+
+.topbar{
+
+position:fixed;
+
+top:0;
+left:0;
+right:0;
+
+padding:18px 24px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+backdrop-filter:blur(18px);
+
+z-index:999;
+
+}
+
+.logo{
+
+font-size:38px;
+font-weight:800;
+
+letter-spacing:-2px;
+
+}
+
+.logo span{
+color:#ff7a00;
+}
+
+.top-actions{
+
+display:flex;
+gap:12px;
+
+}
+
+.top-btn{
+
+padding:12px 18px;
+
+border:none;
+
+border-radius:16px;
+
+background:
+rgba(255,255,255,0.06);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+}
+
+.top-btn:hover{
+
+transform:
+translateY(-3px);
+
+background:
+rgba(255,255,255,0.1);
+
+}
+
+/* =========================
+CONTAINER
+========================= */
+
+.container{
+
+padding:
+110px 24px 30px;
+
+}
+
+/* =========================
+MAIN GRID
+========================= */
+
+.main-grid{
+
+display:grid;
+
+grid-template-columns:
+1.2fr 370px;
+
+gap:20px;
+
+align-items:start;
+
+}
+
+/* =========================
+PLAYER SECTION
+========================= */
+
+.player-section{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+
+}
+
+/* =========================
+VIDEO BOX
+========================= */
+
+.video-box{
+
+width:100%;
+height:650px;
+
+border-radius:28px;
+
+overflow:hidden;
+
+background:black;
+
+position:relative;
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,0.5);
+
+}
+
+.video-box iframe{
+
+width:100%;
+height:100%;
+
+border:none;
+
+}
+
+/* =========================
+WATCHING NOW
+========================= */
+
+.live-watch{
+
+position:absolute;
+
+top:18px;
+left:18px;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:10px 16px;
+
+border-radius:16px;
+
+background:
+rgba(255,0,0,0.12);
+
+backdrop-filter:blur(16px);
+
+border:
+1px solid rgba(255,0,0,0.2);
+
+z-index:10;
+
+}
+
+.live-dot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:#ff2d2d;
+
+animation:pulse 1.2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.5);
+opacity:0.5;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* =========================
+CONTROLS
+========================= */
+
+.controls{
+
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+
+}
+
+.control-btn{
+
+padding:14px 18px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.05);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+}
+
+.control-btn:hover{
+
+transform:
+translateY(-3px);
+
+background:
+rgba(255,255,255,0.1);
+
+}
+
+/* =========================
+ANIME INFO
+========================= */
+
+.info-panel{
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+backdrop-filter:blur(18px);
+
+border-radius:28px;
+
+padding:22px;
+
+}
+
+.title{
+
+font-size:54px;
+font-weight:800;
+
+line-height:1;
+
+margin-bottom:18px;
+
+}
+
+.meta{
+
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+
+margin-bottom:18px;
+
+}
+
+.meta-item{
+
+padding:8px 14px;
+
+border-radius:14px;
+
+background:
+rgba(255,255,255,0.05);
+
+font-size:13px;
+
+}
+
+.synopsis{
+
+line-height:2;
+
+color:#ddd;
+
+font-size:14px;
+
+margin-top:10px;
+
+}
+
+/* =========================
+GENRES
+========================= */
+
+.genre-list{
+
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+
+margin-top:20px;
+
+}
+
+.genre{
+
+padding:10px 14px;
+
+border-radius:14px;
+
+background:
+rgba(255,122,0,0.14);
+
+border:
+1px solid rgba(255,122,0,0.2);
+
+font-size:12px;
+
+}
+
+/* =========================
+RIGHT SIDEBAR
+========================= */
+
+.sidebar{
+
+display:flex;
+flex-direction:column;
+gap:20px;
+
+position:sticky;
+
+top:95px;
+
+}
+
+/* =========================
+PANEL
+========================= */
+
+.panel{
+
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+backdrop-filter:blur(18px);
+
+border-radius:24px;
+
+padding:18px;
+
+}
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-title{
+
+font-size:20px;
+font-weight:700;
+
+margin-bottom:16px;
+
+}
+
+/* =========================
+EPISODES
+========================= */
+
+.episode-list{
+
+display:flex;
+flex-direction:column;
+
+gap:10px;
+
+max-height:600px;
+
+overflow-y:auto;
+
+padding-right:6px;
+
+}
+
+.episode-list::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.episode-list::-webkit-scrollbar-thumb{
+
+background:#ff7a00;
+
+border-radius:20px;
+
+}
+
+/* =========================
+EPISODE CARD
+========================= */
+
+.ep{
+
+padding:14px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.04);
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+}
+
+.ep:hover{
+
+transform:
+translateX(6px);
+
+background:
+rgba(255,255,255,0.08);
+
+}
+
+.ep.active{
+
+background:
+linear-gradient(
+135deg,
+rgba(255,122,0,0.25),
+rgba(255,122,0,0.12)
+);
+
+border:
+1px solid rgba(255,122,0,0.25);
+
+}
+
+.ep-title{
+
+font-size:14px;
+font-weight:600;
+
+margin-bottom:6px;
+
+}
+
+.ep-desc{
+
+font-size:11px;
+color:#ccc;
+
+line-height:1.7;
+
+}
+
+/* =========================
+RECOMMENDATIONS
+========================= */
+
+.recommend-row{
+
+display:flex;
+gap:12px;
+
+overflow-x:auto;
+
+scrollbar-width:none;
+
+padding-bottom:6px;
+
+}
+
+.recommend-row::-webkit-scrollbar{
+display:none;
+}
+
+/* =========================
+RECOMMEND CARD
+========================= */
+
+.recommend-card{
+
+min-width:140px;
+height:210px;
+
+border-radius:20px;
+
+overflow:hidden;
+
+position:relative;
+
+cursor:pointer;
+
+flex-shrink:0;
+
+transition:0.3s ease;
+
+}
+
+.recommend-card:hover{
+
+transform:
+translateY(-6px)
+scale(1.03);
+
+}
+
+.recommend-card img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+}
+
+.recommend-card::after{
+
+content:'';
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,0.95),
+transparent 60%
+);
+
+}
+
+.recommend-info{
+
+position:absolute;
+
+left:10px;
+bottom:10px;
+
+z-index:5;
+
+}
+
+.recommend-info h3{
+
+font-size:12px;
+
+line-height:1.4;
+
+display:-webkit-box;
+
+-webkit-line-clamp:2;
+
+-webkit-box-orient:vertical;
+
+overflow:hidden;
+
+}
+
+/* =========================
+COMMENTS
+========================= */
+
+.comment-box{
+
+margin-top:14px;
+
+display:flex;
+flex-direction:column;
+gap:14px;
+
+}
+
+.comment{
+
+padding:16px;
+
+border-radius:18px;
+
+background:
+rgba(255,255,255,0.03);
+
+border:
+1px solid rgba(255,255,255,0.04);
+
+}
+
+.comment-user{
+
+font-size:14px;
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.comment-text{
+
+font-size:13px;
+color:#ccc;
+
+line-height:1.8;
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1300px){
+
+.main-grid{
+
+grid-template-columns:
+1fr;
+
+}
+
+.sidebar{
+
+position:relative;
+
+top:0;
+
+}
+
+.video-box{
+
+height:500px;
+
+}
+
+}
+
+@media(max-width:900px){
+
+.container{
+
+padding:
+100px 12px 20px;
+
+}
+
+.title{
+
+font-size:42px;
+
+}
+
+.video-box{
+
+height:300px;
+
+}
+
+.logo{
+
+font-size:32px;
+
+}
+
+.top-btn{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BG -->
+
+<div class="bg" id="bg"></div>
+
+<div class="overlay"></div>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div class="logo">
+Ani<span>Stream</span>
+</div>
+
+<div class="top-actions">
+
+<button class="top-btn">
+❤️ Favorite
+</button>
+
+<button class="top-btn">
+📺 Continue Watching
+</button>
+
+<button class="top-btn">
+⭐ Rate Anime
+</button>
+
+</div>
+
+</div>
+
+<!-- CONTAINER -->
+
+<div class="container">
+
+<div class="main-grid">
+
+<!-- LEFT -->
+
+<div class="player-section">
+
+<!-- VIDEO -->
+
+<div class="video-box">
+
+<div class="live-watch">
+
+<div class="live-dot"></div>
+
+<div id="watchingCount">
+24,921 watching now
+</div>
+
+</div>
+
+<iframe
+id="player"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<!-- CONTROLS -->
+
+<div class="controls">
+
+<button class="control-btn">
+▶ Auto Next
+</button>
+
+<button class="control-btn">
+🌙 Cinema Mode
+</button>
+
+<button class="control-btn">
+🔊 Dub/Sub
+</button>
+
+<button class="control-btn">
+⚡ 1080P
+</button>
+
+<button class="control-btn">
+📥 Download
+</button>
+
+<button class="control-btn">
+❤️ Add To List
+</button>
+
+</div>
+
+<!-- INFO -->
+
+<div class="info-panel">
+
+<div class="title" id="title">
+Loading...
+</div>
+
+<div class="meta" id="meta">
+
+</div>
+
+<div class="synopsis" id="synopsis">
+
+</div>
+
+<div class="genre-list" id="genres">
+
+</div>
+
+</div>
+
+<!-- RECOMMENDATIONS -->
+
+<div class="panel">
+
+<div class="section-title">
+🔥 Recommended Anime
+</div>
+
+<div class="recommend-row" id="recommendations">
+
+</div>
+
+</div>
+
+<!-- COMMENTS -->
+
+<div class="panel">
+
+<div class="section-title">
+💬 Comments
+</div>
+
+<div class="comment-box">
+
+<div class="comment">
+
+<div class="comment-user">
+ShadowHunter
+</div>
+
+<div class="comment-text">
+This anime animation is insane 😭🔥
+</div>
+
+</div>
+
+<div class="comment">
+
+<div class="comment-user">
+AnimeLord
+</div>
+
+<div class="comment-text">
+Best episode so far. The fight scenes are crazy.
+</div>
+
+</div>
+
+<div class="comment">
+
+<div class="comment-user">
+ZenoX
+</div>
+
+<div class="comment-text">
+The soundtrack hits different with headphones.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="sidebar">
+
+<!-- EPISODES -->
+
+<div class="panel">
+
+<div class="section-title">
+📺 Episodes
+</div>
+
+<div class="episode-list" id="episodes">
+
+</div>
+
+</div>
+
+<!-- DETAILS -->
+
+<div class="panel">
+
+<div class="section-title">
+📊 Anime Stats
+</div>
+
+<div class="comment-box" id="stats">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+PARAMS
+========================= */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const id =
+params.get("id") || "5114";
+
+const episode =
+params.get("ep") || "1";
+
+/* =========================
+ELEMENTS
+========================= */
+
+const titleEl =
+document.getElementById("title");
+
+const synopsisEl =
+document.getElementById("synopsis");
+
+const genresEl =
+document.getElementById("genres");
+
+const metaEl =
+document.getElementById("meta");
+
+const player =
+document.getElementById("player");
+
+const episodesEl =
+document.getElementById("episodes");
+
+const bg =
+document.getElementById("bg");
+
+const recommendations =
+document.getElementById("recommendations");
+
+const stats =
+document.getElementById("stats");
+
+/* =========================
+LIVE WATCHERS
+========================= */
+
+const watchingCount =
+document.getElementById("watchingCount");
+
+function updateWatching(){
+
+const viewers =
+Math.floor(
+Math.random() * 10000
+) + 20000;
+
+watchingCount.innerHTML =
+`${viewers.toLocaleString()} watching now`;
+
+}
+
+setInterval(updateWatching,3000);
+
+/* =========================
+LOAD ANIME
+========================= */
+
+async function loadAnime(){
+
+/* FULL DETAILS */
+
+const response = await fetch(
+`https://api.jikan.moe/v4/anime/${id}/full`
+);
+
+const anime =
+(await response.json()).data;
+
+/* BACKGROUND */
+
+bg.style.backgroundImage =
+`url(${anime.images.jpg.large_image_url})`;
+
+/* TITLE */
+
+titleEl.innerHTML =
+anime.title;
+
+/* META */
+
+metaEl.innerHTML = `
+
+<div class="meta-item">
+⭐ ${anime.score || "N/A"}
+</div>
+
+<div class="meta-item">
+🎬 ${anime.type || "TV"}
+</div>
+
+<div class="meta-item">
+📺 ${anime.episodes || "??"} Episodes
+</div>
+
+<div class="meta-item">
+🔥 ${anime.status || "Airing"}
+</div>
+
+<div class="meta-item">
+📅 ${anime.year || "Unknown"}
+</div>
+
+`;
+
+/* SYNOPSIS */
+
+synopsisEl.innerHTML =
+anime.synopsis || "No synopsis available.";
+
+/* GENRES */
+
+anime.genres.forEach((genre)=>{
+
+const div =
+document.createElement("div");
+
+div.classList.add("genre");
+
+div.innerHTML =
+genre.name;
+
+genresEl.appendChild(div);
+
+});
+
+/* PLAYER */
+
+player.src =
+anime.trailer.embed_url ||
+"https://www.youtube.com/embed/dQw4w9WgXcQ";
+
+/* EPISODES */
+
+const totalEpisodes =
+anime.episodes || 12;
+
+for(let i=1;i<=Math.min(totalEpisodes,50);i++){
+
+const ep =
+document.createElement("div");
+
+ep.classList.add("ep");
+
+if(i == episode){
+
+ep.classList.add("active");
+
+}
+
+ep.innerHTML = `
+
+<div class="ep-title">
+Episode ${i}
+</div>
+
+<div class="ep-desc">
+Watch episode ${i} of ${anime.title}
+</div>
+
+`;
+
+ep.onclick = ()=>{
+
+window.location.href =
+`watch.html?id=${id}&ep=${i}`;
+
+};
+
+episodesEl.appendChild(ep);
+
+}
+
+/* RECOMMENDATIONS */
+
+const recResponse = await fetch(
+`https://api.jikan.moe/v4/anime/${id}/recommendations`
+);
+
+const recData =
+(await recResponse.json()).data;
+
+recData.slice(0,12).forEach((rec)=>{
+
+const card =
+document.createElement("div");
+
+card.classList.add("recommend-card");
+
+card.innerHTML = `
+
+<img src="${rec.entry.images.jpg.large_image_url}">
+
+<div class="recommend-info">
+
+<h3>
+${rec.entry.title}
+</h3>
+
+</div>
+
+`;
+
+card.onclick = ()=>{
+
+window.location.href =
+`watch.html?id=${rec.entry.mal_id}`;
+
+};
+
+recommendations.appendChild(card);
+
+});
+
+/* STATS */
+
+stats.innerHTML = `
+
+<div class="comment">
+<div class="comment-user">
+⭐ Score
+</div>
+<div class="comment-text">
+${anime.score || "N/A"}
+</div>
+</div>
+
+<div class="comment">
+<div class="comment-user">
+🏆 Rank
+</div>
+<div class="comment-text">
+#${anime.rank || "N/A"}
+</div>
+</div>
+
+<div class="comment">
+<div class="comment-user">
+❤️ Favorites
+</div>
+<div class="comment-text">
+${anime.favorites?.toLocaleString() || "N/A"}
+</div>
+</div>
+
+<div class="comment">
+<div class="comment-user">
+👥 Members
+</div>
+<div class="comment-text">
+${anime.members?.toLocaleString() || "N/A"}
+</div>
+</div>
+
+`;
+
+}
+
+loadAnime();
+
+</script>
+
+</body>
+
+</html>
