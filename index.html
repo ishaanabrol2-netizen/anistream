@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AniStream Infinity</title>
+<title>AniStream Infinity AI</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -27,10 +27,50 @@ scroll-behavior:smooth;
 }
 
 body{
+
 background:#050505;
 color:white;
+
 overflow-x:hidden;
+
 min-height:100vh;
+
+perspective:1400px;
+
+}
+
+/* =========================
+MOUSE LIGHT
+========================= */
+
+.mouse-glow{
+
+position:fixed;
+
+width:450px;
+height:450px;
+
+border-radius:50%;
+
+background:
+radial-gradient(
+circle,
+rgba(255,122,0,0.18),
+transparent 70%
+);
+
+pointer-events:none;
+
+transform:
+translate(-50%,-50%);
+
+z-index:-5;
+
+filter:blur(30px);
+
+transition:
+transform 0.08s linear;
+
 }
 
 /* =========================
@@ -40,6 +80,7 @@ BACKGROUND VIDEO
 .bg-video{
 
 position:fixed;
+
 top:0;
 left:0;
 
@@ -51,11 +92,15 @@ object-fit:cover;
 z-index:-10;
 
 filter:
-brightness(0.18)
-contrast(1.15)
+brightness(0.16)
+contrast(1.2)
 saturate(1.2);
 
-transform:scale(1.08);
+transform:
+scale(1.1);
+
+transition:
+transform 0.15s linear;
 
 }
 
@@ -73,8 +118,8 @@ background:
 linear-gradient(
 to right,
 rgba(0,0,0,0.95),
-rgba(0,0,0,0.75),
-rgba(0,0,0,0.3)
+rgba(0,0,0,0.72),
+rgba(0,0,0,0.28)
 ),
 
 linear-gradient(
@@ -136,6 +181,53 @@ z-index:-8;
 }
 
 /* =========================
+FLOATING PARTICLES
+========================= */
+
+.particle{
+
+position:fixed;
+
+width:4px;
+height:4px;
+
+border-radius:50%;
+
+background:white;
+
+opacity:0.2;
+
+animation:floatParticle linear infinite;
+
+}
+
+@keyframes floatParticle{
+
+0%{
+
+transform:
+translateY(100vh);
+
+opacity:0;
+
+}
+
+20%{
+opacity:0.25;
+}
+
+100%{
+
+transform:
+translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+/* =========================
 LOGO
 ========================= */
 
@@ -143,7 +235,7 @@ LOGO
 
 position:fixed;
 
-top:26px;
+top:24px;
 left:50px;
 
 font-size:54px;
@@ -152,6 +244,10 @@ font-weight:800;
 letter-spacing:-2px;
 
 z-index:500;
+
+transform-style:preserve-3d;
+
+transition:0.15s linear;
 
 }
 
@@ -211,6 +307,8 @@ border-radius:18px;
 background:
 rgba(255,255,255,0.04);
 
+backdrop-filter:blur(18px);
+
 border:
 1px solid rgba(255,255,255,0.06);
 
@@ -218,7 +316,7 @@ color:white;
 
 }
 
-/* NAV BTN */
+/* BTN */
 
 .nav-btn{
 
@@ -228,6 +326,8 @@ border-radius:18px;
 
 background:
 rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
 
 border:
 1px solid rgba(255,255,255,0.06);
@@ -244,49 +344,11 @@ transition:0.3s ease;
 
 .nav-btn:hover{
 
+transform:
+translateY(-4px);
+
 background:
 rgba(255,255,255,0.08);
-
-transform:translateY(-3px);
-
-}
-
-/* LOGIN BUTTON */
-
-.login-btn{
-
-padding:13px 24px;
-
-border:none;
-
-border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-rgba(255,122,0,0.45),
-rgba(255,122,0,0.2)
-);
-
-border:
-1px solid rgba(255,122,0,0.3);
-
-color:white;
-
-font-size:14px;
-font-weight:700;
-
-cursor:pointer;
-
-transition:0.3s ease;
-
-}
-
-.login-btn:hover{
-
-transform:
-translateY(-4px)
-scale(1.03);
 
 }
 
@@ -303,6 +365,8 @@ position:relative;
 
 min-height:100vh;
 
+transform-style:preserve-3d;
+
 }
 
 /* =========================
@@ -314,6 +378,10 @@ CONTENT
 max-width:700px;
 
 margin-bottom:60px;
+
+transform-style:preserve-3d;
+
+transition:0.12s linear;
 
 }
 
@@ -331,6 +399,8 @@ border-radius:40px;
 
 background:
 rgba(255,122,0,0.12);
+
+backdrop-filter:blur(18px);
 
 border:
 1px solid rgba(255,122,0,0.25);
@@ -356,35 +426,8 @@ letter-spacing:-5px;
 
 margin-bottom:24px;
 
-}
-
-/* META */
-
-.meta{
-
-display:flex;
-gap:14px;
-flex-wrap:wrap;
-
-margin-bottom:24px;
-
-}
-
-.meta span{
-
-padding:9px 15px;
-
-border-radius:14px;
-
-background:
-rgba(255,255,255,0.04);
-
-border:
-1px solid rgba(255,255,255,0.06);
-
-font-size:13px;
-
-color:#ddd;
+text-shadow:
+0 10px 50px rgba(0,0,0,0.8);
 
 }
 
@@ -401,7 +444,7 @@ max-width:650px;
 
 }
 
-/* LIVE WATCH */
+/* LIVE */
 
 .live-watch{
 
@@ -420,12 +463,14 @@ border-radius:18px;
 background:
 rgba(255,0,0,0.08);
 
+backdrop-filter:blur(18px);
+
 border:
 1px solid rgba(255,0,0,0.18);
 
 }
 
-/* LIVE DOT */
+/* DOT */
 
 .live-dot{
 
@@ -486,6 +531,8 @@ rgba(255,122,0,0.38),
 rgba(255,122,0,0.2)
 );
 
+backdrop-filter:blur(18px);
+
 border:
 1px solid rgba(255,122,0,0.28);
 
@@ -509,13 +556,15 @@ scale(1.03);
 }
 
 /* =========================
-PANELS
+GLASS PANEL
 ========================= */
 
 .panel{
 
 background:
 rgba(255,255,255,0.04);
+
+backdrop-filter:blur(24px);
 
 border:
 1px solid rgba(255,255,255,0.08);
@@ -524,13 +573,16 @@ border-radius:32px;
 
 padding:24px;
 
-backdrop-filter:blur(22px);
-
 margin-bottom:50px;
+
+transform-style:preserve-3d;
+
+transition:
+transform 0.12s linear;
 
 }
 
-/* SECTION TITLE */
+/* TITLE */
 
 .section-title{
 
@@ -542,221 +594,7 @@ margin-bottom:22px;
 }
 
 /* =========================
-TRENDING LIST
-========================= */
-
-.trending-list{
-
-display:flex;
-flex-direction:column;
-gap:16px;
-
-}
-
-/* ITEM */
-
-.trend-item{
-
-display:flex;
-align-items:center;
-gap:14px;
-
-padding:12px;
-
-border-radius:22px;
-
-background:
-rgba(255,255,255,0.03);
-
-transition:0.3s ease;
-
-cursor:pointer;
-
-}
-
-.trend-item:hover{
-
-transform:translateX(6px);
-
-background:
-rgba(255,255,255,0.06);
-
-}
-
-/* RANK */
-
-.rank{
-
-font-size:22px;
-font-weight:800;
-
-color:#ff7a00;
-
-width:40px;
-
-}
-
-/* THUMB */
-
-.trend-thumb{
-
-width:70px;
-height:90px;
-
-border-radius:18px;
-
-overflow:hidden;
-
-}
-
-.trend-thumb img{
-
-width:100%;
-height:100%;
-
-object-fit:cover;
-
-}
-
-/* INFO */
-
-.trend-info{
-
-flex:1;
-
-}
-
-.trend-info h3{
-
-font-size:16px;
-margin-bottom:6px;
-
-}
-
-.trend-info p{
-
-font-size:13px;
-color:#ccc;
-
-}
-
-/* SCORE */
-
-.trend-score{
-
-padding:8px 12px;
-
-border-radius:14px;
-
-background:
-rgba(255,122,0,0.12);
-
-font-size:13px;
-font-weight:600;
-
-}
-
-/* =========================
-AIRING ROW
-========================= */
-
-.airing-row{
-
-display:flex;
-gap:22px;
-
-overflow-x:auto;
-
-padding-bottom:10px;
-
-}
-
-/* AIRING CARD */
-
-.airing-card{
-
-min-width:240px;
-height:140px;
-
-border-radius:24px;
-
-overflow:hidden;
-
-display:flex;
-
-background:
-rgba(255,255,255,0.04);
-
-transition:0.3s ease;
-
-}
-
-.airing-card:hover{
-
-transform:
-translateY(-6px);
-
-}
-
-/* IMAGE */
-
-.airing-card img{
-
-width:95px;
-height:100%;
-
-object-fit:cover;
-
-}
-
-/* DETAILS */
-
-.airing-details{
-
-padding:16px;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-}
-
-.airing-details h3{
-
-font-size:16px;
-margin-bottom:8px;
-
-}
-
-.airing-details p{
-
-font-size:13px;
-color:#ccc;
-
-}
-
-/* EP */
-
-.ep-badge{
-
-margin-top:10px;
-
-padding:8px 12px;
-
-border-radius:12px;
-
-width:max-content;
-
-background:
-rgba(255,122,0,0.14);
-
-font-size:12px;
-font-weight:600;
-
-}
-
-/* =========================
-POSTERS
+ANIME ROW
 ========================= */
 
 .anime-row{
@@ -770,7 +608,22 @@ padding-bottom:10px;
 
 }
 
-/* CARD */
+.anime-row::-webkit-scrollbar{
+height:6px;
+}
+
+.anime-row::-webkit-scrollbar-thumb{
+
+background:
+rgba(255,255,255,0.18);
+
+border-radius:20px;
+
+}
+
+/* =========================
+CARD
+========================= */
 
 .card{
 
@@ -788,15 +641,23 @@ cursor:pointer;
 background:
 rgba(255,255,255,0.03);
 
-transition:0.35s ease;
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+transition:
+transform 0.15s linear,
+box-shadow 0.3s ease;
+
+transform-style:preserve-3d;
 
 }
 
 .card:hover{
 
-transform:
-translateY(-8px)
-scale(1.02);
+box-shadow:
+0 25px 50px rgba(0,0,0,0.45);
 
 }
 
@@ -808,6 +669,51 @@ width:100%;
 height:100%;
 
 object-fit:cover;
+
+transition:
+transform 0.4s ease;
+
+}
+
+.card:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* SHINE */
+
+.card::before{
+
+content:'';
+
+position:absolute;
+
+top:-120%;
+left:-40%;
+
+width:60%;
+height:300%;
+
+background:
+linear-gradient(
+to right,
+transparent,
+rgba(255,255,255,0.2),
+transparent
+);
+
+transform:rotate(25deg);
+
+transition:0.6s;
+
+z-index:20;
+
+}
+
+.card:hover::before{
+
+left:130%;
 
 }
 
@@ -826,6 +732,73 @@ to top,
 rgba(0,0,0,0.96),
 transparent 60%
 );
+
+}
+
+/* PLAY */
+
+.play-btn{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:
+translate(-50%,-50%);
+
+width:72px;
+height:72px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+rgba(0,0,0,0.45);
+
+backdrop-filter:blur(18px);
+
+font-size:28px;
+
+z-index:8;
+
+opacity:0;
+
+transition:0.3s ease;
+
+}
+
+.card:hover .play-btn{
+
+opacity:1;
+
+}
+
+/* SCORE */
+
+.score{
+
+position:absolute;
+
+top:16px;
+right:16px;
+
+padding:8px 12px;
+
+border-radius:14px;
+
+background:
+rgba(0,0,0,0.45);
+
+backdrop-filter:blur(18px);
+
+font-size:13px;
+font-weight:600;
+
+z-index:6;
 
 }
 
@@ -860,99 +833,22 @@ color:#ddd;
 
 }
 
-/* SCORE */
-
-.score{
-
-position:absolute;
-
-top:16px;
-right:16px;
-
-padding:8px 12px;
-
-border-radius:14px;
-
-background:
-rgba(0,0,0,0.45);
-
-font-size:13px;
-font-weight:600;
-
-z-index:6;
-
-}
-
-/* PLAY */
-
-.play-btn{
-
-position:absolute;
-
-top:50%;
-left:50%;
-
-transform:
-translate(-50%,-50%);
-
-width:72px;
-height:72px;
-
-border-radius:50%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-background:
-rgba(0,0,0,0.45);
-
-font-size:28px;
-
-z-index:8;
-
-opacity:0;
-
-transition:0.3s ease;
-
-}
-
-.card:hover .play-btn{
-
-opacity:1;
-
-}
-
 /* =========================
-LOGIN MODAL
+AI ASSISTANT
 ========================= */
 
-.login-modal{
+.ai-assistant{
 
 position:fixed;
-inset:0;
 
-background:
-rgba(0,0,0,0.92);
+bottom:30px;
+right:30px;
 
-display:none;
-
-justify-content:center;
-align-items:center;
-
-z-index:99999;
-
-}
-
-/* BOX */
-
-.login-box{
-
-width:420px;
-
-padding:40px;
+width:360px;
 
 border-radius:32px;
+
+overflow:hidden;
 
 background:
 rgba(255,255,255,0.05);
@@ -962,64 +858,152 @@ backdrop-filter:blur(30px);
 border:
 1px solid rgba(255,255,255,0.08);
 
-}
+z-index:9999;
 
-/* LOGIN TITLE */
-
-.login-box h2{
-
-font-size:38px;
-
-margin-bottom:10px;
+box-shadow:
+0 20px 50px rgba(0,0,0,0.4);
 
 }
 
-/* LOGIN TEXT */
+/* HEADER */
 
-.login-box p{
+.ai-header{
 
-color:#ccc;
+padding:18px 22px;
 
-margin-bottom:30px;
+display:flex;
+align-items:center;
+gap:14px;
+
+border-bottom:
+1px solid rgba(255,255,255,0.06);
+
+}
+
+/* AI ORB */
+
+.ai-orb{
+
+width:16px;
+height:16px;
+
+border-radius:50%;
+
+background:#ff7a00;
+
+box-shadow:
+0 0 20px #ff7a00;
+
+animation:pulse 1.5s infinite;
+
+}
+
+/* TITLE */
+
+.ai-title{
+
+font-size:16px;
+font-weight:700;
+
+}
+
+/* CHAT */
+
+.ai-chat{
+
+height:260px;
+
+overflow-y:auto;
+
+padding:18px;
+
+display:flex;
+flex-direction:column;
+gap:14px;
+
+}
+
+/* MESSAGE */
+
+.message{
+
+padding:14px 16px;
+
+border-radius:18px;
+
+max-width:85%;
+
+font-size:14px;
+line-height:1.7;
+
+}
+
+/* BOT */
+
+.bot{
+
+background:
+rgba(255,122,0,0.14);
+
+align-self:flex-start;
+
+}
+
+/* USER */
+
+.user{
+
+background:
+rgba(255,255,255,0.08);
+
+align-self:flex-end;
+
+}
+
+/* INPUT AREA */
+
+.ai-input-area{
+
+display:flex;
+
+padding:18px;
+
+gap:10px;
+
+border-top:
+1px solid rgba(255,255,255,0.06);
 
 }
 
 /* INPUT */
 
-.login-input{
+.ai-input{
 
-width:100%;
+flex:1;
 
-padding:16px 18px;
-
-margin-bottom:18px;
+padding:14px 16px;
 
 border:none;
 outline:none;
 
-border-radius:18px;
+border-radius:16px;
 
 background:
 rgba(255,255,255,0.05);
-
-border:
-1px solid rgba(255,255,255,0.08);
 
 color:white;
 
 }
 
-/* LOGIN ACTION */
+/* SEND */
 
-.login-action{
+.send-btn{
 
-width:100%;
-
-padding:16px;
+padding:14px 18px;
 
 border:none;
 
-border-radius:18px;
+border-radius:16px;
 
 background:
 linear-gradient(
@@ -1030,39 +1014,9 @@ rgba(255,122,0,0.2)
 
 color:white;
 
-font-size:16px;
 font-weight:700;
 
 cursor:pointer;
-
-}
-
-/* CLOSE */
-
-.close-login{
-
-position:absolute;
-
-top:30px;
-right:30px;
-
-width:50px;
-height:50px;
-
-border-radius:50%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-background:
-rgba(255,255,255,0.08);
-
-font-size:24px;
-
-cursor:pointer;
-
-color:white;
 
 }
 
@@ -1083,7 +1037,7 @@ display:none;
 justify-content:center;
 align-items:center;
 
-z-index:9999;
+z-index:99999;
 
 }
 
@@ -1172,8 +1126,19 @@ display:none;
 display:none;
 }
 
-.login-box{
+.ai-assistant{
+
 width:95%;
+
+right:2.5%;
+
+bottom:20px;
+
+}
+
+.video-box{
+width:95%;
+height:60%;
 }
 
 }
@@ -1184,6 +1149,17 @@ width:95%;
 
 <body>
 
+<!-- GLOW -->
+
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<!-- PARTICLES -->
+
+<div class="particle" style="left:10%;animation-duration:18s;"></div>
+<div class="particle" style="left:30%;animation-duration:22s;"></div>
+<div class="particle" style="left:60%;animation-duration:19s;"></div>
+<div class="particle" style="left:80%;animation-duration:24s;"></div>
+
 <!-- BACKGROUND -->
 
 <video
@@ -1191,7 +1167,8 @@ autoplay
 muted
 loop
 playsinline
-class="bg-video">
+class="bg-video"
+id="bgVideo">
 
 <source
 src="https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p"
@@ -1206,7 +1183,7 @@ type="video/mp4">
 
 <!-- LOGO -->
 
-<div class="logo">
+<div class="logo" id="logo">
 Ani<span>Stream</span>
 </div>
 
@@ -1226,15 +1203,11 @@ Trending
 </button>
 
 <button class="nav-btn">
-Top Rated
-</button>
-
-<button class="nav-btn">
 Movies
 </button>
 
-<button class="login-btn" id="openLogin">
-Login
+<button class="nav-btn">
+Favorites
 </button>
 
 </div>
@@ -1245,10 +1218,10 @@ Login
 
 <section class="hero">
 
-<div class="hero-content">
+<div class="hero-content parallax">
 
 <div class="trending">
-🔥 #1 Anime Streaming Platform
+🔥 AI POWERED STREAMING
 </div>
 
 <h1>
@@ -1256,17 +1229,9 @@ Anime<br>
 Universe
 </h1>
 
-<div class="meta">
-
-<span>HD</span>
-<span>SUB/DUB</span>
-<span>Unlimited Anime</span>
-
-</div>
-
 <div class="desc">
 
-A cinematic anime streaming platform with autoplay hero trailers, real-time trending anime, live watching counters, airing today schedules, built-in trailers, login system, and premium streaming aesthetics.
+A futuristic anime streaming platform with 3D parallax motion, floating glassmorphism UI, cinematic mouse reactive effects, holographic anime cards, and an AI anime assistant.
 
 </div>
 
@@ -1274,7 +1239,7 @@ A cinematic anime streaming platform with autoplay hero trailers, real-time tren
 
 <div class="live-dot"></div>
 
-<div class="live-count" id="liveCount">
+<div id="liveCount">
 24,821 watching now
 </div>
 
@@ -1290,40 +1255,12 @@ A cinematic anime streaming platform with autoplay hero trailers, real-time tren
 
 </div>
 
-<!-- TRENDING PANEL -->
+<!-- TRENDING -->
 
-<div class="panel">
-
-<div class="section-title">
-🔥 Real-Time Trending
-</div>
-
-<div class="trending-list" id="trendingList">
-
-</div>
-
-</div>
-
-<!-- AIRING -->
-
-<div class="panel">
+<div class="panel parallax">
 
 <div class="section-title">
-📅 Airing Today
-</div>
-
-<div class="airing-row" id="airingRow">
-
-</div>
-
-</div>
-
-<!-- POSTERS -->
-
-<div class="panel">
-
-<div class="section-title">
-🎬 Trending Anime
+🔥 Trending Anime
 </div>
 
 <div class="anime-row" id="animeRow">
@@ -1334,36 +1271,42 @@ A cinematic anime streaming platform with autoplay hero trailers, real-time tren
 
 </section>
 
-<!-- LOGIN MODAL -->
+<!-- AI ASSISTANT -->
 
-<div class="login-modal" id="loginModal">
+<div class="ai-assistant">
 
-<div class="close-login" id="closeLogin">
-✕
+<div class="ai-header">
+
+<div class="ai-orb"></div>
+
+<div class="ai-title">
+AI Anime Assistant
 </div>
 
-<div class="login-box">
+</div>
 
-<h2>
-Welcome Back
-</h2>
+<div class="ai-chat" id="chatBox">
 
-<p>
-Login to continue watching anime.
-</p>
+<div class="message bot">
+Hey 👋 Ask me for anime recommendations.
+</div>
 
-<input
-type="email"
-class="login-input"
-placeholder="Email">
+</div>
+
+<div class="ai-input-area">
 
 <input
-type="password"
-class="login-input"
-placeholder="Password">
+type="text"
+class="ai-input"
+id="aiInput"
+placeholder="Recommend dark fantasy anime...">
 
-<button class="login-action">
-Login
+<button
+class="send-btn"
+id="sendBtn">
+
+Send
+
 </button>
 
 </div>
@@ -1394,61 +1337,14 @@ allowfullscreen>
 
 <script>
 
-/* ELEMENTS */
-
-const animeRow =
-document.getElementById("animeRow");
-
-const trendingList =
-document.getElementById("trendingList");
-
-const airingRow =
-document.getElementById("airingRow");
-
-const trailerModal =
-document.getElementById("trailerModal");
-
-const trailerFrame =
-document.getElementById("trailerFrame");
-
-const closeBtn =
-document.getElementById("closeBtn");
+/* =========================
+LIVE VIEWERS
+========================= */
 
 const liveCount =
 document.getElementById("liveCount");
 
-/* LOGIN */
-
-const loginModal =
-document.getElementById("loginModal");
-
-const openLogin =
-document.getElementById("openLogin");
-
-const closeLogin =
-document.getElementById("closeLogin");
-
-/* OPEN LOGIN */
-
-openLogin.onclick = ()=>{
-
-loginModal.style.display =
-"flex";
-
-};
-
-/* CLOSE LOGIN */
-
-closeLogin.onclick = ()=>{
-
-loginModal.style.display =
-"none";
-
-};
-
-/* LIVE VIEWERS */
-
-function updateCounts(){
+function updateViewers(){
 
 const viewers =
 Math.floor(
@@ -1460,83 +1356,90 @@ liveCount.innerHTML =
 
 }
 
-setInterval(updateCounts,3000);
+setInterval(updateViewers,3000);
 
-/* LOAD DATA */
+/* =========================
+MOUSE REACTIVE UI
+========================= */
 
-async function loadAnime(){
+const mouseGlow =
+document.getElementById("mouseGlow");
 
-/* TOP */
+const bgVideo =
+document.getElementById("bgVideo");
 
-const response = await fetch(
-"https://api.jikan.moe/v4/top/anime?limit=18"
-);
+const parallax =
+document.querySelectorAll(".parallax");
 
-const data = await response.json();
+const cards =
+document.querySelectorAll(".card");
 
-/* AIRING */
+document.addEventListener("mousemove",(e)=>{
 
-const airingResponse = await fetch(
-"https://api.jikan.moe/v4/seasons/now"
-);
+const x =
+e.clientX / window.innerWidth;
 
-const airingData =
-await airingResponse.json();
+const y =
+e.clientY / window.innerHeight;
 
-/* TRENDING */
+/* GLOW */
 
-data.data.slice(0,5).forEach((anime,index)=>{
+mouseGlow.style.left =
+`${e.clientX}px`;
 
-const item =
-document.createElement("div");
+mouseGlow.style.top =
+`${e.clientY}px`;
 
-item.classList.add("trend-item");
+/* BG */
 
-item.innerHTML = `
+bgVideo.style.transform =
+`scale(1.1)
+translate(
+${x * 20}px,
+${y * 20}px
+)`;
 
-<div class="rank">
-0${index + 1}
-</div>
+/* PANELS */
 
-<div class="trend-thumb">
+parallax.forEach((item)=>{
 
-<img src="${anime.images.jpg.large_image_url}">
+item.style.transform =
 
-</div>
-
-<div class="trend-info">
-
-<h3>
-${anime.title}
-</h3>
-
-<p>
-⭐ ${anime.score || "N/A"}
-</p>
-
-</div>
-
+`
+rotateY(${(x - 0.5) * 10}deg)
+rotateX(${(0.5 - y) * 10}deg)
+translateZ(20px)
 `;
-
-item.onclick = ()=>{
-
-if(anime.trailer?.embed_url){
-
-trailerModal.style.display =
-"flex";
-
-trailerFrame.src =
-anime.trailer.embed_url;
-
-}
-
-};
-
-trendingList.appendChild(item);
 
 });
 
-/* POSTERS */
+});
+
+/* =========================
+LOAD ANIME
+========================= */
+
+const animeRow =
+document.getElementById("animeRow");
+
+const trailerModal =
+document.getElementById("trailerModal");
+
+const trailerFrame =
+document.getElementById("trailerFrame");
+
+const closeBtn =
+document.getElementById("closeBtn");
+
+async function loadAnime(){
+
+const response = await fetch(
+
+"https://api.jikan.moe/v4/top/anime?limit=18"
+
+);
+
+const data = await response.json();
 
 data.data.forEach((anime)=>{
 
@@ -1571,6 +1474,48 @@ ${anime.type || "TV"}
 
 `;
 
+card.addEventListener("mousemove",(e)=>{
+
+const rect =
+card.getBoundingClientRect();
+
+const x =
+e.clientX - rect.left;
+
+const y =
+e.clientY - rect.top;
+
+const centerX =
+rect.width / 2;
+
+const centerY =
+rect.height / 2;
+
+const rotateX =
+((y - centerY) / 18);
+
+const rotateY =
+((centerX - x) / 18);
+
+card.style.transform =
+
+`
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+scale(1.05)
+`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform =
+"rotateX(0deg) rotateY(0deg)";
+
+});
+
+/* TRAILER */
+
 card.onclick = ()=>{
 
 if(anime.trailer?.embed_url){
@@ -1589,48 +1534,11 @@ animeRow.appendChild(card);
 
 });
 
-/* AIRING */
-
-airingData.data.slice(0,8).forEach((anime)=>{
-
-const card =
-document.createElement("div");
-
-card.classList.add("airing-card");
-
-card.innerHTML = `
-
-<img src="${anime.images.jpg.large_image_url}">
-
-<div class="airing-details">
-
-<h3>
-${anime.title}
-</h3>
-
-<p>
-${anime.broadcast?.time || "Today"}
-</p>
-
-<div class="ep-badge">
-
-EP ${anime.episodes || "??"}
-
-</div>
-
-</div>
-
-`;
-
-airingRow.appendChild(card);
-
-});
-
 }
 
 loadAnime();
 
-/* CLOSE TRAILER */
+/* CLOSE */
 
 closeBtn.onclick = ()=>{
 
@@ -1638,6 +1546,94 @@ trailerModal.style.display =
 "none";
 
 trailerFrame.src = "";
+
+};
+
+/* =========================
+AI ASSISTANT
+========================= */
+
+const sendBtn =
+document.getElementById("sendBtn");
+
+const aiInput =
+document.getElementById("aiInput");
+
+const chatBox =
+document.getElementById("chatBox");
+
+function addMessage(text,type){
+
+const msg =
+document.createElement("div");
+
+msg.classList.add("message");
+
+msg.classList.add(type);
+
+msg.innerHTML = text;
+
+chatBox.appendChild(msg);
+
+chatBox.scrollTop =
+chatBox.scrollHeight;
+
+}
+
+function aiReply(input){
+
+input =
+input.toLowerCase();
+
+if(input.includes("dark")){
+
+return "🔥 Try: Berserk, Vinland Saga, Attack on Titan, Tokyo Ghoul.";
+
+}
+
+if(input.includes("romance")){
+
+return "💖 Try: Your Name, Horimiya, Toradora, Weathering With You.";
+
+}
+
+if(input.includes("action")){
+
+return "⚔️ Try: Demon Slayer, Solo Leveling, JJK, Chainsaw Man.";
+
+}
+
+if(input.includes("sad")){
+
+return "😭 Try: Clannad, I Want To Eat Your Pancreas, Anohana.";
+
+}
+
+return "✨ Try: One Piece, Naruto, Bleach, Hunter x Hunter.";
+
+}
+
+/* SEND */
+
+sendBtn.onclick = ()=>{
+
+const text =
+aiInput.value.trim();
+
+if(!text) return;
+
+addMessage(text,"user");
+
+const reply =
+aiReply(text);
+
+setTimeout(()=>{
+
+addMessage(reply,"bot");
+
+},600);
+
+aiInput.value = "";
 
 };
 
