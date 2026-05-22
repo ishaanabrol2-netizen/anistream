@@ -32,12 +32,13 @@ overflow-x:hidden;
 }
 
 /* =========================
-BACKGROUND VIDEO
+HERO TRAILER VIDEO
 ========================= */
 
 .bg-video{
 
 position:fixed;
+
 top:0;
 left:0;
 
@@ -49,11 +50,15 @@ object-fit:cover;
 z-index:-10;
 
 filter:
-brightness(0.25)
-contrast(1.1)
+brightness(0.22)
+contrast(1.12)
 saturate(1.2);
 
 transform:scale(1.08);
+
+transition:
+opacity 0.8s ease,
+transform 1.2s ease;
 
 }
 
@@ -70,15 +75,21 @@ background:
 
 linear-gradient(
 to right,
-rgba(0,0,0,0.95),
-rgba(0,0,0,0.7),
-rgba(0,0,0,0.3)
+rgba(0,0,0,0.96),
+rgba(0,0,0,0.68),
+rgba(0,0,0,0.25)
 ),
 
 linear-gradient(
 to top,
 rgba(0,0,0,1),
-transparent 40%
+transparent 42%
+),
+
+linear-gradient(
+to bottom,
+rgba(0,0,0,0.4),
+transparent
 );
 
 z-index:-9;
@@ -98,12 +109,34 @@ height:700px;
 
 background:#ff7a00;
 
-right:-200px;
-top:-200px;
+right:-220px;
+top:-220px;
 
 filter:blur(220px);
 
 opacity:0.12;
+
+border-radius:50%;
+
+z-index:-8;
+
+}
+
+.glow2{
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:#ff0000;
+
+left:-140px;
+bottom:-140px;
+
+filter:blur(180px);
+
+opacity:0.08;
 
 border-radius:50%;
 
@@ -128,6 +161,9 @@ font-weight:800;
 letter-spacing:-2px;
 
 z-index:500;
+
+text-shadow:
+0 10px 30px rgba(0,0,0,0.6);
 
 }
 
@@ -156,6 +192,10 @@ align-items:center;
 z-index:300;
 
 }
+
+/* =========================
+NAV
+========================= */
 
 .nav-right{
 
@@ -240,6 +280,8 @@ padding:
 
 position:relative;
 
+overflow:hidden;
+
 }
 
 /* =========================
@@ -251,6 +293,30 @@ CONTENT
 max-width:700px;
 
 margin-bottom:70px;
+
+position:relative;
+
+z-index:20;
+
+animation:heroFade 1.2s ease;
+
+}
+
+@keyframes heroFade{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0px);
+
+}
 
 }
 
@@ -337,6 +403,10 @@ margin-top:38px;
 
 }
 
+/* =========================
+WATCH BUTTON
+========================= */
+
 .watch-btn{
 
 padding:18px 42px;
@@ -347,14 +417,14 @@ border-radius:22px;
 background:
 linear-gradient(
 135deg,
-rgba(255,122,0,0.4),
-rgba(255,122,0,0.22)
+rgba(255,122,0,0.38),
+rgba(255,122,0,0.2)
 );
 
 backdrop-filter:blur(18px);
 
 border:
-1px solid rgba(255,122,0,0.3);
+1px solid rgba(255,122,0,0.28);
 
 font-size:18px;
 font-weight:700;
@@ -365,23 +435,70 @@ cursor:pointer;
 
 transition:0.3s ease;
 
+box-shadow:
+0 0 30px rgba(255,122,0,0.12);
+
 }
 
 .watch-btn:hover{
 
-transform:translateY(-4px);
+transform:
+translateY(-4px)
+scale(1.03);
+
+background:
+linear-gradient(
+135deg,
+rgba(255,122,0,0.5),
+rgba(255,122,0,0.3)
+);
 
 }
 
 /* =========================
-BOTTOM POSTER ROW
+GLASS BUTTON
+========================= */
+
+.glass-btn{
+
+padding:18px 28px;
+
+border-radius:22px;
+
+background:
+rgba(255,255,255,0.04);
+
+backdrop-filter:blur(18px);
+
+border:
+1px solid rgba(255,255,255,0.06);
+
+font-size:18px;
+
+color:white;
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+}
+
+.glass-btn:hover{
+
+background:
+rgba(255,255,255,0.08);
+
+}
+
+/* =========================
+POSTER SECTION
 ========================= */
 
 .poster-section{
 
 position:absolute;
 
-bottom:30px;
+bottom:35px;
 left:60px;
 right:60px;
 
@@ -391,14 +508,16 @@ right:60px;
 
 .section-title{
 
-font-size:26px;
+font-size:28px;
 font-weight:700;
 
 margin-bottom:22px;
 
 }
 
-/* GRID */
+/* =========================
+ANIME ROW
+========================= */
 
 .anime-row{
 
@@ -554,8 +673,8 @@ left:50%;
 transform:
 translate(-50%,-50%);
 
-width:70px;
-height:70px;
+width:72px;
+height:72px;
 
 border-radius:50%;
 
@@ -584,7 +703,34 @@ opacity:1;
 
 }
 
-/* TRAILER MODAL */
+/* SCORE */
+
+.score{
+
+position:absolute;
+
+top:16px;
+right:16px;
+
+padding:8px 12px;
+
+border-radius:14px;
+
+background:
+rgba(0,0,0,0.45);
+
+backdrop-filter:blur(18px);
+
+font-size:13px;
+font-weight:600;
+
+z-index:6;
+
+}
+
+/* =========================
+TRAILER MODAL
+========================= */
 
 .trailer-modal{
 
@@ -592,7 +738,7 @@ position:fixed;
 inset:0;
 
 background:
-rgba(0,0,0,0.92);
+rgba(0,0,0,0.94);
 
 display:none;
 
@@ -726,9 +872,15 @@ height:60%;
 
 <body>
 
-<!-- BACKGROUND VIDEO -->
+<!-- HERO TRAILER VIDEO -->
 
-<video autoplay muted loop class="bg-video">
+<video
+autoplay
+muted
+loop
+playsinline
+class="bg-video"
+id="heroVideo">
 
 <source
 src="https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p"
@@ -739,6 +891,7 @@ type="video/mp4">
 <div class="overlay"></div>
 
 <div class="glow1"></div>
+<div class="glow2"></div>
 
 <!-- LOGO -->
 
@@ -794,7 +947,7 @@ Universe
 
 <div class="desc">
 
-A cinematic anime streaming platform with real auto-updating anime posters, built-in trailers, glassmorphism UI, premium hover effects, and modern Netflix-inspired aesthetics.
+A cinematic anime streaming platform with auto-updating anime posters, autoplay hero trailers, built-in trailer popups, glassmorphism UI, and Netflix-inspired aesthetics.
 
 </div>
 
@@ -804,11 +957,15 @@ A cinematic anime streaming platform with real auto-updating anime posters, buil
 ▶ Explore Anime
 </button>
 
-</div>
+<button class="glass-btn">
+＋ My List
+</button>
 
 </div>
 
-<!-- POSTERS AT BOTTOM -->
+</div>
+
+<!-- POSTER SECTION -->
 
 <div class="poster-section">
 
@@ -848,6 +1005,47 @@ allowfullscreen>
 
 <script>
 
+/* =========================
+AUTO HERO VIDEO
+========================= */
+
+const heroVideo =
+document.getElementById("heroVideo");
+
+/* CINEMATIC VIDEOS */
+
+const trailers = [
+
+"https://cdn.coverr.co/videos/coverr-clouds-and-sunset-1560083032732?download=1080p",
+
+"https://cdn.coverr.co/videos/coverr-flying-over-the-clouds-1560083060102?download=1080p",
+
+"https://cdn.coverr.co/videos/coverr-aerial-view-of-clouds-1560083045487?download=1080p"
+
+];
+
+/* RANDOM HERO VIDEO */
+
+function randomTrailer(){
+
+const random =
+Math.floor(
+Math.random() * trailers.length
+);
+
+heroVideo.src =
+trailers[random];
+
+heroVideo.play();
+
+}
+
+randomTrailer();
+
+/* =========================
+ANIME API
+========================= */
+
 const animeRow =
 document.getElementById("animeRow");
 
@@ -860,7 +1058,7 @@ document.getElementById("trailerFrame");
 const closeBtn =
 document.getElementById("closeBtn");
 
-/* FETCH TOP ANIME */
+/* FETCH ANIME */
 
 async function loadAnime(){
 
@@ -884,11 +1082,15 @@ document.createElement("div");
 
 card.classList.add("card");
 
-/* CARD */
+/* CARD HTML */
 
 card.innerHTML = `
 
 <img src="${anime.images.jpg.large_image_url}">
+
+<div class="score">
+⭐ ${anime.score || "N/A"}
+</div>
 
 <div class="play-btn">
 ▶
@@ -901,22 +1103,25 @@ ${anime.title}
 </h3>
 
 <p>
-⭐ ${anime.score || "N/A"}
+${anime.type || "TV"} •
+${anime.episodes || "??"} EP
 </p>
 
 </div>
 
 `;
 
-/* PLAY TRAILER */
+/* OPEN TRAILER */
 
 card.onclick = ()=>{
 
 if(trailer){
 
-trailerModal.style.display = "flex";
+trailerModal.style.display =
+"flex";
 
-trailerFrame.src = trailer;
+trailerFrame.src =
+trailer;
 
 }
 
@@ -930,11 +1135,12 @@ animeRow.appendChild(card);
 
 loadAnime();
 
-/* CLOSE */
+/* CLOSE MODAL */
 
 closeBtn.onclick = ()=>{
 
-trailerModal.style.display = "none";
+trailerModal.style.display =
+"none";
 
 trailerFrame.src = "";
 
